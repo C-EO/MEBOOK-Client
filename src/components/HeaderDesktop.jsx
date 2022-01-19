@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 import logo from "../assets/img/brand/logo256.svg";
+import Dropdown from "./Dropdown";
 
 export default function HeaderDesktop() {
   return (
@@ -50,7 +51,47 @@ export default function HeaderDesktop() {
           </div>
         </div>
       </div>
-      {/* <div className="container">XXX</div> */}
+      <div className="container d-none d-lg-block">
+        <div className="row align-items-center">
+          <div className="col-8 d-flex align-items-center">
+            <div className="categories-dropdown">
+              <Dropdown />
+            </div>
+            <div className="desktop-navigation">
+              <nav>
+                <ul className="nav-list">
+                  <li className="nav-item">
+                    <Link to={"/"} className="nav-link">
+                      home
+                    </Link>
+                  </li>
+                  <li className="nav-item">
+                    <Link to={"/"} className="nav-link">
+                      shop
+                    </Link>
+                  </li>
+                  <li className="nav-item">
+                    <Link to={"/"} className="nav-link">
+                      blog
+                    </Link>
+                  </li>
+                  <li className="nav-item">
+                    <Link to={"/"} className="nav-link">
+                      vendor
+                    </Link>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+          <div className="col-4 text-end">
+            <div className="notice">
+              <span>notice !</span>
+              <p>We are open for business</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

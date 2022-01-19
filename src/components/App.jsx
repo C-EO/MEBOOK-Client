@@ -6,6 +6,9 @@ import { BrowserRouter, Routes } from "react-router-dom";
 import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "../../src/assets/style/index.sass";
 
+/// SCRIPTS
+import "../../node_modules/bootstrap/dist/js/bootstrap.bundle";
+
 /// COMPONENTS
 import GridTest from "./GridTest";
 import UserInfoBar from "./UserInfoBar";

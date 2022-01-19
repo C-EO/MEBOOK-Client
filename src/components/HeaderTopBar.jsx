@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export default function HeaderTopBar() {
   return (
@@ -9,13 +10,13 @@ export default function HeaderTopBar() {
             <div className="topbar-left">
               <ul className="list">
                 <li className="list-item">
-                  <a href="/">MEMBERSHIP</a>
+                  <Link to="/">MEMBERSHIP</Link>
                 </li>
                 <li className="list-item">
-                  <a href="/">COUPONS & DEALS</a>
+                  <Link to="/">COUPONS & DEALS</Link>
                 </li>
                 <li className="list-item">
-                  <a href="/">BESTSELLERS</a>
+                  <Link to="/">BESTSELLERS</Link>
                 </li>
               </ul>
             </div>
@@ -24,16 +25,16 @@ export default function HeaderTopBar() {
             <div className="topbar-right text-end">
               <ul className="list">
                 <li className="list-item">
-                  <a href="/">
+                  <Link to="/">
                     <i className="me-2 fal fa-user"></i>
                     MY ACCOUNT
-                  </a>
+                  </Link>
                 </li>
                 <li className="list-item">
-                  <a href="/">
+                  <Link to="/">
                     <i className="me-2 fal fa-heart"></i>
                     WISHLIST
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>
