@@ -10,11 +10,11 @@ export default function HeraderMob() {
           <div className="row align-items-center">
             <div className="col-2">
               <button>
-                <i className="fal fa-bars"></i>
+                <i className="fal fa-align-left"></i>
               </button>
             </div>
             <div className="col-8 text-center">
-              <div className="app-brand">
+              <div className="app-brand  d-flex justify-content-center align-items-center">
                 <Link to={"/"}>
                   <img src={logo} alt="brand-logo" width={150} />
                 </Link>
@@ -38,7 +38,7 @@ export default function HeraderMob() {
               </Link>
             </li>
             <li className="mob-nav-item">
-              <Link to="/" className="mov-nav-link">
+              <Link to="/register" className="mov-nav-link">
                 <i className="fal fa-user"></i>
               </Link>
             </li>

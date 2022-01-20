@@ -3,7 +3,7 @@ import "../assets/style/dropdown.sass";
 
 export default function Dropdown() {
   return (
-    <div class="dropdown">
+    <div className="dropdown">
       <button
         className="btn btn-secondary dropdown-toggle shadow-none"
         type="button"

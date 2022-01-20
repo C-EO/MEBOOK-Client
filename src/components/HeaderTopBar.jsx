@@ -25,9 +25,9 @@ export default function HeaderTopBar() {
             <div className="topbar-right text-end">
               <ul className="list">
                 <li className="list-item">
-                  <Link to="/">
+                  <Link to="/register">
                     <i className="me-2 fal fa-user"></i>
-                    MY ACCOUNT
+                    REGISTER / LOG IN
                   </Link>
                 </li>
                 <li className="list-item">

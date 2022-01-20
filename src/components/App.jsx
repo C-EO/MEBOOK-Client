@@ -1,6 +1,6 @@
 /// MODULES
 import React from "react";
-import { BrowserRouter, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 /// STYLES
 import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
@@ -9,18 +9,25 @@ import "../../src/assets/style/index.sass";
 /// SCRIPTS
 import "../../node_modules/bootstrap/dist/js/bootstrap.bundle";
 
-/// COMPONENTS
-import GridTest from "./GridTest";
-import UserInfoBar from "./UserInfoBar";
-import AppHeader from "./AppHeader";
+/// PAGES
+import Temp from "../pages/Temp";
+import Home from "../pages/Home";
+import Register from "../pages/Register";
+import Login from "../pages/Login";
+import ForgotPassword from "../pages/ForgotPassword";
+import ResetPassword from "../pages/ResetPassword";
 
 export default function App() {
   return (
     <BrowserRouter>
-      <GridTest />
-      <UserInfoBar />
-      <AppHeader />
-      <Routes>{/* <Route path="/" element={"HOME"}></Route> */}</Routes>
+      <Temp />
+      <Routes>
+        {/* <Route path="/" element={<Home />} /> */}
+        <Route path="/register" element={<Register />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/forgot-password" element={<ForgotPassword />} />
+        <Route path="/reset-password" element={<ResetPassword />} />
+      </Routes>
     </BrowserRouter>
   );
 }
