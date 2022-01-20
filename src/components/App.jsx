@@ -10,17 +10,20 @@ import "../../src/assets/style/index.sass";
 import "../../node_modules/bootstrap/dist/js/bootstrap.bundle";
 
 /// PAGES
-import Temp from "../pages/Temp";
+// import Temp from "../pages/Temp";
 import Home from "../pages/Home";
 import Register from "../pages/Register";
 import Login from "../pages/Login";
 import ForgotPassword from "../pages/ForgotPassword";
 import ResetPassword from "../pages/ResetPassword";
+import Notification from "./Notification";
 
 export default function App() {
   return (
     <BrowserRouter>
-      <Temp />
+      {/* <Temp /> */}
+      <Notification />
+
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/register" element={<Register />} />

@@ -1,47 +1,107 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { connect } from "react-redux";
+import { Field, reduxForm } from "redux-form";
+import registerUser from "../redux/actions/registerUser";
+import { useNavigate } from "react-router-dom";
 
-export default function UserRegisterForm() {
-  return (
-    <div className="form-area">
-      <form>
-        <div className="row g-0">
-          <div className="col-12 col-sm-6">
-            <input
-              type="text"
-              className="mebook-input"
-              placeholder="First Name"
-            />
+const onSubmit = (values, dispatch) => {
+  dispatch(registerUser(values));
+};
+
+export default reduxForm({ form: "register-form", onSubmit })(
+  connect((state) => state)(function UserRegisterForm({
+    handleSubmit,
+    formMsg,
+  }) {
+    const navigate = useNavigate();
+
+    useEffect(() => {
+      if (formMsg) {
+        if (formMsg.status === "success" && formMsg.data) {
+          setTimeout(() => {
+            navigate(
+              `/verify-account/${formMsg.data.userID}/${formMsg.data.token}`
+            );
+          }, 3000);
+        }
+      }
+    }, [formMsg]);
+
+    return (
+      <div className="form-area">
+        <form onSubmit={handleSubmit}>
+          <div className="row g-0">
+            <div className="col-12 col-sm-6">
+              <Field
+                type="text"
+                name="firstName"
+                component="input"
+                placeholder="First Name"
+                className="mebook-input"
+                autoComplete="username"
+                required
+              />
+            </div>
+            <div className="col-12 col-sm-6">
+              <Field
+                type="text"
+                name="lastName"
+                component="input"
+                placeholder="Last Name"
+                className="mebook-input"
+                autoComplete="username"
+                required
+              />
+            </div>
           </div>
-          <div className="col-12 col-sm-6">
-            <input
-              type="text"
-              className="mebook-input"
-              placeholder="Last Name"
-            />
+          <div className="row g-0">
+            <div className="col">
+              <Field
+                className="mebook-input"
+                placeholder="Email"
+                name="email"
+                component="input"
+                type="email"
+                autoComplete="username"
+                required
+              />
+            </div>
           </div>
-        </div>
-        <div className="row g-0">
-          <div className="col">
-            <input type="email" className="mebook-input" placeholder="Email" />
+          <div className="row g-0">
+            <div className="col">
+              <Field
+                className="mebook-input"
+                placeholder="Password"
+                name="password"
+                component="input"
+                type="password"
+                autoComplete="new-password"
+                required
+              />
+            </div>
           </div>
-        </div>
-        <div className="row g-0">
-          <div className="col">
-            <input
-              type="password"
-              className="mebook-input"
-              placeholder="Password"
-            />
+          <div className="row g-0">
+            <div className="col d-flex align-items-center justify-content-between">
+              <div className="user-session">
+                <Field
+                  className="me-2"
+                  type="checkbox"
+                  component="input"
+                  name="keepLogged"
+                />
+                <label>Keep me logged in</label>
+              </div>
+            </div>
           </div>
-        </div>
-        <div className="row g-0">
-          <div className="col">
-            <button type="submit" className="mebook-form-submit-btn">
-              register
-            </button>
+          <div className="row g-0">
+            <div className="col">
+              <button type="submit" className="mebook-form-submit-btn">
+                register
+              </button>
+            </div>
           </div>
-        </div>
-      </form>
-    </div>
-  );
-}
+        </form>
+      </div>
+    );
+  })
+);

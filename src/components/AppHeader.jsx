@@ -5,7 +5,7 @@ import HeaderTopBar from "./HeaderTopBar";
 import HeaderDesktop from "./HeaderDesktop";
 import HeraderMob from "./HeraderMob";
 
-export default function AppHeader() {
+export default function AppHeader(props) {
   return (
     <header id="app-header">
       <HeaderTopBar />

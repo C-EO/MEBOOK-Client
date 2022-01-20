@@ -5,5 +5,5 @@ export default function Home() {
     document.title = "MEBOOK | Home";
   }, []);
 
-  return <div>Home</div>;
+  return <div></div>;
 }

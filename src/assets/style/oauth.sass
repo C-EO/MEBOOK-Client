@@ -1,0 +1,38 @@
+@import './variables'
+
+#Oauth-form
+    text-align: center
+    // background: yellow
+    padding: 2rem 0
+    .btns-list
+        padding: 0
+        margin: 0
+        list-style: none
+        display: flex
+        .oauth-btn-item
+            display: block
+            width: 100%
+            padding: 0 .75rem
+        .oauth_btn
+            all: unset
+            cursor: pointer
+            width: 100%
+            color: $text_white
+            background: $google
+            padding: .75rem 0
+            display: flex
+            justify-content: center
+            align-items: center
+            border-radius: .2rem
+            span
+                text-transform: capitalize
+            i
+                font-size: 18px
+        .facebook_btn
+            background: $facebook
+        .twitter_btn
+            background: $twitter
+
+.form-link
+    text-align: center
+
