@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { Field, reduxForm } from "redux-form";
-import registerUser from "../redux/actions/registerUser";
+import { registerUser } from "../redux/actions";
 import { useNavigate } from "react-router-dom";
 
 const onSubmit = (values, dispatch) => {
@@ -17,15 +17,18 @@ export default reduxForm({ form: "register-form", onSubmit })(
 
     useEffect(() => {
       if (formMsg) {
-        if (formMsg.status === "success" && formMsg.data) {
+        if (
+          formMsg.status === "success" &&
+          formMsg.msg === "account created successfully ✅."
+        ) {
           setTimeout(() => {
             navigate(
               `/verify-account/${formMsg.data.userID}/${formMsg.data.token}`
             );
-          }, 3000);
+          }, 1000);
         }
       }
-    }, [formMsg]);
+    }, [formMsg, navigate]);
 
     return (
       <div className="form-area">

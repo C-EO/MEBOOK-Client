@@ -10,26 +10,32 @@ import "../../src/assets/style/index.sass";
 import "../../node_modules/bootstrap/dist/js/bootstrap.bundle";
 
 /// PAGES
-// import Temp from "../pages/Temp";
+import Temp from "../pages/Temp";
 import Home from "../pages/Home";
 import Register from "../pages/Register";
-import Login from "../pages/Login";
-import ForgotPassword from "../pages/ForgotPassword";
-import ResetPassword from "../pages/ResetPassword";
+// import Login from "../pages/Login";
+// import ForgotPassword from "../pages/ForgotPassword";
+// import ResetPassword from "../pages/ResetPassword";
 import Notification from "./Notification";
+import VerifyAccount from "../pages/VerifyAccount";
 
 export default function App() {
   return (
     <BrowserRouter>
-      {/* <Temp /> */}
+      <Temp />
       <Notification />
 
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/forgot-password" element={<ForgotPassword />} />
-        <Route path="/reset-password" element={<ResetPassword />} />
+        <Route
+          path="/verify-account/:userId/:token"
+          element={<VerifyAccount />}
+        />
+
+        {/* <Route path="/login" element={<Login />} /> */}
+        {/* <Route path="/forgot-password" element={<ForgotPassword />} /> */}
+        {/* <Route path="/reset-password" element={<ResetPassword />} /> */}
       </Routes>
     </BrowserRouter>
   );

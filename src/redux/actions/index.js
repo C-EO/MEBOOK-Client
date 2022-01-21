@@ -1,5 +1,5 @@
 import registerUser from "./registerUser";
+import checkAccountVerificaion from "./checkAccountVerificaion";
+import verifyAccount from "./verifyAccount";
 
-export default {
-  registerUser,
-};
+export { registerUser, checkAccountVerificaion, verifyAccount };

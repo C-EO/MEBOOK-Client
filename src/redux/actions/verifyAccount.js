@@ -1,22 +1,20 @@
 import api from "../../api/api";
 
-const registerUser = (data) => {
+const verifyAccount = (userId, token, data) => {
   return async (dispatch) => {
     try {
-      const res = await api.post("/auth/register", data, {
-        withCredentials: true,
-      });
+      const res = await api.post(`/auth/verify/${userId}/${token}`, data);
       dispatch({
-        type: "REGISTER_USER",
+        type: "VERIFY_USER_ACCOUNT",
         payload: res.data,
       });
     } catch (error) {
       dispatch({
-        type: "REGISTER_USER",
+        type: "VERIFY_USER_ACCOUNT",
         payload: error.response.data,
       });
     }
   };
 };
 
-export default registerUser;
+export default verifyAccount;
