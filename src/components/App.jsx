@@ -13,9 +13,9 @@ import "../../node_modules/bootstrap/dist/js/bootstrap.bundle";
 import Temp from "../pages/Temp";
 import Home from "../pages/Home";
 import Register from "../pages/Register";
-// import Login from "../pages/Login";
-// import ForgotPassword from "../pages/ForgotPassword";
-// import ResetPassword from "../pages/ResetPassword";
+import Login from "../pages/Login";
+import ForgotPassword from "../pages/ForgotPassword";
+import ResetPassword from "../pages/ResetPassword";
 import Notification from "./Notification";
 import VerifyAccount from "../pages/VerifyAccount";
 
@@ -32,10 +32,12 @@ export default function App() {
           path="/verify-account/:userId/:token"
           element={<VerifyAccount />}
         />
-
-        {/* <Route path="/login" element={<Login />} /> */}
-        {/* <Route path="/forgot-password" element={<ForgotPassword />} /> */}
-        {/* <Route path="/reset-password" element={<ResetPassword />} /> */}
+        <Route path="/login" element={<Login />} />
+        <Route path="/forgot-password" element={<ForgotPassword />} />
+        <Route
+          path="/reset-password/:userId/:token"
+          element={<ResetPassword />}
+        />
       </Routes>
     </BrowserRouter>
   );

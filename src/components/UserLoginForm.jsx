@@ -1,14 +1,30 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { connect } from "react-redux";
+import { Field, reduxForm } from "redux-form";
+import { loginUser } from "../redux/actions";
+import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 
-import { Field, reduxForm } from "redux-form";
-
 const onSubmit = (values, dispatch) => {
-  console.log(values);
+  dispatch(loginUser(values));
 };
 
 export default reduxForm({ form: "login-form", onSubmit })(
-  function UserLoginForm({ handleSubmit }) {
+  connect((state) => state)(function UserLoginForm({ handleSubmit, notification }) {
+    const navigate = useNavigate();
+
+    useEffect(() => {
+      if (notification) {
+        if (
+          notification.status === "success" &&
+          notification.msg === "logged in successfully ✅."
+        ) {
+          setTimeout(() => {
+            navigate(`/`);
+          }, 1000);
+        }
+      }
+    }, [notification, navigate]);
     return (
       <div className="form-area">
         <form onSubmit={handleSubmit}>
@@ -62,5 +78,5 @@ export default reduxForm({ form: "login-form", onSubmit })(
         </form>
       </div>
     );
-  }
+  })
 );

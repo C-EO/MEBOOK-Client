@@ -1,12 +1,21 @@
 import React from "react";
+import { connect } from "react-redux";
 import { reduxForm, Field } from "redux-form";
+import { forgotPassword } from "../redux/actions";
 
 const onSubmit = (values, dispatch) => {
-  console.log(values);
+  dispatch(forgotPassword(values));
+};
+
+const mapStateToProps = (state) => {
+  return state;
 };
 
 export default reduxForm({ form: "forgot-password-form", onSubmit })(
-  function UserForgotPasswordForm({ handleSubmit }) {
+  connect(mapStateToProps, { forgotPassword })(function UserForgotPasswordForm({
+    handleSubmit,
+    forgotPassword,
+  }) {
     return (
       <div className="form-area">
         <form onSubmit={handleSubmit}>
@@ -33,5 +42,5 @@ export default reduxForm({ form: "forgot-password-form", onSubmit })(
         </form>
       </div>
     );
-  }
+  })
 );

@@ -1,6 +1,6 @@
 const user = (user = {}, action) => {
-  if (action.type === "REGISTER_USER") {
-    return { ...user, ...action.payload.data.user };
+  if (action.type === "UPDATE_USER") {
+    return { ...user, ...action.payload };
   }
   return user;
 };

@@ -1,9 +1,9 @@
-import formMsg from "./formMessage";
-import validURL from "./validURL";
+import notification from "./notification";
+import response from "./response";
 // import user from "./user";
 const reducers = {
-  validURL,
-  formMsg,
+  response,
+  notification,
   // user,
 };
 export default reducers;

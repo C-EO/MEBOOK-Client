@@ -1,22 +1,22 @@
 import api from "../../api/api";
 
-const registerUser = (data) => {
+const loginUser = (data) => {
   return async (dispatch) => {
     try {
-      const res = await api.post("/auth/register", data, {
+      const res = await api.post("/auth/login", data, {
         withCredentials: true,
       });
       dispatch({
-        type: "REGISTER_USER",
+        type: "LOGIN_USER",
         payload: res,
       });
     } catch (error) {
       dispatch({
-        type: "REGISTER_USER",
+        type: "LOGIN_USER",
         payload: error.response,
       });
     }
   };
 };
 
-export default registerUser;
+export default loginUser;

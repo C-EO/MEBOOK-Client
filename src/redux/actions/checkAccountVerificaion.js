@@ -3,15 +3,15 @@ import api from "../../api/api";
 const checkAccountVerificaion = (userId, token) => {
   return async (dispatch) => {
     try {
-      const res = await api.post(`/auth/check/${userId}/${token}`);
+      const res = await api.post(`/auth/check_acc_verify/${userId}/${token}`);
       dispatch({
         type: "CHECK_ACCOUNT_VERIFICATION",
-        payload: res.data,
+        payload: res,
       });
     } catch (error) {
       dispatch({
         type: "CHECK_ACCOUNT_VERIFICATION",
-        payload: false,
+        payload: error.response,
       });
     }
   };

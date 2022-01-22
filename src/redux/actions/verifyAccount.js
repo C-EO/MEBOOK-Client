@@ -6,12 +6,12 @@ const verifyAccount = (userId, token, data) => {
       const res = await api.post(`/auth/verify/${userId}/${token}`, data);
       dispatch({
         type: "VERIFY_USER_ACCOUNT",
-        payload: res.data,
+        payload: res,
       });
     } catch (error) {
       dispatch({
         type: "VERIFY_USER_ACCOUNT",
-        payload: error.response.data,
+        payload: error.response,
       });
     }
   };

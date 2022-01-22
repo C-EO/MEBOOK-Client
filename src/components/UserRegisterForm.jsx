@@ -1,8 +1,9 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { Field, reduxForm } from "redux-form";
 import { registerUser } from "../redux/actions";
 import { useNavigate } from "react-router-dom";
+import _ from "lodash";
 
 const onSubmit = (values, dispatch) => {
   dispatch(registerUser(values));
@@ -11,28 +12,35 @@ const onSubmit = (values, dispatch) => {
 export default reduxForm({ form: "register-form", onSubmit })(
   connect((state) => state)(function UserRegisterForm({
     handleSubmit,
-    formMsg,
+    response,
   }) {
     const navigate = useNavigate();
+    const [state, setState] = useState(false);
 
     useEffect(() => {
-      if (formMsg) {
-        if (
-          formMsg.status === "success" &&
-          formMsg.msg === "account created successfully ✅."
-        ) {
+      if (!_.isEmpty(response)) {
+        if (response.status === 201) {
+          const { userId, token } = response.data.data;
           setTimeout(() => {
-            navigate(
-              `/verify-account/${formMsg.data.userID}/${formMsg.data.token}`
-            );
+            navigate(`/verify-account/${userId}/${token}`);
           }, 1000);
         }
       }
-    }, [formMsg, navigate]);
+    }, [response, navigate]);
+
+    useEffect(() => {
+      setState(false);
+    }, [response?.data?.msg]);
 
     return (
       <div className="form-area">
-        <form onSubmit={handleSubmit}>
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            setState(true);
+            handleSubmit();
+          }}
+        >
           <div className="row g-0">
             <div className="col-12 col-sm-6">
               <Field
@@ -99,7 +107,21 @@ export default reduxForm({ form: "register-form", onSubmit })(
           <div className="row g-0">
             <div className="col">
               <button type="submit" className="mebook-form-submit-btn">
-                register
+                {(() => {
+                  if (!state) {
+                    return <>register</>;
+                  } else {
+                    return (
+                      <div
+                        className="spinner-border"
+                        style={{ width: "21px", height: "21px" }}
+                        role="status"
+                      >
+                        <span className="visually-hidden">Loading...</span>
+                      </div>
+                    );
+                  }
+                })()}
               </button>
             </div>
           </div>

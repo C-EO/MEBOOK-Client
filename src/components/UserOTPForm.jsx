@@ -1,35 +1,41 @@
-import React from "react";
+import React, { useState } from "react";
 import { connect } from "react-redux";
-import { reduxForm, Field } from "redux-form";
 import { verifyAccount } from "../redux/actions";
+import OtpInput from "react-otp-input";
+import "../assets/style/otp-form.sass";
 
 const mapStateToProps = (state) => {
   return state;
 };
 
-const onSubmit = (otp, dispatch) => {
-  const [, , userId, token] = window.location.pathname.split("/");
-  dispatch(verifyAccount(userId, token, otp));
-};
-export default reduxForm({ form: "otp-form", onSubmit })(
-  connect(mapStateToProps, { verifyAccount })(function UserOTPForm({
-    handleSubmit,
-    formMsg,
-  }) {
+export default connect(mapStateToProps, { verifyAccount })(
+  function UserOTPForm({ verifyAccount, userId, token, response }) {
+    const [otp, setOtp] = useState("");
+
+    const onSubmit = (event) => {
+      event.preventDefault();
+      verifyAccount(userId, token, { otp });
+    };
+
     return (
       <div className="form-area">
-        <form onSubmit={handleSubmit}>
-          <div className="row g-0">
-            <div className="col">
-              <Field
-                name="otp"
-                component="input"
-                type="text"
-                className="mebook-input"
-                required
-              />
-            </div>
-          </div>
+        <form
+          onSubmit={(e) => {
+            onSubmit(e);
+          }}
+        >
+          <OtpInput
+            className="col-2 px-sm-3"
+            value={otp}
+            onChange={(otp) => setOtp(otp)}
+            numInputs={6}
+            isInputNum
+            shouldAutoFocus
+            hasErrored
+            containerStyle="otp-form-container p-sm-0 row g-0 mt-3 mb-4"
+            inputStyle="otp-input-field"
+            focusStyle="otp-input-field-focus"
+          />
           <div className="row g-0">
             <div className="col">
               <button type="submit" className="mebook-form-submit-btn">
@@ -40,5 +46,5 @@ export default reduxForm({ form: "otp-form", onSubmit })(
         </form>
       </div>
     );
-  })
+  }
 );
