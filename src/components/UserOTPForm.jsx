@@ -9,7 +9,7 @@ const mapStateToProps = (state) => {
 };
 
 export default connect(mapStateToProps, { verifyAccount })(
-  function UserOTPForm({ verifyAccount, userId, token, response }) {
+  function UserOTPForm({ verifyAccount, userId, token }) {
     const [otp, setOtp] = useState("");
 
     const onSubmit = (event) => {

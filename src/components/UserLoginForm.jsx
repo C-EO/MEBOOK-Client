@@ -1,8 +1,7 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { connect } from "react-redux";
 import { Field, reduxForm } from "redux-form";
 import { loginUser } from "../redux/actions";
-import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 const onSubmit = (values, dispatch) => {
@@ -10,21 +9,7 @@ const onSubmit = (values, dispatch) => {
 };
 
 export default reduxForm({ form: "login-form", onSubmit })(
-  connect((state) => state)(function UserLoginForm({ handleSubmit, notification }) {
-    const navigate = useNavigate();
-
-    useEffect(() => {
-      if (notification) {
-        if (
-          notification.status === "success" &&
-          notification.msg === "logged in successfully ✅."
-        ) {
-          setTimeout(() => {
-            navigate(`/`);
-          }, 1000);
-        }
-      }
-    }, [notification, navigate]);
+  connect((state) => state)(function UserLoginForm({ handleSubmit }) {
     return (
       <div className="form-area">
         <form onSubmit={handleSubmit}>

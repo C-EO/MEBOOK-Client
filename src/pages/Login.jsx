@@ -1,13 +1,22 @@
 import React, { useEffect } from "react";
+import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import OauthForm from "../components/OauthForm";
 import UserAuthFormArea from "../components/UserAuthFormArea";
 import UserLoginForm from "../components/UserLoginForm";
+import { useNavigate } from "react-router-dom";
 
-export default function Login() {
+export default connect((state) => state)(function Login({ response }) {
+  const navigate = useNavigate();
   useEffect(() => {
     document.title = "MEBOOK | Login";
   }, []);
+
+  useEffect(() => {
+    if (response.status === 200) {
+      navigate("/");
+    }
+  }, [response, navigate]);
 
   return (
     <>
@@ -20,4 +29,4 @@ export default function Login() {
       </UserAuthFormArea>
     </>
   );
-}
+});

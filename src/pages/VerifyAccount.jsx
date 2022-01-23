@@ -1,33 +1,59 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { useParams } from "react-router-dom";
-import { checkAccountVerificaion } from "../redux/actions";
+import { checkAccountVerificaion, resendOTP } from "../redux/actions";
 import UserAuthFormArea from "../components/UserAuthFormArea";
 import UserOTPForm from "../components/UserOTPForm";
 import { Link, useNavigate } from "react-router-dom";
+import _ from "lodash";
 
 const mapStateToProps = (state) => {
   return state;
 };
-export default connect(mapStateToProps, { checkAccountVerificaion })(
-  function VerifyAccount({ checkAccountVerificaion, response, notification }) {
+export default connect(mapStateToProps, { checkAccountVerificaion, resendOTP })(
+  function VerifyAccount({
+    checkAccountVerificaion,
+    response,
+    notification,
+    resendOTP,
+  }) {
+    const { userId, token } = useParams();
     const navigate = useNavigate();
+    const [state, setState] = useState("loading");
+    const [USER_ID, setUserId] = useState(userId);
+    const [TOKEN, setToken] = useState(token);
+
+    useEffect(() => {
+      checkAccountVerificaion(USER_ID, TOKEN);
+    }, [USER_ID, TOKEN, checkAccountVerificaion]);
+
+    useEffect(() => {
+      if (!_.isEmpty(response)) {
+        if (response.data.select) {
+          setToken(response?.data?.data?.token);
+          setUserId(response?.data?.data?.userId);
+        }
+      }
+    }, [response, TOKEN, USER_ID]);
+
+    //
+    useEffect(() => {
+      if (!_.isEmpty(response)) {
+        if (response.data.select) {
+          navigate(`/verify-account/${USER_ID}/${TOKEN}`);
+        }
+      }
+    }, [TOKEN]);
+
     useEffect(() => {
       if (notification) {
-        if (notification.msg === "your account verified successfully ✅.") {
+        if (notification?.msg === "your account verified successfully ✅.") {
           setTimeout(() => {
             navigate(`/`);
           }, 1000);
         }
       }
     }, [notification, navigate]);
-
-    const { userId, token } = useParams();
-    const [state, setState] = useState("loading");
-    useEffect(() => {
-      document.title = `MEBOOK | Please wait!`;
-      checkAccountVerificaion(userId, token);
-    }, [checkAccountVerificaion, userId, token]);
 
     useEffect(() => {
       if (response.status === 200) {
@@ -56,9 +82,18 @@ export default connect(mapStateToProps, { checkAccountVerificaion })(
             <span>{response?.data?.user?.email}</span>
             <p className="mt-4 mb-3 fw500">Enter OTP Code Here</p>
           </div>
-          <UserOTPForm userId={userId} token={token}></UserOTPForm>
+          <UserOTPForm userId={USER_ID} token={TOKEN}></UserOTPForm>
           <div className="form-link mt-4">
-            Not received your code? <Link to={"/"}>Resend code</Link>
+            Not received your code?{" "}
+            <Link
+              onClick={(e) => {
+                e.preventDefault();
+                resendOTP(USER_ID);
+              }}
+              to={"/"}
+            >
+              Resend code
+            </Link>
           </div>
         </UserAuthFormArea>
       );
