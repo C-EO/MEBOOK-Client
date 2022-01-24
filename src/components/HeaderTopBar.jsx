@@ -21,10 +21,8 @@ export default withCookies(
       // SET JWT COOKIE
       if (response?.data?.data?.jwt) {
         cookies.set("jwt", response.data.data.jwt, {
-          path: "/",
           maxAge: 259200,
-          sameSite: "none",
-          secure: true,
+          secure: false,
           httpOnly: false,
         });
       }
