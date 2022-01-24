@@ -21,9 +21,11 @@ export default withCookies(
       // SET JWT COOKIE
       if (response?.data?.data?.jwt) {
         cookies.set("jwt", response.data.data.jwt, {
+          path: "/",
           maxAge: 259200,
           secure: false,
           httpOnly: false,
+          domain: "mebook-server.herokuapp.com",
         });
       }
       // GET JWT COOKIE
