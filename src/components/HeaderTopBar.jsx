@@ -19,14 +19,14 @@ export default withCookies(
   }) {
     useEffect(() => {
       // SET JWT COOKIE
-      if (response?.data?.data?.jwt) {
-        cookies.set("jwt", response.data.data.jwt, {
-          path: "/",
-          maxAge: 259200,
-          secure: false,
-          httpOnly: false,
-        });
-      }
+      // if (response?.data?.data?.jwt) {
+      //   cookies.set("jwt", response.data.data.jwt, {
+      //     path: "/",
+      //     maxAge: 259200,
+      //     secure: false,
+      //     httpOnly: false,
+      //   });
+      // }
       // GET JWT COOKIE
       const jwt = cookies.get("jwt");
       if (jwt === "undefined" || jwt === undefined) {
