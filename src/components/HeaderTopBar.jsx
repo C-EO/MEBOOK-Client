@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import jwtDecode from "jwt-decode";
@@ -19,23 +19,24 @@ export default withCookies(
   }) {
     useEffect(() => {
       // SET JWT COOKIE
-      // if (response?.data?.data?.jwt) {
-      //   cookies.set("jwt", response.data.data.jwt, {
-      //     path: "/",
-      //     maxAge: 259200,
-      //     secure: false,
-      //     httpOnly: false,
-      //   });
-      // }
+      if (response.status === 201 && response?.data?.data?.jwt) {
+        cookies.set("user", response.data.data.jwt, {
+          path: "/",
+          maxAge: 259200,
+          secure: true,
+          httpOnly: false,
+          sameSite: "none",
+        });
+      }
       // GET JWT COOKIE
-      const jwt = cookies.get("jwt");
-      if (jwt === "undefined" || jwt === undefined) {
+      const user = cookies.get("user");
+      if (user === "undefined" || user === undefined) {
         updateUser();
       } else {
-        const decoded = jwtDecode(jwt);
+        const decoded = jwtDecode(user);
         updateUser(decoded.user);
       }
-    }, [response]);
+    }, [response, cookies, updateUser]);
     return (
       <div
         id="header-topbar"

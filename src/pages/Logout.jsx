@@ -9,6 +9,7 @@ export default withCookies(
     const navigate = useNavigate();
     useEffect(() => {
       cookies.remove("jwt");
+      cookies.remove("user");
       navigate("/");
     }, []);
     return <></>;
