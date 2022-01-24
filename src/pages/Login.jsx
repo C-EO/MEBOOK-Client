@@ -19,7 +19,7 @@ export default connect((state) => state)(function Login({ response }) {
     ) {
       navigate("/");
     }
-  }, [response, navigate]);
+  }, [response]);
 
   return (
     <>

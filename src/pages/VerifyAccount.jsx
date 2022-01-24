@@ -47,7 +47,7 @@ export default connect(mapStateToProps, { checkAccountVerificaion, resendOTP })(
           navigate(`/`);
         }
       }
-    }, [notification, navigate]);
+    }, [notification]);
 
     useEffect(() => {
       if (response.status === 200 || response.status === 201) {
