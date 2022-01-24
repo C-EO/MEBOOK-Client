@@ -25,7 +25,7 @@ export default withCookies(
           maxAge: 259200,
           secure: false,
           httpOnly: false,
-          domain: "mebook-server.herokuapp.com",
+          domain: "mebook-app.netlify.app",
         });
       }
       // GET JWT COOKIE
