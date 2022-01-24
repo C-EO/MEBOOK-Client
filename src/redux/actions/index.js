@@ -7,6 +7,7 @@ import forgotPassword from "./forgotPassword";
 import resendOTP from "./resendOTP";
 import checkResetPassToken from "./checkResetPassToken";
 import userResetPassword from "./userResetPassword";
+import logoutUser from "./logoutUser";
 
 export {
   registerUser,
@@ -18,4 +19,5 @@ export {
   resendOTP,
   checkResetPassToken,
   userResetPassword,
+  logoutUser,
 };

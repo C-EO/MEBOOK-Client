@@ -20,7 +20,7 @@ export default connect(mapStateToProps, { checkResetPassToken })(
       if (response.status === 200) {
         setState("ready");
       }
-      if (response.status === 400) {
+      if (response.status === 403) {
         setState("404");
       }
     }, [response]);

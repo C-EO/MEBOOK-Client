@@ -1,7 +1,7 @@
-const updateUser = (user) => {
+const updateUser = (payload) => {
   return {
     type: "UPDATE_USER",
-    payload: user,
+    payload,
   };
 };
 

@@ -1,18 +1,31 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { Field, reduxForm } from "redux-form";
 import { loginUser } from "../redux/actions";
 import { Link } from "react-router-dom";
+import SubmitBtn from "./SubmitBtn";
 
 const onSubmit = (values, dispatch) => {
   dispatch(loginUser(values));
 };
 
 export default reduxForm({ form: "login-form", onSubmit })(
-  connect((state) => state)(function UserLoginForm({ handleSubmit }) {
+  connect((state) => state)(function UserLoginForm({ handleSubmit, response }) {
+    const [load, setLoad] = useState(false);
+
+    useEffect(() => {
+      setLoad(false);
+    }, [response]);
+
     return (
       <div className="form-area">
-        <form onSubmit={handleSubmit}>
+        <form
+          onSubmit={(e) => {
+            setLoad(true);
+            e.preventDefault();
+            handleSubmit();
+          }}
+        >
           <div className="row g-0">
             <div className="col">
               <Field
@@ -55,9 +68,7 @@ export default reduxForm({ form: "login-form", onSubmit })(
           </div>
           <div className="row g-0">
             <div className="col">
-              <button type="submit" className="mebook-form-submit-btn">
-                Login
-              </button>
+              <SubmitBtn value={"login"} load={load} />
             </div>
           </div>
         </form>

@@ -1,6 +1,7 @@
 /// MODULES
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { CookiesProvider } from "react-cookie";
 
 /// STYLES
 import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
@@ -14,6 +15,7 @@ import Temp from "../pages/Temp";
 import Home from "../pages/Home";
 import Register from "../pages/Register";
 import Login from "../pages/Login";
+import Logout from "../pages/Logout";
 import ForgotPassword from "../pages/ForgotPassword";
 import ResetPassword from "../pages/ResetPassword";
 import Notification from "./Notification";
@@ -21,24 +23,26 @@ import VerifyAccount from "../pages/VerifyAccount";
 
 export default function App() {
   return (
-    <BrowserRouter>
-      <Temp />
-      <Notification />
-
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/register" element={<Register />} />
-        <Route
-          path="/verify-account/:userId/:token"
-          element={<VerifyAccount />}
-        />
-        <Route path="/login" element={<Login />} />
-        <Route path="/forgot-password" element={<ForgotPassword />} />
-        <Route
-          path="/reset-password/:userId/:token"
-          element={<ResetPassword />}
-        />
-      </Routes>
-    </BrowserRouter>
+    <CookiesProvider>
+      <BrowserRouter>
+        <Temp />
+        <Notification />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/register" element={<Register />} />
+          <Route
+            path="/verify-account/:userId/:token"
+            element={<VerifyAccount />}
+          />
+          <Route path="/login" element={<Login />} />
+          <Route path="/logout" element={<Logout />} />
+          <Route path="/forgot-password" element={<ForgotPassword />} />
+          <Route
+            path="/reset-password/:userId/:token"
+            element={<ResetPassword />}
+          />
+        </Routes>
+      </BrowserRouter>
+    </CookiesProvider>
   );
 }

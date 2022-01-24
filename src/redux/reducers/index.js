@@ -1,9 +1,9 @@
 import notification from "./notification";
 import response from "./response";
-// import user from "./user";
+import user from "./user";
 const reducers = {
   response,
   notification,
-  // user,
+  user,
 };
 export default reducers;

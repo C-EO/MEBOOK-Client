@@ -1,8 +1,11 @@
 import React from "react";
+import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import logo from "../assets/img/brand/logo256.svg";
+import _ from "lodash";
+import avatar from "../assets/img/avatar.png";
 
-export default function HeraderMob() {
+export default connect((state) => state)(function HeraderMob({ user }) {
   return (
     <div id="header-mob" className="d-md-none">
       <div className="top-sticky-header-mob">
@@ -37,11 +40,30 @@ export default function HeraderMob() {
                 <i className="fal fa-home"></i>
               </Link>
             </li>
-            <li className="mob-nav-item">
-              <Link to="/register" className="mov-nav-link">
-                <i className="fal fa-user"></i>
-              </Link>
-            </li>
+            {_.isEmpty(user) ? (
+              <li className="mob-nav-item">
+                <Link to="/register" className="mov-nav-link">
+                  <i className="fal fa-user"></i>
+                </Link>
+              </li>
+            ) : (
+              <>
+                <li className="mob-nav-item">
+                  <Link to="/logout" className="mov-nav-link">
+                    <i className="fal fa-power-off"></i>
+                  </Link>
+                </li>
+
+                <li className="mob-nav-item">
+                  <Link to="/account" className="d-flex user-account">
+                    <div className="user-avatar">
+                      <img src={user.avatar || avatar} alt="user_avatar" />
+                    </div>
+                  </Link>
+                </li>
+              </>
+            )}
+
             <li className="mob-nav-item">
               <Link to="/" className="mov-nav-link">
                 <i className="fal fa-search"></i>
@@ -57,4 +79,4 @@ export default function HeraderMob() {
       </div>
     </div>
   );
-}
+});

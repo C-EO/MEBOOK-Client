@@ -1,19 +1,24 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { verifyAccount } from "../redux/actions";
 import OtpInput from "react-otp-input";
 import "../assets/style/otp-form.sass";
+import SubmitBtn from "./SubmitBtn";
 
 const mapStateToProps = (state) => {
   return state;
 };
 
 export default connect(mapStateToProps, { verifyAccount })(
-  function UserOTPForm({ verifyAccount, userId, token }) {
+  function UserOTPForm({ verifyAccount, userId, token, response }) {
     const [otp, setOtp] = useState("");
+    const [load, setLoad] = useState(false);
 
-    const onSubmit = (event) => {
-      event.preventDefault();
+    useEffect(() => {
+      setLoad(false);
+    }, [response]);
+
+    const handleSubmit = () => {
       verifyAccount(userId, token, { otp });
     };
 
@@ -21,7 +26,9 @@ export default connect(mapStateToProps, { verifyAccount })(
       <div className="form-area">
         <form
           onSubmit={(e) => {
-            onSubmit(e);
+            setLoad(true);
+            e.preventDefault();
+            handleSubmit();
           }}
         >
           <OtpInput
@@ -38,9 +45,7 @@ export default connect(mapStateToProps, { verifyAccount })(
           />
           <div className="row g-0">
             <div className="col">
-              <button type="submit" className="mebook-form-submit-btn">
-                Verify
-              </button>
+              <SubmitBtn value={"verify"} load={load} />
             </div>
           </div>
         </form>

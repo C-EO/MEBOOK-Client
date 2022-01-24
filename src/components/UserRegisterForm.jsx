@@ -2,8 +2,7 @@ import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { Field, reduxForm } from "redux-form";
 import { registerUser } from "../redux/actions";
-import { useNavigate } from "react-router-dom";
-import _ from "lodash";
+import SubmitBtn from "./SubmitBtn";
 
 const onSubmit = (values, dispatch) => {
   dispatch(registerUser(values));
@@ -14,30 +13,18 @@ export default reduxForm({ form: "register-form", onSubmit })(
     handleSubmit,
     response,
   }) {
-    const navigate = useNavigate();
-    const [state, setState] = useState(false);
+    const [load, setLoad] = useState(false);
 
     useEffect(() => {
-      if (!_.isEmpty(response)) {
-        if (response.status === 201) {
-          const { userId, token } = response.data.data;
-          setTimeout(() => {
-            navigate(`/verify-account/${userId}/${token}`);
-          }, 1000);
-        }
-      }
-    }, [response, navigate]);
-
-    useEffect(() => {
-      setState(false);
-    }, [response?.data?.msg]);
+      setLoad(false);
+    }, [response]);
 
     return (
       <div className="form-area">
         <form
           onSubmit={(e) => {
+            setLoad(true);
             e.preventDefault();
-            setState(true);
             handleSubmit();
           }}
         >
@@ -106,23 +93,7 @@ export default reduxForm({ form: "register-form", onSubmit })(
           </div>
           <div className="row g-0">
             <div className="col">
-              <button type="submit" className="mebook-form-submit-btn">
-                {(() => {
-                  if (!state) {
-                    return <>register</>;
-                  } else {
-                    return (
-                      <div
-                        className="spinner-border"
-                        style={{ width: "21px", height: "21px" }}
-                        role="status"
-                      >
-                        <span className="visually-hidden">Loading...</span>
-                      </div>
-                    );
-                  }
-                })()}
-              </button>
+              <SubmitBtn value={"register"} load={load} />
             </div>
           </div>
         </form>

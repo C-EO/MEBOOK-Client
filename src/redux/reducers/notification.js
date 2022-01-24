@@ -1,18 +1,11 @@
 const notification = (msg = {}, action) => {
-  if (action.type.startsWith("@@")) {
-    return msg;
-  }
   if (action.type === "REGISTER_USER") {
-    return { ...action.payload.data, data: undefined };
-  }
-
-  if (action.type === "CHECK_RESET_PASSWORD_TOKEN") {
-    return msg;
-  }
-  if (action.type === "CHECK_ACCOUNT_VERIFICATION") {
-    return msg;
+    return { ...action.payload.data };
   }
   if (action.type === "LOGIN_USER") {
+    return { ...action.payload.data };
+  }
+  if (action.type === "LOGOUT_USER") {
     return { ...action.payload.data };
   }
   if (action.type === "RESEND_VERIFICATION_OTP") {
@@ -27,7 +20,7 @@ const notification = (msg = {}, action) => {
   if (action.type === "USER_FORGOT_PASSWORD") {
     return action.payload;
   }
-  return {};
+  return msg;
 };
 
 export default notification;
