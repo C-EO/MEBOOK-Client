@@ -20,6 +20,7 @@ import ForgotPassword from "../pages/ForgotPassword";
 import ResetPassword from "../pages/ResetPassword";
 import Notification from "./Notification";
 import VerifyAccount from "../pages/VerifyAccount";
+import _404 from "./_404";
 
 export default function App() {
   return (
@@ -41,6 +42,7 @@ export default function App() {
             path="/reset-password/:userId/:token"
             element={<ResetPassword />}
           />
+          <Route path="*" element={<_404 />} />
         </Routes>
       </BrowserRouter>
     </CookiesProvider>

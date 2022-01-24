@@ -4,6 +4,8 @@ import UserAuthFormArea from "../components/UserAuthFormArea";
 import UserResetPasswordForm from "../components/UserResetPasswordForm";
 import { checkResetPassToken } from "../redux/actions";
 import { useParams } from "react-router-dom";
+import _404 from "../components/_404";
+import LoadWrapper from "../components/LoadWrapper";
 
 const mapStateToProps = (state) => state;
 
@@ -26,12 +28,10 @@ export default connect(mapStateToProps, { checkResetPassToken })(
     }, [response]);
 
     if (state === "loading") {
-      document.title = "MEBOOK | Please wait!";
-      return <>LOADING ...</>;
+      return <LoadWrapper />;
     }
     if (state === "404") {
-      document.title = "MEBOOK | 404 Not Found";
-      return <>404</>;
+      return <_404 />;
     }
     if (state === "ready") {
       document.title = "MEBOOK | Recover Your Password";

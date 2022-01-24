@@ -14,7 +14,7 @@ export default withCookies(
     useEffect(() => {
       logoutUser();
       cookies.remove("user");
-      // navigate("/");
+      navigate("/");
     }, [navigate, logoutUser, cookies]);
     return <></>;
   })

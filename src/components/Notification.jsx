@@ -17,7 +17,7 @@ export default connect((state) => state)(function Notification({
     <>
       <div
         className="position-fixed bottom-0 end-0 p-2"
-        style={{ zIndex: "11" }}
+        style={{ zIndex: "11", width: "320px" }}
       >
         <div
           ref={ref}

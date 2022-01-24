@@ -1,0 +1,18 @@
+@import './variables'
+#load_wrapper
+    min-height: 450px
+    display: flex
+    justify-content: center
+    align-items: center
+    flex-direction: column
+    background: $bg_white
+    .load-rotate-icon
+        animation: rotation 10s infinite linear
+    img
+      pointer-events: none
+@keyframes rotation 
+  from 
+    transform: rotate(0deg)
+  
+  to 
+    transform: rotate(360deg)

@@ -1,0 +1,53 @@
+@import './variables'
+
+#_404
+    padding: 4rem 0
+    background: $bg_white
+    .col
+        justify-content: center
+        align-items: center
+    ._404_container
+        text-align: center
+        h4._404
+            padding: 0
+            margin: 0
+            color: $skyblue
+            font-weight: 900
+            font-size: 9em
+        p._404_message
+            font-size: 1.5rem
+            line-height: 2rem
+            padding-bottom: 1rem
+            position: relative
+            font-weight: 700
+            &::after
+                content: ''
+                display: inline-block
+                position: absolute
+                left: 50%
+                bottom: 0
+                height: 2px
+                width: 30%
+                background: $border_color
+                transform: translate(-50%)
+        span
+            font-size: 12px
+        a
+            border-radius: .25rem
+            font-weight: 500
+            display: inline-flex
+            align-items: center
+            justify-content: center
+            text-decoration: none
+            color: $text_white
+            background: $orange
+            padding: 0.75rem 2.5rem
+            margin: 1.5rem 0
+            outline: 2px solid $orange
+            &:hover
+                background: transparent
+                color: $orange            
+
+@media screen and (min-width: 768px)
+    h4._404
+        font-size: 12em !important
