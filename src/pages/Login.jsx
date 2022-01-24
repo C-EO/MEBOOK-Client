@@ -13,7 +13,10 @@ export default connect((state) => state)(function Login({ response }) {
   }, []);
 
   useEffect(() => {
-    if (response.status === 200) {
+    if (
+      response.status === 200 &&
+      response.data.msg === "logged in successfully ✅."
+    ) {
       navigate("/");
     }
   }, [response, navigate]);
