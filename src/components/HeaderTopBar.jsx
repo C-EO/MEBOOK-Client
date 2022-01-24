@@ -19,8 +19,9 @@ export default withCookies(
   }) {
     useEffect(() => {
       const jwt = cookies.get("jwt");
+      console.log(jwt);
       if (jwt === "undefined" || jwt === undefined) {
-        updateUser({});
+        updateUser();
       } else {
         const decoded = jwtDecode(jwt);
         updateUser(decoded.user);
