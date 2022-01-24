@@ -18,8 +18,18 @@ export default withCookies(
     cookies,
   }) {
     useEffect(() => {
+      // SET JWT COOKIE
+      if (response?.data?.data?.jwt) {
+        cookies.set("jwt", response.data.data.jwt, {
+          path: "/",
+          maxAge: 259200,
+          sameSite: "none",
+          secure: true,
+          httpOnly: false,
+        });
+      }
+      // GET JWT COOKIE
       const jwt = cookies.get("jwt");
-      console.log(jwt);
       if (jwt === "undefined" || jwt === undefined) {
         updateUser();
       } else {
