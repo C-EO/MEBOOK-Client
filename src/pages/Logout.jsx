@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { withCookies } from "react-cookie";
 import { logoutUser } from "../redux/actions";
+import LoadWrapper from "../components/LoadWrapper";
 
 const mapStateToProps = (state) => state;
 export default withCookies(
@@ -13,9 +14,8 @@ export default withCookies(
     const navigate = useNavigate();
     useEffect(() => {
       logoutUser();
-      cookies.remove("user", { path: "/", sameSite: "none" });
-      navigate("/");
+      cookies.remove("user", { path: "/" });
     }, [navigate, logoutUser, cookies]);
-    return <></>;
+    return <LoadWrapper />;
   })
 );
