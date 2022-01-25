@@ -28,7 +28,7 @@ export default connect(mapStateToProps, { resendOTP })(function UserInfoBar({
   const bar = useRef();
   if (!_.isEmpty(user) && !user.is_account_verified) {
     return (
-      <div className="user-info-bar d-none d-md-block" ref={bar}>
+      <div className="user-info-bar text-center" ref={bar}>
         <div className="container">
           <div className="row" ref={row}>
             <div className="col">

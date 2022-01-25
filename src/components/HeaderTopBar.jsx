@@ -23,7 +23,7 @@ export default withCookies(
         cookies.set("user", response.data.data.jwt, {
           path: "/",
           maxAge: 259200,
-          secure: true,
+          secure: false,
           httpOnly: false,
           sameSite: "none",
         });
