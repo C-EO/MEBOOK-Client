@@ -13,7 +13,7 @@ export default withCookies(
     const navigate = useNavigate();
     useEffect(() => {
       logoutUser();
-      cookies.remove("user");
+      cookies.remove("user", { path: "/", sameSite: "none" });
       navigate("/");
     }, [navigate, logoutUser, cookies]);
     return <></>;
