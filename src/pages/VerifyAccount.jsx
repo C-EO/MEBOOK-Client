@@ -6,7 +6,7 @@ import UserAuthFormArea from "../components/UserAuthFormArea";
 import UserOTPForm from "../components/UserOTPForm";
 import { Link, useNavigate } from "react-router-dom";
 import _ from "lodash";
-import _404 from "../components/_404";
+import P_404 from "../components/_404";
 import LoadWrapper from "../components/LoadWrapper";
 
 const mapStateToProps = (state) => {
@@ -64,7 +64,7 @@ export default connect(mapStateToProps, { checkAccountVerificaion, resendOTP })(
       return <LoadWrapper />;
     }
     if (state === "404") {
-      return <_404 />;
+      return <P_404 />;
     }
     if (state === "ready") {
       document.title = `MEBOOK | Verify Your Account`;

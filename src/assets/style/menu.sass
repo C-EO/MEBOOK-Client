@@ -1,0 +1,49 @@
+@import './variables'
+
+#footer-menu
+    background: $bg_white
+    border-bottom: 1px solid $border_color
+    box-shadow: 0 0 15px $shadow
+    .menu-col
+        .col-label
+            color:  $skyblue
+            font-weight: 600
+            text-transform: uppercase
+        .menu-list
+            display: flex
+            list-style: none
+            flex-direction: column
+            .menu-list-item
+                &:not(:last-of-type)
+                    margin-bottom: .75rem
+                .menu-list-link
+                    text-decoration: none
+                    color: $text_dark
+                    &:hover
+                        color: $skyblue
+                .newsletter-form
+                    border-radius: .2rem
+                    display: flex
+                    overflow: hidden
+                    .newsletter-email
+                        width: 100%
+                        background: $form_bg
+                        outline: none
+                        border: 0
+                        padding: 0.75rem 1.5rem
+                        color: $text_dark
+                    button
+                        border: 0
+                        outline: none
+                        color: $text_white
+                        padding: 0 1.5rem
+                        background: $orange
+                        display: flex
+                        justify-content: center
+                        align-items: center
+                        transition: linear .1s
+                        &:hover
+                            background: $skyblue
+                        i
+                            font-size: 1.25rem
+                        // width: 100%
