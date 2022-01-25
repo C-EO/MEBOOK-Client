@@ -15,6 +15,7 @@ export default withCookies(
     useEffect(() => {
       logoutUser();
       cookies.remove("user", { path: "/" });
+      document.title = `MEBOOK | Bye`;
     }, [navigate, logoutUser, cookies]);
     return <LoadWrapper />;
   })
