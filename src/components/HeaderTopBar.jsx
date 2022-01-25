@@ -24,7 +24,7 @@ export default withCookies(
           path: "/",
           maxAge: 259200,
           secure: true,
-          httpOnly: true,
+          httpOnly: false,
           sameSite: "none",
         });
       }
