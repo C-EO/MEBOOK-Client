@@ -36,7 +36,7 @@ export default withCookies(
         const decoded = jwtDecode(user);
         updateUser(decoded.user);
       }
-    }, [response, cookies, updateUser]);
+    }, [response]);
     return (
       <div
         id="header-topbar"
