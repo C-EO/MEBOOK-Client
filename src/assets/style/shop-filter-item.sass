@@ -1,0 +1,25 @@
+@import './variables'
+
+.shop-filter-item
+    border: 2px solid $border_color
+    padding: 1rem 1.5rem
+    &:not(:last-of-type)
+        margin-bottom: 2.5rem
+    .filter-name
+        display: block
+        text-transform: uppercase
+        border-bottom: 1px solid $border_color
+        padding-bottom: .75rem
+        margin-bottom: .75rem
+        position: relative
+        font-weight: 600
+        font-size: 1rem
+        &::after
+            content: ''
+            position: absolute
+            display: inline-block
+            bottom: 0
+            left: 0
+            width: 60px
+            height: 3px
+            background: $skyblue

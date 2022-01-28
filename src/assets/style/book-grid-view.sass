@@ -1,0 +1,113 @@
+@import './variables'
+
+.book-grid-view
+    margin-bottom: 2rem
+    .book-cover-area
+        position: relative
+        overflow: hidden
+        height: 230px
+        border: 1px solid $border_color
+        img
+            width: 100%
+            height: 100%
+            object-fit: contain
+        &:hover
+            .book-actions
+                bottom: 0
+        .book-actions
+            position: absolute
+            left: 0
+            bottom: -50%
+            width: 100%
+            display: flex
+            justify-content: space-between
+            transition: .2s
+            &::after
+                content: ''
+                display: block
+                position: absolute
+                left: 50%
+                top: 50%
+                width: 1px
+                height: 60%
+                background: $border_color
+                transform: translate(-50%, -50%)
+            button
+                all: unset
+                cursor: pointer
+                background: #121212
+                display: flex
+                justify-content: center
+                align-items: center
+                width: 100%
+                &:hover
+                    background: $skyblue
+                i
+                    color: $text_white
+                    font-size: 20px
+                    margin: .75rem
+        .add_wishlist_btn
+            all: unset
+            cursor: pointer
+            background: $skyblue
+            position: absolute
+            top: 10px
+            right: 10px
+            border-radius: 50%
+            width: 35px
+            height: 35px
+            display: flex
+            justify-content: center
+            align-items: center
+            color: $text_white
+            font-size: 1rem
+            transition: .1s
+            &:hover
+                i
+                    font-weight: 900
+        .book-tags-container
+            display: inline-flex
+            flex-direction: column
+            position: absolute
+            left: 10px
+            top: 10px
+            justify-content: center
+            align-items: self-start
+            .tag
+                color: $text_white
+                background: $skyblue
+                font-size: 11px
+                text-transform: capitalize
+                padding: 0.1rem .5rem
+                margin-right: 0.5rem
+                margin-bottom: 0.5rem
+                &:last-of-type
+                    margin: 0
+            .discount
+                background: var(--bs-red)
+    .book-info-area
+        text-align: center
+        padding: 1rem 0
+        .book-author
+            span
+                font-weight: 600
+        .book-title
+            font-weight: 500
+            color: $skyblue
+            padding: 0.25rem 0
+            font-size: 1rem
+            text-decoration: none
+        .book-price
+            display: flex
+            justify-content: space-evenly
+            padding: 0 1.5rem
+            align-items: center
+            .book-last-price
+                text-decoration: line-through
+            .book-current-price
+                color: $orange
+                font-weight: 600
+                font-size: 1rem
+
+            
+                

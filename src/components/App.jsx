@@ -21,6 +21,7 @@ import ResetPassword from "../pages/ResetPassword";
 import Notification from "./Notification";
 import VerifyAccount from "../pages/VerifyAccount";
 import P_404 from "./_404";
+import Shop from "./Shop";
 import Menu from "./Menu";
 
 export default function App() {
@@ -31,6 +32,7 @@ export default function App() {
         <Notification />
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/shop" element={<Shop />} />
           <Route path="/register" element={<Register />} />
           <Route
             path="/verify-account/:userId/:token"

@@ -1,0 +1,50 @@
+@import './variables'
+
+.accordion
+    .accordion-item
+        border: 0
+        .accordion-button
+            all: unset
+            cursor: pointer
+        .accordion-header
+            all: unset
+            font-size: 14px
+            display: flex
+            justify-content: space-between
+            align-items: center
+            padding-top: .75rem
+            padding-bottom: .75rem
+            a
+                text-decoration: none
+                text-transform: capitalize
+                color: $text_dark
+                &:hover
+                    color: $skyblue
+        &:not(:last-of-type)
+            .accordion-header
+                border-bottom: 1px dashed $border_color
+        .accordion-body
+            .sub-categories-list
+                padding: 0
+                margin: 0
+                list-style: circle
+                .sub-category-item
+                    margin: .5rem 0
+                a
+                    text-decoration: none
+                    color: $text_dark
+                    text-transform: capitalize
+                    &:hover
+                        color: $skyblue
+.input-range
+    margin-top: 2rem
+    margin-bottom: 1.25rem
+    .input-range__track--active
+        background: $skyblue !important
+        height: 0.2rem
+    .input-range__slider
+        background: $orange !important
+        border: 0 !important
+        outline: none !important
+    .input-range__label-container
+        display: none

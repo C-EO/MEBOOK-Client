@@ -8,6 +8,7 @@ import resendOTP from "./resendOTP";
 import checkResetPassToken from "./checkResetPassToken";
 import userResetPassword from "./userResetPassword";
 import logoutUser from "./logoutUser";
+import getAllBooks from "./getAllBooks";
 
 export {
   registerUser,
@@ -20,4 +21,5 @@ export {
   checkResetPassToken,
   userResetPassword,
   logoutUser,
+  getAllBooks,
 };

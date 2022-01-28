@@ -68,7 +68,7 @@ export default function HeaderDesktop() {
                     </Link>
                   </li>
                   <li className="nav-item">
-                    <Link to={"/"} className="nav-link">
+                    <Link to={"/shop"} className="nav-link">
                       shop
                     </Link>
                   </li>
@@ -89,7 +89,7 @@ export default function HeaderDesktop() {
           <div className="col-4 text-end">
             <div className="notice">
               <span>notice !</span>
-              <p>We are open for business</p>
+              <p>App still in development stage</p>
             </div>
           </div>
         </div>
