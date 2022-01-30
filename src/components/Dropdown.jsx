@@ -1,7 +1,7 @@
 import React from "react";
 import "../assets/style/dropdown.sass";
 
-export default function Dropdown() {
+export default function Dropdown({ label, children }) {
   return (
     <div className="dropdown">
       <button
@@ -12,25 +12,11 @@ export default function Dropdown() {
         aria-expanded="false"
       >
         <i className="fal fa-align-left"></i>
-        <span className="mx-3">all departments</span>
+        <span className="mx-3">{label}</span>
         <i className="fal fa-chevron-down"></i>
       </button>
       <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-        <li>
-          <a className="dropdown-item" href="/">
-            Action
-          </a>
-        </li>
-        <li>
-          <a className="dropdown-item" href="/">
-            Another action
-          </a>
-        </li>
-        <li>
-          <a className="dropdown-item" href="/">
-            Something else here
-          </a>
-        </li>
+        {children}
       </ul>
     </div>
   );

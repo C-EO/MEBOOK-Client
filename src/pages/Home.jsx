@@ -5,6 +5,5 @@ export default function Home() {
   useEffect(() => {
     document.title = "MEBOOK | Home";
   }, []);
-
   return <LoadWrapper></LoadWrapper>;
 }

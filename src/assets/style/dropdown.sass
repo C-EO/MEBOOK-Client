@@ -6,7 +6,6 @@
         outline: none
         border: 0
         font-size: 14px
-        border-radius: 0
         text-transform: uppercase
         padding: 0.75rem 1.5rem
         display: flex
@@ -17,5 +16,25 @@
             background: $skyblue
         &:focus
             background: $skyblue
+    .dropdown-menu
+        border: 0
+        box-shadow: 1px 5px 10px $shadow
+        padding-right: 1rem
+        .dropdown-item
+            border-bottom: 1px dashed $border_color
+            &:hover
+                background: transparent
+            a
+                display: block
+                padding: 0.4rem 0
+                text-decoration: none
+                color: $text_dark
+                font-size: 14px !important
+                &:hover
+                    color: $skyblue
+            &:last-of-type
+                border: 0
+
+                
 
             

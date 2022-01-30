@@ -24,7 +24,7 @@ export default connect((state) => state)(function HeraderMob({ user }) {
               </div>
             </div>
             <div className="col-2 text-end">
-              <Link to="/">
+              <Link to="/cart">
                 <i className="fal me-2 fa-shopping-bag"></i>
                 <span className="cart-q">0</span>
               </Link>
@@ -65,12 +65,12 @@ export default connect((state) => state)(function HeraderMob({ user }) {
             )}
 
             <li className="mob-nav-item">
-              <Link to="/" className="mov-nav-link">
+              <Link to="/search" className="mov-nav-link">
                 <i className="fal fa-search"></i>
               </Link>
             </li>
             <li className="mob-nav-item">
-              <Link to="/" className="mov-nav-link">
+              <Link to="/wishlist" className="mov-nav-link">
                 <i className="fal fa-heart"></i>
               </Link>
             </li>

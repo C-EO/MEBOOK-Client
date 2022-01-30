@@ -39,11 +39,21 @@
                 margin-left: 15px
                 &:not(:first-of-type)
                     border-left: 1px solid $border_color
-
-            
-            
     ///////////////////////////////////////////////////////////////////////////////////
     #header-desktop
+        .header-desktop-bottom.styled
+            color: $text_white
+            background: $skyblue
+            padding: 0 !important
+            .dropdown button
+                background: $orange
+                border-radius: 0
+            .nav-link
+                color: $text_white
+            .notice 
+                span
+                    background: $bg_white
+                    color: $skyblue
         .header-desktop-top
             border-bottom: 1px solid $border_color
             padding-top: 1rem
@@ -165,7 +175,6 @@
                         text-align: center
                         font-size: 11px
         .bottom-fixed-header-mob
-            z-index: 10000
             background: $bg_white
             box-shadow: 0 0 15px $shadow
             position: fixed
@@ -183,7 +192,6 @@
                     font-size: 22px
                     display: block
                     padding: 1rem
-
     .user-account
         display: flex
         align-items: center

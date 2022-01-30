@@ -17,19 +17,19 @@ export default connect((state) => state)(function Login({ response }) {
       response.status === 201 &&
       response.data.msg === "logged in successfully ✅."
     ) {
-      navigate("/");
+      setTimeout(() => {
+        navigate("/");
+      }, 1000);
     }
   }, [response]);
 
   return (
-    <>
-      <UserAuthFormArea label={"Login into your account"}>
-        <UserLoginForm></UserLoginForm>
-        <OauthForm label={"Or login with"} />
-        <div className="form-link mb-3">
-          Don't have an account? <Link to={"/register"}>Register</Link>
-        </div>
-      </UserAuthFormArea>
-    </>
+    <UserAuthFormArea label={"Login into your account"}>
+      <UserLoginForm></UserLoginForm>
+      <OauthForm label={"Or login with"} />
+      <div className="form-link mb-3">
+        Don't have an account? <Link to={"/register"}>Register</Link>
+      </div>
+    </UserAuthFormArea>
   );
 });

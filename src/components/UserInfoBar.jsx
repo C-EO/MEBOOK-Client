@@ -19,7 +19,9 @@ export default connect(mapStateToProps, { resendOTP })(function UserInfoBar({
     if (response.status === 201) {
       const { userId, token } = response.data.data;
       if (userId && token) {
-        navigate(`/verify-account/${userId}/${token}`);
+        setTimeout(() => {
+          navigate(`/verify-account/${userId}/${token}`);
+        }, 1000);
       }
     }
   }, [response]);

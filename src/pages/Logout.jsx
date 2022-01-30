@@ -1,22 +1,19 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import { withCookies } from "react-cookie";
 import { logoutUser } from "../redux/actions";
 import LoadWrapper from "../components/LoadWrapper";
+import { reactLocalStorage } from "reactjs-localstorage";
+import { updateUser } from "../redux/actions";
 
 const mapStateToProps = (state) => state;
-export default withCookies(
-  connect(mapStateToProps, { logoutUser })(function Login({
-    cookies,
-    logoutUser,
-  }) {
-    const navigate = useNavigate();
+export default connect(mapStateToProps, { logoutUser, updateUser })(
+  function LogOut({ updateUser, logoutUser }) {
     useEffect(() => {
       logoutUser();
-      cookies.remove("user", { path: "/" });
       document.title = `MEBOOK | Bye`;
-    }, [navigate, logoutUser, cookies]);
+      reactLocalStorage.setObject("user", {});
+      updateUser({});
+    }, []);
     return <LoadWrapper />;
-  })
+  }
 );
