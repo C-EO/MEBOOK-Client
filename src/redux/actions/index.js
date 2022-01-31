@@ -9,6 +9,7 @@ import checkResetPassToken from "./checkResetPassToken";
 import userResetPassword from "./userResetPassword";
 import logoutUser from "./logoutUser";
 import getAllBooks from "./getAllBooks";
+import addBookToWishList from "./addBookToWishlist";
 
 export {
   registerUser,
@@ -22,4 +23,5 @@ export {
   userResetPassword,
   logoutUser,
   getAllBooks,
+  addBookToWishList,
 };

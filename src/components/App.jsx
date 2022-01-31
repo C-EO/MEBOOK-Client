@@ -16,6 +16,7 @@ import GridTest from "./GridTest";
 import Notification from "./Notification";
 import P_404 from "./_404";
 import UserInfoBar from "./UserInfoBar";
+import AuthRoute from "./AuthRoute";
 import Footer from "./Footer";
 
 /// PAGES
@@ -26,6 +27,8 @@ import Logout from "../pages/Logout";
 import ForgotPassword from "../pages/ForgotPassword";
 import ResetPassword from "../pages/ResetPassword";
 import VerifyAccount from "../pages/VerifyAccount";
+import Cart from "../pages/Cart";
+import Wishlist from "../pages/Wishlist";
 import Shop from "./Shop";
 
 export default function App() {
@@ -37,9 +40,25 @@ export default function App() {
       <AppHeader />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
+        <Route path="/login" element={<Login redirect_to=" " />} />
         <Route path="/register" element={<Register />} />
         <Route path="/logout" element={<Logout />} />
+        <Route
+          path="/wishlist"
+          element={
+            <AuthRoute path="wishlist">
+              <Wishlist />
+            </AuthRoute>
+          }
+        />
+        <Route
+          path="/cart"
+          element={
+            <AuthRoute path="cart">
+              <Cart />
+            </AuthRoute>
+          }
+        />
         <Route
           path="/verify-account/:userId/:token"
           element={<VerifyAccount />}

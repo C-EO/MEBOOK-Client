@@ -14,6 +14,9 @@ const notification = (msg = {}, action) => {
   if (action.type === "USER_RESET_PASSWORD") {
     return { ...action.payload.data };
   }
+  if (action.type === "BOOK_TO_WISHLIST") {
+    return { ...action.payload.data };
+  }
   if (action.type === "VERIFY_USER_ACCOUNT") {
     return { ...action.payload.data };
   }

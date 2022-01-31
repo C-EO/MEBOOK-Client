@@ -6,7 +6,10 @@ import UserAuthFormArea from "../components/UserAuthFormArea";
 import UserLoginForm from "../components/UserLoginForm";
 import { useNavigate } from "react-router-dom";
 
-export default connect((state) => state)(function Login({ response }) {
+export default connect((state) => state)(function Login({
+  response,
+  redirect_to,
+}) {
   const navigate = useNavigate();
   useEffect(() => {
     document.title = "MEBOOK | Login";
@@ -18,7 +21,7 @@ export default connect((state) => state)(function Login({ response }) {
       response.data.msg === "logged in successfully ✅."
     ) {
       setTimeout(() => {
-        navigate("/");
+        navigate(`/${redirect_to}`);
       }, 1000);
     }
   }, [response]);

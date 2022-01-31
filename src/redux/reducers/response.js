@@ -8,6 +8,9 @@ const response = (res = {}, action) => {
   if (action.type === "LOGOUT_USER") {
     return { ...res, ...action.payload };
   }
+  if (action.type === "BOOK_TO_WISHLIST") {
+    return { ...res, ...action.payload };
+  }
   if (action.type === "CHECK_ACCOUNT_VERIFICATION") {
     return { ...res, ...action.payload };
   }
