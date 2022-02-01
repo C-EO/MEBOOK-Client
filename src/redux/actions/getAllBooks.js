@@ -1,9 +1,9 @@
 import api from "../../api/api";
 
-const getAllBooks = () => {
+const getAllBooks = (data) => {
   return async (dispatch) => {
     try {
-      const res = await api.get("/books/all");
+      const res = await api.get(`/books/all?limit=4&page=${data.page}`);
       dispatch({
         type: "GET_ALL_BOOKS",
         payload: res,

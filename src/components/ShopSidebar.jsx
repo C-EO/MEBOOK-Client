@@ -2,20 +2,12 @@ import React, { useEffect, useState } from "react";
 import ShopFilterItem from "./ShopFilterItem";
 import Accordion from "./Accordion";
 import AccordionItem from "./AccordionItem";
-import api from "../api/api";
 import InputRange from "react-input-range";
 import { Link } from "react-router-dom";
 import "react-input-range/lib/css/index.css";
 
-export default function ShopSidebar() {
-  const [categories, setCategories] = useState([]);
-  const [value, setValue] = useState({ min: 1, max: 100 });
-  useEffect(() => {
-    (async () => {
-      const res = await api.get("/category/all");
-      setCategories(res.data.categories);
-    })();
-  }, []);
+export default function ShopSidebar({ categories, min, max }) {
+  const [value, setValue] = useState({ min, max });
 
   return (
     <div id="shop-sidebar">
@@ -53,8 +45,8 @@ export default function ShopSidebar() {
       {/* ////////////////////////////////////////////////////// */}
       <ShopFilterItem label={"price"}>
         <InputRange
-          maxValue={100}
-          minValue={1}
+          maxValue={max}
+          minValue={min}
           value={value}
           onChange={(values) => setValue(values)}
           formatLabel={(value) => `${value}$`}
