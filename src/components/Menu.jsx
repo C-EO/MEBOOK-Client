@@ -2,16 +2,9 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import logo from "../assets/img/brand/logo256.svg";
 import "../assets/style/menu.sass";
-import api from "../api/api";
+import {connect} from 'react-redux'
 
-export default function Menu() {
-  const [categories, setCategories] = useState([]);
-  useEffect(() => {
-    (async () => {
-      const res = await api.get("/category/all");
-      setCategories(res.data.categories);
-    })();
-  }, []);
+export default connect(state=>state)(function Menu({categories}) {
   return (
     <div id="footer-menu">
       <div className="container py-5">
@@ -175,3 +168,4 @@ export default function Menu() {
     </div>
   );
 }
+)

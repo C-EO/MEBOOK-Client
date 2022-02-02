@@ -1,6 +1,8 @@
 /// MODULES
-import React from "react";
+import React, { useEffect } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { connect } from "react-redux";
+import { getAllCategories } from "../redux/actions";
 
 /// STYLES
 import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
@@ -29,9 +31,18 @@ import ResetPassword from "../pages/ResetPassword";
 import VerifyAccount from "../pages/VerifyAccount";
 import Cart from "../pages/Cart";
 import Wishlist from "../pages/Wishlist";
-import Shop from "./Shop";
+import Shop from "../pages/Shop";
 
-export default function App() {
+const mapStateToProps = (state) => {
+  return state;
+};
+
+export default connect(mapStateToProps, { getAllCategories })(function App({
+  getAllCategories,
+}) {
+  useEffect(() => {
+    getAllCategories();
+  }, []);
   return (
     <BrowserRouter>
       <GridTest />
@@ -75,4 +86,4 @@ export default function App() {
       <Footer />
     </BrowserRouter>
   );
-}
+});

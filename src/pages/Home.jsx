@@ -1,9 +1,9 @@
-import React, { useEffect } from "react";
+import React, { useLayoutEffect } from "react";
 import LoadWrapper from "../components/LoadWrapper";
 import HomeHeroSlider from "../components/HomeHeroSlider";
 
 export default function Home() {
-  useEffect(() => {
+  useLayoutEffect(() => {
     document.title = "MEBOOK | Home";
   }, []);
   return <HomeHeroSlider></HomeHeroSlider>;

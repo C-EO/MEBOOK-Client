@@ -3,16 +3,9 @@ import { Link } from "react-router-dom";
 import api from "../api/api";
 import logo from "../assets/img/brand/logo256.svg";
 import Dropdown from "./Dropdown";
+import {connect}from 'react-redux'
 
-export default function HeaderDesktop() {
-  const [categories, setCategories] = useState([]);
-  useEffect(() => {
-    (async () => {
-      const res = await api.get("/category/all");
-      setCategories(res.data.categories);
-    })();
-  }, []);
-
+export default connect(state=>state)(function HeaderDesktop({categories}) {
   return (
     <div id="header-desktop" className="d-none d-md-block">
       <div className="header-desktop-top">
@@ -112,3 +105,4 @@ export default function HeaderDesktop() {
     </div>
   );
 }
+)

@@ -1,25 +1,35 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import LoadWrapper from "./LoadWrapper";
 import BookGridView from "./BookGridView";
 import { connect } from "react-redux";
 import SubmitBtn from "./SubmitBtn";
+import {clear}from '../redux/actions'
 
 const mapStateToProps = (state) => state;
 
-export default connect(mapStateToProps)(function ShopBooksContainer({
-  books,
+export default connect(mapStateToProps,{clear})(function ShopBooksContainer({
+  filter_list,
   loadMore,
+  clear,
+  books
 }) {
+  useEffect(() => {
+    return () => {
+      clear()
+    };
+  }, []);
+  
+  
   let [page, setpage] = useState(2);
 
   return (
     <div id="shop-books-container">
       <div className="container p-0">
         <div className="row pt-5 pt-md-0">
-          {!books.length ? (
+          {!books?.length ? (
             <LoadWrapper />
           ) : (
-            books.map((book) => {
+            filter_list?.map((book) => {
               return (
                 <div
                   key={book._id}
@@ -32,7 +42,7 @@ export default connect(mapStateToProps)(function ShopBooksContainer({
           )}
         </div>
         <div className="row justify-content-center g-0">
-          {books.length ? (
+          {filter_list?.length ? (
             <button
               className="load-more-btn"
               onClick={() => {
