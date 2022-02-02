@@ -11,9 +11,10 @@ import logoutUser from "./logoutUser";
 import getAllBooks from "./getAllBooks";
 import addBookToWishList from "./addBookToWishlist";
 import getAllCategories from "./getAllCategories";
-import clear from './clear'
-import updateList from './updateList'
-import filterByPrice from './filterByPrice'
+import clear from "./clear";
+import updateList from "./updateList";
+import filterByPrice from "./filterByPrice";
+import filterByYear from "./filterByYear";
 export {
   registerUser,
   checkAccountVerificaion,
@@ -30,5 +31,6 @@ export {
   getAllCategories,
   updateList,
   clear,
-  filterByPrice
+  filterByPrice,
+  filterByYear,
 };

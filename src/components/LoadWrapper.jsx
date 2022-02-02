@@ -4,10 +4,6 @@ import icon from "../assets/img/brand/icon192.svg";
 import logo from "../assets/img/brand/logo128.svg";
 
 export default function LoadWrapper() {
-  useEffect(() => {
-    document.title = "MEBOOK | Please wait!";
-  }, []);
-
   return (
     <div id="load_wrapper">
       <img

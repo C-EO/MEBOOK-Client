@@ -1,11 +1,16 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "../assets/style/book-grid-view.sass";
 import { Link } from "react-router-dom";
 import { addBookToWishList } from "../redux/actions";
 import { connect } from "react-redux";
 
 export default connect((state) => state, { addBookToWishList })(
-  function BookGridView({ book, addBookToWishList, user }) {
+  function BookGridView({ book, addBookToWishList, user, response }) {
+    useEffect(() => {
+      setLoad(false);
+    }, [response]);
+
+    const [load, setLoad] = useState(false);
     return (
       <div className="book-grid-view">
         <div className="book-cover-area">
@@ -23,10 +28,17 @@ export default connect((state) => state, { addBookToWishList })(
           <button
             className="add_wishlist_btn"
             onClick={() => {
+              setLoad(true);
               addBookToWishList({ bookId: book._id });
             }}
           >
-            {user?.wishlist?.includes(book._id) ? (
+            {load ? (
+              <div
+                className="spinner-border"
+                style={{ width: "18px", height: "18px" }}
+                role="status"
+              ></div>
+            ) : user?.wishlist?.includes(book._id) ? (
               <i className="fas fa-heart"></i>
             ) : (
               <i className="fal fa-heart"></i>
