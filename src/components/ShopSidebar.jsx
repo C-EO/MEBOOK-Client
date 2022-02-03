@@ -8,6 +8,8 @@ import "react-input-range/lib/css/index.css";
 import { connect } from "react-redux";
 import { filterByPrice, filterByYear } from "../redux/actions";
 import _debounce from "debounce";
+import { Rating } from "@mui/material";
+
 const mapStateToProps = (state) => state;
 export default connect(mapStateToProps, { filterByPrice, filterByYear })(
   function ShopSidebar({ categories, books, filterByPrice, filterByYear }) {
@@ -122,7 +124,12 @@ export default connect(mapStateToProps, { filterByPrice, filterByYear })(
               return (
                 <div key={rate} className="rate-item">
                   <input type="checkbox" />
-                  <span>{rate}</span>
+                  <Rating
+                    name="size-small"
+                    readOnly
+                    defaultValue={rate}
+                    size="small"
+                  />
                 </div>
               );
             })}

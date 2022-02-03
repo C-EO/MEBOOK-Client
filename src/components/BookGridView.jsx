@@ -1,11 +1,18 @@
 import React, { useState, useEffect } from "react";
 import "../assets/style/book-grid-view.sass";
 import { Link } from "react-router-dom";
-import { addBookToWishList } from "../redux/actions";
+import { addBookToWishList, setBookView } from "../redux/actions";
 import { connect } from "react-redux";
+import { Rating } from "@mui/material";
 
-export default connect((state) => state, { addBookToWishList })(
-  function BookGridView({ book, addBookToWishList, user, response }) {
+export default connect((state) => state, { addBookToWishList, setBookView })(
+  function BookGridView({
+    book,
+    addBookToWishList,
+    user,
+    response,
+    setBookView,
+  }) {
     useEffect(() => {
       setLoad(false);
     }, [response]);
@@ -14,15 +21,19 @@ export default connect((state) => state, { addBookToWishList })(
     return (
       <div className="book-grid-view">
         <div className="book-cover-area">
-          <div className="book-actions">
-            <button>
+          <div className="book-actions d-none d-md-flex">
+            <button
+              onClick={() => {
+                setBookView(book);
+              }}
+            >
               <i className="fal fa-eye"></i>
             </button>
             <button>
               <i className="fal fa-shopping-bag"></i>
             </button>
           </div>
-          <Link to={"/"}>
+          <Link to={`/book/${book._id}`}>
             <img src={book.cover} alt="book-cover" />
           </Link>
           <button
@@ -61,6 +72,13 @@ export default connect((state) => state, { addBookToWishList })(
           </div>
         </div>
         <div className="book-info-area">
+          <Rating
+            name="size-small"
+            readOnly
+            defaultValue={Math.floor(Math.random() * 5) + 1}
+            size="small"
+          />
+
           <div className="book-author">
             <span>BY : </span>
             {book.author}

@@ -1,6 +1,4 @@
 const filterByYear = (list, values) => {
-  console.log(values);
-
   const newList = list.filter((item) => {
     if (values.includes(item.publication_date.slice(0, 4))) {
       return item;

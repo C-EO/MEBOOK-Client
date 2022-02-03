@@ -15,6 +15,8 @@ import clear from "./clear";
 import updateList from "./updateList";
 import filterByPrice from "./filterByPrice";
 import filterByYear from "./filterByYear";
+import setBookView from "./setBookView";
+import clearBookQuickView from "./clearBookQuickView";
 export {
   registerUser,
   checkAccountVerificaion,
@@ -33,4 +35,6 @@ export {
   clear,
   filterByPrice,
   filterByYear,
+  setBookView,
+  clearBookQuickView,
 };
