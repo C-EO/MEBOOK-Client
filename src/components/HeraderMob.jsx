@@ -26,7 +26,7 @@ export default connect((state) => state)(function HeraderMob({ user }) {
             <div className="col-2 text-end">
               <Link to="/cart">
                 <i className="fal me-2 fa-shopping-bag"></i>
-                <span className="cart-q">0</span>
+                <span className="cart-q">{user?.cart?.items_count || 0}</span>
               </Link>
             </div>
           </div>
