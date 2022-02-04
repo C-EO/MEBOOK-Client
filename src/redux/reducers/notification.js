@@ -23,7 +23,10 @@ const notification = (msg = {}, action) => {
   if (action.type === "USER_FORGOT_PASSWORD") {
     return action.payload;
   }
-  if (action.type === "ADD_BOOK_TO_CART") {
+  if (action.type === "ADD_ITEM_TO_CART") {
+    return { ...action.payload.data };
+  }
+  if (action.type === "REMOVE_ITEM_FROM_CART") {
     return { ...action.payload.data };
   }
   return msg;

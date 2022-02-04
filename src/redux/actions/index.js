@@ -18,6 +18,7 @@ import filterByYear from "./filterByYear";
 import setBookView from "./setBookView";
 import clearBookQuickView from "./clearBookQuickView";
 import addBookToCart from "./addBookToCart";
+import removeBookFromCart from "./removeBookFromCart";
 export {
   registerUser,
   checkAccountVerificaion,
@@ -39,4 +40,5 @@ export {
   setBookView,
   clearBookQuickView,
   addBookToCart,
+  removeBookFromCart,
 };

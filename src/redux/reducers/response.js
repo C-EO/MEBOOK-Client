@@ -2,7 +2,10 @@ const response = (res = {}, action) => {
   if (action.type === "REGISTER_USER") {
     return { ...res, ...action.payload };
   }
-  if (action.type === "ADD_BOOK_TO_CART") {
+  if (action.type === "ADD_ITEM_TO_CART") {
+    return { ...res, ...action.payload };
+  }
+  if (action.type === "REMOVE_ITEM_FROM_CART") {
     return { ...res, ...action.payload };
   }
   if (action.type === "LOGIN_USER") {

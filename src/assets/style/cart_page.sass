@@ -1,0 +1,38 @@
+@import './variables'
+
+.shopping-cart-items-container
+    background: $bg_white
+    .cart-heading
+        color: $skyblue
+        font-size: 1rem
+        font-weight: 500
+    .cart-items-table
+        border: 1px solid $border_color
+        .cart-item-labels
+            border-bottom: 1px solid $border_color
+            text-transform: uppercase
+            font-weight: 600
+        .items-container
+            border-bottom: 1px solid $border_color
+            max-height: calc(153px * 3)
+            overflow-y: scroll
+        .cart-actions-area
+            .apply-coupon-form
+                form
+                    display: flex
+                    input 
+                        width: 100%
+                        display: block
+                        border: 1px solid $border_color
+                        padding: 0.75rem
+                    button
+                        width: 250px
+                        outline: none
+                        border: 0
+                        background: $skyblue
+                        color: $text_white
+                        margin-left: 5px
+                        text-transform: uppercase
+
+    .checkout-area
+        background: $border_color

@@ -1,0 +1,56 @@
+@import './variables'
+#empty-cart-wrapper
+    // border-bottom: 1px solid $border_color
+    min-height: 500px
+    text-align: center
+    display: flex
+    justify-content: center
+    align-items: center
+    flex-direction: column
+    background: $bg_white
+    .fal.fa-shopping-cart
+      color: $skyblue
+      font-size: 7rem
+      position: relative
+      padding: 3rem
+      padding-bottom: 0
+      padding-left: 1.5rem
+      &::after
+        all: unset
+        font-family: 'Font Awesome 5 Pro'
+        content: "\f00d"
+        position: absolute
+        top: 10px
+        right: 20px
+        font-size: 1.5rem
+        color: var(--bs-red)
+        width: 35px
+        height: 35px
+        border: 3px solid var(--bs-red)
+        display: flex
+        justify-content: center
+        align-items: center
+        border-radius: 50%
+    h6
+      text-transform: capitalize
+      padding-top: 1.5rem
+    p
+      color: grey
+      margin: 0
+    a
+      border-radius: .25rem
+      font-weight: 500
+      display: inline-flex
+      align-items: center
+      justify-content: center
+      text-decoration: none
+      color: $text_white
+      background: $orange
+      padding: 0.75rem 2.5rem
+      margin: 1.5rem 0
+      border: 2px solid $orange
+      text-transform: capitalize
+
+      &:hover
+          background: transparent
+          color: $orange            

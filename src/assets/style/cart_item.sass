@@ -1,0 +1,37 @@
+@import './variables'
+
+.cart-item
+    padding: 1rem 0
+    border-bottom: 1px solid $border_color
+    &:last-of-type
+        border: 0
+    .item-info
+        display: flex
+        // align-items: center
+        .product-info
+            padding: 0 1rem
+            display: flex
+            flex-direction: column
+            .book-title
+                text-decoration: none
+                font-weight: 500
+                color: $skyblue
+        img
+            background: yellow
+            height: 120px
+            width: 80px
+    .delete-cart-item-btn
+        all: unset
+        cursor: pointer
+        font-size: 1.25rem
+        width: 30px
+        height: 30px
+        border: 2px solid var(--bs-red)
+        color: var(--bs-red)
+        border-radius: 50%
+        display: flex
+        justify-content: center
+        align-items: center
+        &:hover
+            color: $text_white
+            background: var(--bs-red)
