@@ -2,6 +2,9 @@ const response = (res = {}, action) => {
   if (action.type === "REGISTER_USER") {
     return { ...res, ...action.payload };
   }
+  if (action.type === "ADD_BOOK_TO_CART") {
+    return { ...res, ...action.payload };
+  }
   if (action.type === "LOGIN_USER") {
     return { ...res, ...action.payload };
   }

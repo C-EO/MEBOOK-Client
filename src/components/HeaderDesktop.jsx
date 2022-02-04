@@ -3,9 +3,12 @@ import { Link } from "react-router-dom";
 import api from "../api/api";
 import logo from "../assets/img/brand/logo256.svg";
 import Dropdown from "./Dropdown";
-import {connect}from 'react-redux'
+import { connect } from "react-redux";
 
-export default connect(state=>state)(function HeaderDesktop({categories}) {
+export default connect((state) => state)(function HeaderDesktop({
+  categories,
+  user,
+}) {
   return (
     <div id="header-desktop" className="d-none d-md-block">
       <div className="header-desktop-top">
@@ -48,7 +51,9 @@ export default connect(state=>state)(function HeaderDesktop({categories}) {
                   <li className="list-item ms-4">
                     <Link to="/cart">
                       <i className="fal me-2 fa-2_5x fa-shopping-bag"></i>
-                      <span className="cart-q">0</span>
+                      <span className="cart-q">
+                        {user?.cart?.items_count || 0}
+                      </span>
                     </Link>
                   </li>
                 </ul>
@@ -104,5 +109,4 @@ export default connect(state=>state)(function HeaderDesktop({categories}) {
       </div>
     </div>
   );
-}
-)
+});
