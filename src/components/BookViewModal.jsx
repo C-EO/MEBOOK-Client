@@ -77,7 +77,10 @@ export default connect((state) => state, { clearBookQuickView, addBookToCart })(
                       value={"ADD TO CART"}
                       type={true}
                       onClick={() => {
-                        addBookToCart();
+                        addBookToCart({
+                          bookId: book_quick_view._id,
+                          quantity,
+                        });
                       }}
                     />
                   </div>
