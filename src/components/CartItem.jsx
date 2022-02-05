@@ -8,12 +8,12 @@ import { removeBookFromCart } from "../redux/actions";
 const mapStateToProps = (state) => state;
 
 export default connect(mapStateToProps, { removeBookFromCart })(
-  function CartItem({ item, removeBookFromCart, resonse }) {
+  function CartItem({ item, removeBookFromCart, response }) {
     const [load, setload] = useState(false);
 
     useEffect(() => {
       setload(false);
-    }, [resonse]);
+    }, [response]);
 
     return (
       <div className="row align-items-center cart-item">
@@ -51,7 +51,7 @@ export default connect(mapStateToProps, { removeBookFromCart })(
                 role="status"
               ></div>
             ) : (
-              <i className="fal fa-times"></i>
+              <i className="fal fa-trash"></i>
             )}
           </button>
         </div>
