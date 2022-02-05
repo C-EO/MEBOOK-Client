@@ -10,16 +10,21 @@ export default connect((state) => state, { clearBookQuickView, addBookToCart })(
     book_quick_view,
     clearBookQuickView,
     addBookToCart,
+    response,
   }) {
     const [show, setshow] = useState(false);
-
-    const [quantity, setquantity] = useState(0);
+    const [load, setload] = useState(false);
+    const [quantity, setquantity] = useState(1);
 
     useEffect(() => {
       if (!_.isEmpty(book_quick_view)) {
         setshow(true);
       }
     }, [book_quick_view]);
+
+    useEffect(() => {
+      setload(false);
+    }, [response]);
 
     return (
       <div className={`book-view-modal d-none ${show ? "d-md-flex" : ""}`}>
@@ -76,7 +81,9 @@ export default connect((state) => state, { clearBookQuickView, addBookToCart })(
                     <SubmitBtn
                       value={"ADD TO CART"}
                       type={true}
+                      load={load}
                       onClick={() => {
+                        setload(true);
                         addBookToCart({
                           bookId: book_quick_view._id,
                           quantity,
