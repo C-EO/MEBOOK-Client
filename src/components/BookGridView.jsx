@@ -41,6 +41,7 @@ export default connect((state) => state, {
             <i className="fal fa-eye"></i>
           </button>
           <button
+            disabled={!book.is_stock}
             onClick={() => {
               setcartLoad(true);
               addBookToCart({ bookId: book._id, quantity: 1 });
@@ -81,6 +82,9 @@ export default connect((state) => state, {
             <i className="fal fa-heart"></i>
           )}
         </button>
+        {!book.is_stock ? (
+          <div className="out-of-stock-tag">out of stock</div>
+        ) : null}
         <div className="book-tags-container">
           {book.tags
             ? book.tags.map((tag) => {

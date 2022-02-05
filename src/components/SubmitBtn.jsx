@@ -4,7 +4,6 @@ export default function SubmitBtn({ value, load, type, onClick }) {
   return (
     <button
       type={!type ? `submit` : null}
-      type="submit"
       className="mebook-form-submit-btn"
       onClick={type ? onClick : null}
     >

@@ -61,7 +61,9 @@ export default connect((state) => state, { clearBookQuickView, addBookToCart })(
                   </p>
                   <hr />
                   <p className="quantitiy-instock">
-                    {book_quick_view?.quantity} in stock
+                    {book_quick_view?.is_stock
+                      ? `${book_quick_view?.quantity} in stock`
+                      : "out of stock"}
                   </p>
                   <div className="add-to-cart-area d-flex">
                     <input
@@ -79,6 +81,7 @@ export default connect((state) => state, { clearBookQuickView, addBookToCart })(
                       onChange={(e) => setquantity(e.target.value)}
                     />
                     <SubmitBtn
+                      // disabled={book_quick_view?.is_stock}
                       value={"ADD TO CART"}
                       type={true}
                       load={load}
@@ -86,7 +89,7 @@ export default connect((state) => state, { clearBookQuickView, addBookToCart })(
                         setload(true);
                         addBookToCart({
                           bookId: book_quick_view._id,
-                          quantity,
+                          quantity: +quantity,
                         });
                       }}
                     />
