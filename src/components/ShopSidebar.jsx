@@ -13,8 +13,8 @@ import { Rating } from "@mui/material";
 const mapStateToProps = (state) => state;
 export default connect(mapStateToProps, { filterByPrice, filterByYear })(
   function ShopSidebar({ categories, books, filterByPrice, filterByYear }) {
-    const [min, setmin] = useState(1);
-    const [max, setmax] = useState(2);
+    const [min, setmin] = useState(0);
+    const [max, setmax] = useState(0.1);
     const [value, setValue] = useState({ min, max });
     const [publication_years, setPublication_years] = useState([]);
     const [years, setyears] = useState([]);

@@ -61,7 +61,9 @@ export default connect((state) => state, {
           <img src={book.cover} alt="book-cover" />
         </Link>
         <button
-          className="add_wishlist_btn"
+          className={`add_wishlist_btn ${
+            user?.wishlist?.includes(book._id) ? "wish_listed" : ""
+          }`}
           onClick={() => {
             setLoad(true);
             addBookToWishList({ bookId: book._id });

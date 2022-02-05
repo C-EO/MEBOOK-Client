@@ -16,12 +16,10 @@ export default connect(mapStateToProps, { resendOTP })(function UserInfoBar({
 }) {
   let navigate = useNavigate();
   useEffect(() => {
-    if (response.status === 201) {
-      const { userId, token } = response.data.data;
+    if (response.status === 201 && response?.data?.data) {
+      const { userId, token } = response?.data?.data;
       if (userId && token) {
-        setTimeout(() => {
-          navigate(`/verify-account/${userId}/${token}`);
-        }, 1000);
+        navigate(`/verify-account/${userId}/${token}`);
       }
     }
   }, [response]);

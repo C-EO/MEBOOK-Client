@@ -2,12 +2,18 @@ import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import "../assets/style/book_view_modal.sass";
 import _ from "lodash";
-import { clearBookQuickView } from "../redux/actions";
+import { clearBookQuickView, addBookToCart } from "../redux/actions";
 import SubmitBtn from "./SubmitBtn";
 
-export default connect((state) => state, { clearBookQuickView })(
-  function BookViewModal({ book_quick_view, clearBookQuickView }) {
+export default connect((state) => state, { clearBookQuickView, addBookToCart })(
+  function BookViewModal({
+    book_quick_view,
+    clearBookQuickView,
+    addBookToCart,
+  }) {
     const [show, setshow] = useState(false);
+
+    const [quantity, setquantity] = useState(0);
 
     useEffect(() => {
       if (!_.isEmpty(book_quick_view)) {
@@ -52,9 +58,30 @@ export default connect((state) => state, { clearBookQuickView })(
                   <p className="quantitiy-instock">
                     {book_quick_view?.quantity} in stock
                   </p>
-                  <SubmitBtn value={"ADD TO CART"} />
-                  <hr />
-                  <SubmitBtn value={"BUY NOW"} />
+                  <div className="add-to-cart-area d-flex">
+                    <input
+                      type="number"
+                      value={quantity}
+                      name=""
+                      id=""
+                      min={1}
+                      max={book_quick_view?.quantity}
+                      style={{
+                        textAlign: "center",
+                        marginRight: "1rem",
+                        width: "200px",
+                      }}
+                      onChange={(e) => setquantity(e.target.value)}
+                    />
+                    <SubmitBtn
+                      value={"ADD TO CART"}
+                      type={true}
+                      onClick={() => {
+                        addBookToCart();
+                      }}
+                    />
+                  </div>
+                  {/* <SubmitBtn value={"BUY NOW"} /> */}
                 </div>
               </div>
             </div>

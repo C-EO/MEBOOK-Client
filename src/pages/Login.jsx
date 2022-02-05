@@ -17,12 +17,10 @@ export default connect((state) => state)(function Login({
 
   useEffect(() => {
     if (
-      response.status === 201 &&
+      response.status === 200 &&
       response.data.msg === "logged in successfully ✅."
     ) {
-      setTimeout(() => {
-        navigate(`/${redirect_to}`);
-      }, 1000);
+      navigate(`/${redirect_to}`);
     }
   }, [response]);
 

@@ -19,6 +19,7 @@ import setBookView from "./setBookView";
 import clearBookQuickView from "./clearBookQuickView";
 import addBookToCart from "./addBookToCart";
 import removeBookFromCart from "./removeBookFromCart";
+import getUserData from "./getUserData";
 export {
   registerUser,
   checkAccountVerificaion,
@@ -41,4 +42,5 @@ export {
   clearBookQuickView,
   addBookToCart,
   removeBookFromCart,
+  getUserData,
 };

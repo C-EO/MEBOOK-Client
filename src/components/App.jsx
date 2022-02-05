@@ -2,7 +2,8 @@
 import React, { useEffect } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { connect } from "react-redux";
-import { getAllCategories } from "../redux/actions";
+import { getUserData, getAllCategories, updateUser } from "../redux/actions";
+import _ from "lodash";
 
 /// STYLES
 import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
@@ -37,12 +38,31 @@ const mapStateToProps = (state) => {
   return state;
 };
 
-export default connect(mapStateToProps, { getAllCategories })(function App({
+export default connect(mapStateToProps, {
   getAllCategories,
-}) {
+  getUserData,
+  updateUser,
+})(function App({ getAllCategories, getUserData, response, updateUser }) {
   useEffect(() => {
-    getAllCategories();
+    (async () => {
+      if (!(await getUserData())) {
+        updateUser(null);
+      }
+      getAllCategories();
+    })();
   }, []);
+
+  useEffect(() => {
+    if (!_.isEmpty(response)) {
+      if (!response?.data?.data?.user && response?.data?.status !== "error") {
+        getUserData();
+      } else if (response?.data?.data?.user) {
+        const user = response?.data?.data?.user;
+        updateUser(user);
+      }
+    }
+  }, [response]);
+
   return (
     <BrowserRouter>
       <GridTest />

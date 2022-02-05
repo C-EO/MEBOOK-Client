@@ -1,7 +1,6 @@
 import api from "../../api/api";
 
 const addBookToCart = (data) => {
-  console.log(data);
   return async (dispatch) => {
     try {
       const res = await api.post(`/books/add_to_cart`, data);

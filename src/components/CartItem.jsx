@@ -49,9 +49,7 @@ export default connect(mapStateToProps, { removeBookFromCart })(
                 className="spinner-border"
                 style={{ width: "15px", height: "15px" }}
                 role="status"
-              >
-                <span className="visually-hidden">Loading...</span>
-              </div>
+              ></div>
             ) : (
               <i className="fal fa-times"></i>
             )}

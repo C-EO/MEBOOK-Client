@@ -1,8 +1,13 @@
 import React from "react";
 
-export default function SubmitBtn({ value, load }) {
+export default function SubmitBtn({ value, load, type, onClick }) {
   return (
-    <button type="submit" className="mebook-form-submit-btn">
+    <button
+      // type={!type ? `submit` : null}
+      type="submit"
+      className="mebook-form-submit-btn"
+      // onClick={type ? onClick : null}
+    >
       {(() => {
         if (!load) {
           return <>{value}</>;
@@ -12,9 +17,7 @@ export default function SubmitBtn({ value, load }) {
               className="spinner-border"
               style={{ width: "21px", height: "21px" }}
               role="status"
-            >
-              <span className="visually-hidden">Loading...</span>
-            </div>
+            ></div>
           );
         }
       })()}

@@ -15,7 +15,9 @@ export default connect(mapStateToProps, { getAllBooks, updateList })(
     }, []);
 
     useEffect(() => {
-      updateList(books);
+      if (books.length) {
+        updateList(books);
+      }
     }, [books]);
 
     return (

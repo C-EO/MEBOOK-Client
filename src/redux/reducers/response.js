@@ -8,10 +8,10 @@ const response = (res = {}, action) => {
   if (action.type === "REMOVE_ITEM_FROM_CART") {
     return { ...res, ...action.payload };
   }
-  if (action.type === "LOGIN_USER") {
+  if (action.type === "GET_CURRENT_USER_DATA") {
     return { ...res, ...action.payload };
   }
-  if (action.type === "LOGOUT_USER") {
+  if (action.type === "LOGIN_USER") {
     return { ...res, ...action.payload };
   }
   if (action.type === "BOOK_TO_WISHLIST") {

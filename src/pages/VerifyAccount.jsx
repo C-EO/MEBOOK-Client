@@ -18,12 +18,12 @@ export default connect(mapStateToProps, { checkAccountVerificaion, resendOTP })(
     response,
     notification,
     resendOTP,
+    user,
   }) {
     const { userId, token } = useParams();
     const navigate = useNavigate();
     const [state, setState] = useState("loading");
     const [USER_ID, setUserId] = useState(userId);
-    const [USER, setUser] = useState({});
     const [TOKEN, setToken] = useState(token);
 
     useEffect(() => {
@@ -33,10 +33,9 @@ export default connect(mapStateToProps, { checkAccountVerificaion, resendOTP })(
     useEffect(() => {
       if (!_.isEmpty(response)) {
         if (response?.data?.user) {
-          setUser(response?.data?.user);
         }
 
-        if (response.data.select) {
+        if (response?.data?.select) {
           setToken(response?.data?.data?.token);
           setUserId(response?.data?.data?.userId);
         }
@@ -46,15 +45,13 @@ export default connect(mapStateToProps, { checkAccountVerificaion, resendOTP })(
     useEffect(() => {
       if (notification) {
         if (notification?.msg === "your account verified successfully ✅.") {
-          setTimeout(() => {
-            navigate(`/`);
-          }, 1000);
+          navigate(`/`);
         }
       }
     }, [notification]);
 
     useEffect(() => {
-      if (response.status === 200 || response.status === 201) {
+      if (response.status === 200 && _.isEmpty(response.data.data)) {
         setState("ready");
       }
       if (response.status === 403) {
@@ -75,7 +72,7 @@ export default connect(mapStateToProps, { checkAccountVerificaion, resendOTP })(
           <div className="text-center d-flex flex-column">
             <i className="fal mb-3 fa-3x fa-envelope-open"></i>
             <p className="m-0">We’ve sent a verification code to:</p>
-            <span>{USER?.email}</span>
+            <span>{user?.email}</span>
             <p className="mt-4 mb-3 fw500">Enter OTP Code Here</p>
           </div>
           <UserOTPForm userId={USER_ID} token={TOKEN}></UserOTPForm>
