@@ -8,6 +8,9 @@ const list = (list = [], action) => {
   if (action.type === "FILTER_BY_YEAR") {
     return [...action.payload];
   }
+  if (action.type === "FILTER_BY_RATE") {
+    return [...action.payload];
+  }
   return list;
 };
 

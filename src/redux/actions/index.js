@@ -16,6 +16,7 @@ import updateList from "./updateList";
 import filterByPrice from "./filterByPrice";
 import filterByYear from "./filterByYear";
 import setBookView from "./setBookView";
+import filterByRate from "./filterByRate";
 import clearBookQuickView from "./clearBookQuickView";
 import addBookToCart from "./addBookToCart";
 import removeBookFromCart from "./removeBookFromCart";
@@ -43,4 +44,5 @@ export {
   addBookToCart,
   removeBookFromCart,
   getUserData,
+  filterByRate,
 };
