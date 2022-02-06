@@ -106,7 +106,7 @@ export default connect((state) => state, {
         <Rating
           name="size-small"
           readOnly
-          // defaultValue={Math.floor(Math.random() * 5) + 1}
+          defaultValue={book.average_rating}
           size="small"
         />
 

@@ -57,7 +57,7 @@ export default connect((state) => state, { clearBookQuickView, addBookToCart })(
                   <hr />
                   <p className="description-title">description:</p>
                   <p className="book-description">
-                    {book_quick_view?.short_description}
+                    {book_quick_view?.overview}
                   </p>
                   <hr />
                   <p className="quantitiy-instock">
