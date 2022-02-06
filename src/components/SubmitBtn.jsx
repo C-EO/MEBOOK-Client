@@ -1,4 +1,5 @@
 import React from "react";
+import LoadSpinner from "./LoadSpinner";
 
 export default function SubmitBtn({ value, load, type, onClick }) {
   return (
@@ -11,13 +12,7 @@ export default function SubmitBtn({ value, load, type, onClick }) {
         if (!load) {
           return <>{value}</>;
         } else {
-          return (
-            <div
-              className="spinner-border"
-              style={{ width: "21px", height: "21px" }}
-              role="status"
-            ></div>
-          );
+          return <LoadSpinner size="21" />;
         }
       })()}
     </button>

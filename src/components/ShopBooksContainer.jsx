@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import LoadWrapper from "./LoadWrapper";
 import BookGridView from "./BookGridView";
 import { connect } from "react-redux";
-import SubmitBtn from "./SubmitBtn";
 import { clear } from "../redux/actions";
+import LoadSpinner from "./LoadSpinner";
 
 const mapStateToProps = (state) => state;
 
@@ -19,7 +19,12 @@ export default connect(mapStateToProps, { clear })(function ShopBooksContainer({
     };
   }, []);
 
+  useEffect(() => {
+    setload(false);
+  }, [books]);
+
   let [page, setpage] = useState(2);
+  const [load, setload] = useState(false);
 
   return (
     <div id="shop-books-container">
@@ -47,11 +52,12 @@ export default connect(mapStateToProps, { clear })(function ShopBooksContainer({
             <button
               className="load-more-btn"
               onClick={() => {
+                setload(true);
                 setpage(page + 1);
                 loadMore({ page });
               }}
             >
-              load more
+              {load ? <LoadSpinner size={"21"} /> : "load more"}
             </button>
           ) : null}
         </div>

@@ -8,6 +8,7 @@ import { Link, useNavigate } from "react-router-dom";
 import _ from "lodash";
 import P_404 from "../components/_404";
 import LoadWrapper from "../components/LoadWrapper";
+import LoadSpinner from "../components/LoadSpinner";
 
 const mapStateToProps = (state) => {
   return state;
@@ -25,6 +26,7 @@ export default connect(mapStateToProps, { checkAccountVerificaion, resendOTP })(
     const [state, setState] = useState("loading");
     const [USER_ID, setUserId] = useState(userId);
     const [TOKEN, setToken] = useState(token);
+    const [load, setload] = useState(false);
 
     useEffect(() => {
       checkAccountVerificaion(USER_ID, TOKEN);
@@ -51,6 +53,7 @@ export default connect(mapStateToProps, { checkAccountVerificaion, resendOTP })(
     }, [notification]);
 
     useEffect(() => {
+      setload(false);
       if (response.status === 200 && _.isEmpty(response.data.data)) {
         setState("ready");
       }
@@ -81,11 +84,12 @@ export default connect(mapStateToProps, { checkAccountVerificaion, resendOTP })(
             <Link
               onClick={(e) => {
                 e.preventDefault();
+                setload(true);
                 resendOTP(USER_ID);
               }}
               to={"/"}
             >
-              Resend code
+              {load ? <LoadSpinner size={"14"} /> : "Resend code"}
             </Link>
           </div>
         </UserAuthFormArea>

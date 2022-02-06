@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "../assets/style/book-grid-view.sass";
 import { Link } from "react-router-dom";
+import LoadSpinner from "./LoadSpinner";
 import {
   addBookToWishList,
   setBookView,
@@ -49,11 +50,7 @@ export default connect((state) => state, {
             }}
           >
             {cartLoad ? (
-              <div
-                className="spinner-border"
-                style={{ width: "18px", height: "18px" }}
-                role="status"
-              ></div>
+              <LoadSpinner size={"18"} />
             ) : (
               <i className="fal fa-shopping-bag"></i>
             )}
@@ -72,11 +69,7 @@ export default connect((state) => state, {
           }}
         >
           {load ? (
-            <div
-              className="spinner-border"
-              style={{ width: "18px", height: "18px" }}
-              role="status"
-            ></div>
+            <LoadSpinner size={"18"} />
           ) : wishList?.includes(book._id) ? (
             <i className="fas fa-heart"></i>
           ) : (

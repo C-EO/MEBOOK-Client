@@ -1,10 +1,11 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import { connect } from "react-redux";
 import "../assets/style/user_info_bar.sass";
 import { resendOTP } from "../redux/actions";
 import _ from "lodash";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import LoadSpinner from "./LoadSpinner";
 
 const mapStateToProps = (state) => {
   return state;
@@ -14,8 +15,10 @@ export default connect(mapStateToProps, { resendOTP })(function UserInfoBar({
   resendOTP,
   response,
 }) {
+  const [load, setload] = useState(false);
   let navigate = useNavigate();
   useEffect(() => {
+    setload(false);
     if (response.status === 201 && response?.data?.data) {
       const { userId, token } = response?.data?.data;
       if (userId && token) {
@@ -33,16 +36,17 @@ export default connect(mapStateToProps, { resendOTP })(function UserInfoBar({
           <div className="row" ref={row}>
             <div className="col">
               <p className="message">
-                Welcome @<span>{user.firstName}</span> your email address is not
-                verified yet,{" "}
+                Welcome @<span>{user.firstName}, </span> your email address is
+                not verified yet,{" "}
                 <Link
                   to={"/"}
                   onClick={(e) => {
                     e.preventDefault();
+                    setload(true);
                     resendOTP(user._id);
                   }}
                 >
-                  CONFIRM NOW
+                  {load ? <LoadSpinner size={"12"} /> : "CONFIRM NOW"}
                 </Link>
               </p>
               <span

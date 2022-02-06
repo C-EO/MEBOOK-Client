@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Rating } from "@mui/material";
 import { connect } from "react-redux";
 import { addBookToCart, addBookToWishList } from "../redux/actions";
+import LoadSpinner from "./LoadSpinner";
 
 const mapStateToProps = (state) => state;
 export default connect(mapStateToProps, { addBookToWishList, addBookToCart })(
@@ -28,11 +29,7 @@ export default connect(mapStateToProps, { addBookToWishList, addBookToCart })(
                 }}
               >
                 {wishLoad ? (
-                  <div
-                    className="spinner-border"
-                    style={{ width: "21px", height: "21px" }}
-                    role="status"
-                  ></div>
+                  <LoadSpinner size={"21"} />
                 ) : (
                   <i className="fal fa-times"></i>
                 )}
@@ -70,11 +67,7 @@ export default connect(mapStateToProps, { addBookToWishList, addBookToCart })(
                   }}
                 >
                   {cartLoad ? (
-                    <div
-                      className="spinner-border"
-                      style={{ width: "21px", height: "21px" }}
-                      role="status"
-                    ></div>
+                    <LoadSpinner size={"21"} />
                   ) : (
                     <i className="fal fa-shopping-bag"></i>
                   )}

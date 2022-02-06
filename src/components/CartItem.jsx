@@ -4,6 +4,7 @@ import "../assets/style/cart_item.sass";
 import { Rating } from "@mui/material";
 import { connect } from "react-redux";
 import { removeBookFromCart } from "../redux/actions";
+import LoadSpinner from "./LoadSpinner";
 
 const mapStateToProps = (state) => state;
 
@@ -45,11 +46,7 @@ export default connect(mapStateToProps, { removeBookFromCart })(
             }}
           >
             {load ? (
-              <div
-                className="spinner-border"
-                style={{ width: "15px", height: "15px" }}
-                role="status"
-              ></div>
+              <LoadSpinner size={"15"} />
             ) : (
               <i className="fal fa-trash"></i>
             )}

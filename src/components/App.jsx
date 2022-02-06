@@ -21,6 +21,7 @@ import P_404 from "./_404";
 import UserInfoBar from "./UserInfoBar";
 import AuthRoute from "./AuthRoute";
 import Footer from "./Footer";
+import Toast from "./Toast";
 
 /// PAGES
 import Home from "../pages/Home";
@@ -66,7 +67,8 @@ export default connect(mapStateToProps, {
   return (
     <BrowserRouter>
       <GridTest />
-      <Notification />
+      {/* <Notification /> */}
+      <Toast />
       <UserInfoBar />
       <AppHeader />
       <Routes>
