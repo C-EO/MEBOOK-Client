@@ -28,6 +28,7 @@ export default connect((state) => state, {
 
   const [load, setLoad] = useState(false);
   const [cartLoad, setcartLoad] = useState(false);
+  const wishList = user?.wishlist?.map((el) => el._id);
 
   return (
     <div className="book-grid-view">
@@ -63,7 +64,7 @@ export default connect((state) => state, {
         </Link>
         <button
           className={`add_wishlist_btn ${
-            user?.wishlist?.includes(book._id) ? "wish_listed" : ""
+            wishList?.includes(book._id) ? "wish_listed" : ""
           }`}
           onClick={() => {
             setLoad(true);
@@ -76,7 +77,7 @@ export default connect((state) => state, {
               style={{ width: "18px", height: "18px" }}
               role="status"
             ></div>
-          ) : user?.wishlist?.includes(book._id) ? (
+          ) : wishList?.includes(book._id) ? (
             <i className="fas fa-heart"></i>
           ) : (
             <i className="fal fa-heart"></i>

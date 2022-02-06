@@ -1,0 +1,49 @@
+@import './variables'
+
+.wishlist-items-container
+    background: $bg_white
+    .wishlist-heading
+        color: $skyblue
+        font-size: 1rem
+        font-weight: 500
+    .wishlist-item
+        margin: 1rem 0
+        border: 1px solid $border_color
+        padding: 1rem 0
+        .remove-wishlist-btn
+            all: unset
+            cursor: pointer
+            font-size: 1.25rem
+        .item-info
+            display: flex
+            align-items: center
+            .product-info
+                padding: 0 1rem
+                display: flex
+                flex-direction: column
+                .book-title
+                    text-decoration: none
+                    font-weight: 500
+                    color: $skyblue
+            .product-price
+                display: flex
+                align-items: center
+                .last-price
+                    text-decoration: line-through
+                    margin-right: 1rem
+                .price
+                    color: $orange
+                    font-weight: 700
+                    font-size: 1rem
+            img
+                height: 120px
+                width: 80px
+        .product-actions
+            display: flex
+            justify-content: center
+            align-items: center
+            button
+                all: unset
+                cursor: pointer
+                font-size: 1.5rem
+                color: $skyblue

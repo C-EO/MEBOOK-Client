@@ -34,11 +34,11 @@ export default function HomeHeroSlider() {
         pagination={{ clickable: true, el: ".swiper-pagination" }}
       >
         <SwiperSlide className="hero-swiper-slide">
-          {/* <img
+          <img
             className="slide-bg-img"
             src="https://wpbingosite.com/wordpress/bookio/wp-content/webp-express/webp-images/uploads/2021/08/slider1-1.jpg.webp"
             alt="bg"
-          /> */}
+          />
           <div className="overlay"></div>
           <div className="slide-content">
             <div className="container">
@@ -62,11 +62,11 @@ export default function HomeHeroSlider() {
           </div>
         </SwiperSlide>
         <SwiperSlide className="hero-swiper-slide">
-          {/* <img
+          <img
             className="slide-bg-img"
             src="https://wpbingosite.com/wordpress/bookio/wp-content/webp-express/webp-images/uploads/2021/08/slider1-1.jpg.webp"
             alt="bg"
-          /> */}
+          />
           <div className="overlay"></div>
           <div className="slide-content">
             <div className="container">
@@ -90,11 +90,11 @@ export default function HomeHeroSlider() {
           </div>
         </SwiperSlide>
         <SwiperSlide className="hero-swiper-slide">
-          {/* <img
+          <img
             className="slide-bg-img"
             src="https://wpbingosite.com/wordpress/bookio/wp-content/webp-express/webp-images/uploads/2021/08/slider1-1.jpg.webp"
             alt="bg"
-          /> */}
+          />
           <div className="overlay"></div>
           <div className="slide-content">
             <div className="container">
