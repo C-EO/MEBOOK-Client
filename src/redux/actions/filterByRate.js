@@ -7,7 +7,7 @@ const filterByRate = (list, values) => {
 
   return {
     type: "FILTER_BY_RATE",
-    payload: newList.length ? newList : list,
+    payload: values.length ? newList : list,
   };
 };
 

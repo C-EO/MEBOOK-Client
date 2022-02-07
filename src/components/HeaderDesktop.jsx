@@ -72,7 +72,7 @@ export default connect((state) => state)(function HeaderDesktop({
                     ? categories.map((cat) => {
                         return (
                           <li key={cat._id} className="dropdown-item">
-                            <Link to={`/category/${cat.slug}`}>
+                            <Link to={`/shop/category/${cat.slug}`}>
                               {cat.title}
                             </Link>
                           </li>

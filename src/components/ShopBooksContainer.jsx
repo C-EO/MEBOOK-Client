@@ -12,6 +12,7 @@ export default connect(mapStateToProps, { clear })(function ShopBooksContainer({
   loadMore,
   clear,
   books,
+  booksLength,
 }) {
   useEffect(() => {
     return () => {
@@ -23,7 +24,6 @@ export default connect(mapStateToProps, { clear })(function ShopBooksContainer({
     setload(false);
   }, [books]);
 
-  let [page, setpage] = useState(2);
   const [load, setload] = useState(false);
 
   return (
@@ -35,6 +35,7 @@ export default connect(mapStateToProps, { clear })(function ShopBooksContainer({
           ) : !filter_list.length ? (
             <LoadWrapper />
           ) : (
+            // <>SORRY, NO BOOKS MATCHED YOUR QUERY</>
             filter_list?.map((book) => {
               return (
                 <div
@@ -48,13 +49,12 @@ export default connect(mapStateToProps, { clear })(function ShopBooksContainer({
           )}
         </div>
         <div className="row justify-content-center g-0">
-          {filter_list?.length ? (
+          {filter_list?.length && books.length !== booksLength ? (
             <button
               className="load-more-btn"
               onClick={() => {
                 setload(true);
-                setpage(page + 1);
-                loadMore({ page });
+                loadMore();
               }}
             >
               {load ? <LoadSpinner size={"21"} /> : "load more"}

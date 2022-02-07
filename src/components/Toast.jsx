@@ -39,7 +39,7 @@ export default connect((state) => state)(function Toast({ notification }) {
           fontFamily: "poppins",
         }}
         variant="filled"
-        severity={notification.status}
+        severity={notification?.status}
       >
         {notification?.msg}
       </Alert>

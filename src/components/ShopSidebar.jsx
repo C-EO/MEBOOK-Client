@@ -74,7 +74,7 @@ export default connect(mapStateToProps, {
                         return (
                           <li key={sub._id} className="sub-category-item">
                             <Link
-                              to={`category/${cat.slug}/${sub.slug}`}
+                              to={`/shop/category/${cat.slug}/${sub.slug}`}
                               className="sub-category-item"
                             >
                               {sub.title}

@@ -21,6 +21,7 @@ import clearBookQuickView from "./clearBookQuickView";
 import addBookToCart from "./addBookToCart";
 import removeBookFromCart from "./removeBookFromCart";
 import getUserData from "./getUserData";
+import getCategoryBooks from "./getCategoryBooks";
 export {
   registerUser,
   checkAccountVerificaion,
@@ -45,4 +46,5 @@ export {
   removeBookFromCart,
   getUserData,
   filterByRate,
+  getCategoryBooks,
 };

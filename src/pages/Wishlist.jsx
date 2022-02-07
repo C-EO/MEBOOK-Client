@@ -1,13 +1,19 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import EmptyWishlist from "../components/EmptyWishlist";
 import WishlistItem from "../components/WishlistItem";
 import "../assets/style/wishlist_page.sass";
 
 export default connect((state) => state)(function Wishlist({ user }) {
+  const [wishlist, setwishlist] = useState([]);
+
   useEffect(() => {
     document.title = "MEBOOK | Wishlist";
   }, []);
+
+  useEffect(() => {
+    setwishlist(user?.wishlist?.reverse());
+  }, [user?.wishlist]);
 
   if (!user?.wishlist?.length) {
     return <EmptyWishlist />;
@@ -20,7 +26,7 @@ export default connect((state) => state)(function Wishlist({ user }) {
           <p className="wishlist-heading">WISHLIST ({user.wishlist.length})</p>
         </div>
         <div className="row">
-          {user?.wishlist?.map((item) => {
+          {wishlist?.map((item) => {
             return (
               <div className="col-4" key={item._id}>
                 <WishlistItem item={item} />

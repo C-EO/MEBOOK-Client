@@ -5,7 +5,7 @@ export default function AccordionItem({ parent, id, label, children }) {
   return (
     <div className="accordion-item">
       <h2 className="accordion-header" id="headingOne">
-        <Link to={`category/${id}`}>{label}</Link>
+        <Link to={`/shop/category/${id}`}>{label}</Link>
         <button
           className="accordion-button collapsed shadow-none"
           type="button"

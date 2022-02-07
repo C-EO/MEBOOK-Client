@@ -1,13 +1,19 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import EmptyCart from "../components/EmptyCart";
 import "../assets/style/cart_page.sass";
 import CartItem from "../components/CartItem";
 
 export default connect((state) => state)(function Cart({ user }) {
+  const [cartItems, setcartItems] = useState([]);
+
   useEffect(() => {
     document.title = "MEBOOK | Cart";
   }, []);
+
+  useEffect(() => {
+    setcartItems(user?.cart?.items);
+  }, [user?.cart?.items]);
 
   if (!user.cart.items_count) {
     return <EmptyCart />;
@@ -33,7 +39,7 @@ export default connect((state) => state)(function Cart({ user }) {
                   </div>
                 </div>
                 <div className="container items-container">
-                  {user?.cart?.items?.map((item) => {
+                  {cartItems.reverse().map((item) => {
                     return <CartItem key={item._id} item={item} />;
                   })}
                 </div>

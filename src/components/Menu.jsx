@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import logo from "../assets/img/brand/logo256.svg";
 import "../assets/style/menu.sass";
-import {connect} from 'react-redux'
+import { connect } from "react-redux";
 
-export default connect(state=>state)(function Menu({categories}) {
+export default connect((state) => state)(function Menu({ categories }) {
   return (
     <div id="footer-menu">
       <div className="container py-5">
@@ -109,7 +109,7 @@ export default connect(state=>state)(function Menu({categories}) {
                         <li key={cat._id} className="menu-list-item">
                           <Link
                             className="menu-list-link"
-                            to={`/category/${cat.slug}`}
+                            to={`/shop/category/${cat.slug}`}
                           >
                             {cat.title}
                           </Link>
@@ -167,5 +167,4 @@ export default connect(state=>state)(function Menu({categories}) {
       </div>
     </div>
   );
-}
-)
+});
