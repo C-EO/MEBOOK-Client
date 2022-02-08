@@ -11,7 +11,7 @@ import { Link } from "react-router-dom";
 export default function HomeHeroSlider() {
   return (
     <div className="hero-slider">
-      <div className="slider-btns-container">
+      <div className="slider-btns-container d-none d-md-flex">
         <div className="container">
           <button className="slider-btns-next">
             <i className="fal fa-arrow-left"></i>
@@ -43,7 +43,7 @@ export default function HomeHeroSlider() {
           <div className="slide-content">
             <div className="container">
               <div className="row">
-                <div className="text-center col-6 ms-5">
+                <div className="text-center offset-md-1 col-md-5 col-12 ms-5_X">
                   <div className="slide-info">
                     <h1>
                       bestselling <span>fiction</span> books
@@ -71,7 +71,7 @@ export default function HomeHeroSlider() {
           <div className="slide-content">
             <div className="container">
               <div className="row">
-                <div className="text-center col-6 ms-5">
+                <div className="text-center offset-md-1 col-md-5 col-12 ms-5_X">
                   <div className="slide-info">
                     <h1>
                       bestselling <span>fiction</span> books
@@ -99,7 +99,7 @@ export default function HomeHeroSlider() {
           <div className="slide-content">
             <div className="container">
               <div className="row">
-                <div className="text-center col-6 ms-5">
+                <div className="text-center offset-md-1 col-md-5 col-12 ms-5_X">
                   <div className="slide-info">
                     <h1>
                       bestselling <span>fiction</span> books

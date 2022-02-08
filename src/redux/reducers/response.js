@@ -14,6 +14,9 @@ const response = (res = {}, action) => {
   if (action.type === "LOGIN_USER") {
     return { ...res, ...action.payload };
   }
+  if (action.type === "LOGIN_ADMIN") {
+    return { ...res, ...action.payload };
+  }
   if (action.type === "BOOK_TO_WISHLIST") {
     return { ...res, ...action.payload };
   }

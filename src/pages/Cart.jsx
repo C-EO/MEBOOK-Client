@@ -28,14 +28,14 @@ export default connect((state) => state)(function Cart({ user }) {
             </p>
           </div>
           <div className="row">
-            <div className="col-8">
+            <div className="col-12 col-lg-8">
               <div className="cart-items-table">
                 <div className="container py-3 cart-item-labels">
                   <div className="row">
                     <div className="col-5">PRODUCT</div>
-                    <div className="col-2">PRICE</div>
-                    <div className="col-2">QUANTITY</div>
-                    <div className="col-2">SUBTOTAL</div>
+                    <div className="col-2 d-none d-md-block">PRICE</div>
+                    <div className="col-2 d-none d-md-block">QUANTITY</div>
+                    <div className="col-2 d-none d-md-block">SUBTOTAL</div>
                   </div>
                 </div>
                 <div className="container items-container">
@@ -45,7 +45,7 @@ export default connect((state) => state)(function Cart({ user }) {
                 </div>
                 <div className="container py-3 cart-actions-area">
                   <div className="row align-items-center">
-                    <div className="col-6">
+                    <div className="col-12 col-md-6">
                       <div className="apply-coupon-form">
                         <form
                           onSubmit={(e) => {
@@ -66,7 +66,7 @@ export default connect((state) => state)(function Cart({ user }) {
                 </div>
               </div>
             </div>
-            <div className="col-4">
+            <div className="col-12 col-lg-4">
               {/* <div className="checkout-area">...</div> */}
             </div>
           </div>

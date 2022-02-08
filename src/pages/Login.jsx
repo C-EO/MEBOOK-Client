@@ -9,6 +9,8 @@ import { useNavigate } from "react-router-dom";
 export default connect((state) => state)(function Login({
   response,
   redirect_to,
+  label,
+  restrict_to,
 }) {
   const navigate = useNavigate();
   useEffect(() => {
@@ -25,12 +27,16 @@ export default connect((state) => state)(function Login({
   }, [response]);
 
   return (
-    <UserAuthFormArea label={"Login into your account"}>
-      <UserLoginForm></UserLoginForm>
-      <OauthForm label={"Or login with"} />
-      <div className="form-link mb-3">
-        Don't have an account? <Link to={"/register"}>Register</Link>
-      </div>
+    <UserAuthFormArea label={label || "Login into your account"}>
+      <UserLoginForm restrict_to={restrict_to} />
+      {restrict_to && !restrict_to.includes("user") ? null : (
+        <>
+          <OauthForm label={"Or login with"} />
+          <div className="form-link mb-3">
+            Don't have an account? <Link to={"/register"}>Register</Link>
+          </div>
+        </>
+      )}
     </UserAuthFormArea>
   );
 });

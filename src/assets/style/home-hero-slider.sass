@@ -54,7 +54,7 @@
                 align-items: center
                 .slide-info
                     h1
-                        font-size: 4.5rem
+                        font-size: 3rem
                         color: $skyblue
                         font-weight: 800
                         text-transform: capitalize
@@ -63,18 +63,31 @@
                             text-decoration: underline
                     p
                         margin: 1rem 0
+                        color: $skyblue
+                        font-weight: 600
                     a
                         text-decoration: none
-                        // background: $skyblue
                         background: $orange
                         color: $text_white
-                        text-transform: uppercase
-                        padding: .75rem 1.75rem
+                        text-transform: capitalize
+                        padding: .75rem 1.5rem
                         display: inline-block
                         transition: .1s
                         border-radius: .25rem
                         &:hover
-                            // background: $orange
                             background: $skyblue
+
+
+@media screen  and (min-width: 991px )
+    .home-hero-swiper
+        .hero-swiper-slide
+            .slide-content
+                .slide-info
+                    h1
+                        font-size: 4.5rem !important
+                    p
+                        color: $text_dark !important
+                        font-weight: 400 !important
+
 
                   

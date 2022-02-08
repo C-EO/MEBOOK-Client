@@ -28,7 +28,7 @@ export default connect((state) => state)(function Wishlist({ user }) {
         <div className="row">
           {wishlist?.map((item) => {
             return (
-              <div className="col-4" key={item._id}>
+              <div className="col-12 col-md-6 col-lg-4" key={item._id}>
                 <WishlistItem item={item} />
               </div>
             );

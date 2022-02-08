@@ -43,9 +43,9 @@ export default connect((state) => state)(function HeaderDesktop({
               <div className="bookstore-actions text-end">
                 <ul className="list">
                   <li className="list-item bookfinder">
-                    <Link to="/# ">
-                      <i className="fal fa-x fa-map-marker-alt"></i>
-                      <span>Bookshop Finder</span>
+                    <Link to="/admin">
+                      <i className="fal fa-x mb-1 fa-cog"></i>
+                      <span>Login As Admin</span>
                     </Link>
                   </li>
                   <li className="list-item ms-4">

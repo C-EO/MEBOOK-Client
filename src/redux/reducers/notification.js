@@ -5,6 +5,9 @@ const notification = (msg = {}, action) => {
   if (action.type === "LOGIN_USER") {
     return { ...action.payload.data };
   }
+  if (action.type === "LOGIN_ADMIN") {
+    return { ...action.payload.data };
+  }
   if (action.type === "LOGOUT_USER") {
     return { ...action.payload.data };
   }

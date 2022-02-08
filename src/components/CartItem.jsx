@@ -18,7 +18,7 @@ export default connect(mapStateToProps, { removeBookFromCart })(
 
     return (
       <div className="row align-items-center cart-item">
-        <div className="col-5 item-info">
+        <div className="col-10 col-md-5 item-info">
           <Link to={`/book/${item.item._id}`}>
             <img src={item.item.cover} alt="item-img" className="product-img" />
           </Link>
@@ -31,12 +31,25 @@ export default connect(mapStateToProps, { removeBookFromCart })(
               readOnly
               defaultValue={item.item.average_rating}
               size="small"
+              className="mb-2"
             />
+            <div className="d-md-none item-quantity">
+              quantity : {item.quantity}
+            </div>
+            <div className="d-md-none item-subtotal fw-bold">
+              subtotal : ${item.subtotal.toFixed(2)}
+            </div>
           </div>
         </div>
-        <div className="col-2 item-price">${item.item.price.toFixed(2)}</div>
-        <div className="col-2 item-quantity">{item.quantity}</div>
-        <div className="col-2 item-subtotal">${item.subtotal.toFixed(2)}</div>
+        <div className="d-none d-md-flex col-2 item-price">
+          ${item.item.price.toFixed(2)}
+        </div>
+        <div className="d-none d-md-flex col-2 item-quantity">
+          {item.quantity}
+        </div>
+        <div className="d-none d-md-flex col-2 item-subtotal">
+          ${item.subtotal.toFixed(2)}
+        </div>
         <div className="col-1 item-remove">
           <button
             className="delete-cart-item-btn"

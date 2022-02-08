@@ -2,6 +2,7 @@ import registerUser from "./registerUser";
 import checkAccountVerificaion from "./checkAccountVerificaion";
 import verifyAccount from "./verifyAccount";
 import loginUser from "./loginUser";
+import loginAdmin from "./loginAdmin";
 import updateUser from "./updateUser";
 import forgotPassword from "./forgotPassword";
 import resendOTP from "./resendOTP";
@@ -27,6 +28,7 @@ export {
   checkAccountVerificaion,
   verifyAccount,
   loginUser,
+  loginAdmin,
   updateUser,
   forgotPassword,
   resendOTP,

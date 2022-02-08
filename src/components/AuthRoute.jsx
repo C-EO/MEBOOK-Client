@@ -8,6 +8,8 @@ export default connect((state) => state)(function AuthRoute({
   user,
   children,
   path,
+  restrict_to,
+  label,
 }) {
   const [logged, setLogged] = useState(null);
   useEffect(() => {
@@ -16,7 +18,7 @@ export default connect((state) => state)(function AuthRoute({
     } else if (user) {
       if (_.isEmpty(user)) {
         setLogged(null);
-      } else if (!_.isEmpty(user)) {
+      } else if (!_.isEmpty(user) && restrict_to.includes(user.role)) {
         setLogged(true);
       }
     }
@@ -26,7 +28,9 @@ export default connect((state) => state)(function AuthRoute({
     return <LoadWrapper />;
   }
   if (logged === false) {
-    return <Login redirect_to={path}></Login>;
+    return (
+      <Login label={label} restrict_to={restrict_to} redirect_to={path}></Login>
+    );
   }
   if (logged === true) {
     return children;

@@ -9,9 +9,6 @@ import Footer from "./Footer";
 export default function Temp({ children }) {
   return (
     <>
-      <GridTest />
-      <Toast />
-      {/* <Notification /> */}
       <UserInfoBar />
       <AppHeader />
       {children}

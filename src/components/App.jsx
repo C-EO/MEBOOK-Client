@@ -14,14 +14,10 @@ import "../../src/assets/style/index.sass";
 import "../../node_modules/bootstrap/dist/js/bootstrap.bundle";
 
 /// COMPONENTS
-import AppHeader from "./AppHeader";
-import Menu from "./Menu";
 import GridTest from "./GridTest";
 import Notification from "./Notification";
 import P_404 from "./_404";
-import UserInfoBar from "./UserInfoBar";
 import AuthRoute from "./AuthRoute";
-import Footer from "./Footer";
 import Toast from "./Toast";
 import Temp from "./Temp";
 
@@ -36,6 +32,8 @@ import VerifyAccount from "../pages/VerifyAccount";
 import Cart from "../pages/Cart";
 import Wishlist from "../pages/Wishlist";
 import Shop from "../pages/Shop";
+import Admin from "../pages/Admin";
+import Dashboard from "../pages/Dashboard";
 
 const mapStateToProps = (state) => {
   return state;
@@ -47,10 +45,9 @@ export default connect(mapStateToProps, {
   updateUser,
 })(function App({ getAllCategories, getUserData, response, updateUser }) {
   useEffect(() => {
-    reactLocalStorage.getObject("user");
+    // reactLocalStorage.getObject("user");
     (async () => {
       if (!(await getUserData())) {
-        reactLocalStorage.setObject("user", null);
         updateUser(null);
       }
       getAllCategories();
@@ -63,7 +60,7 @@ export default connect(mapStateToProps, {
         getUserData();
       } else if (response?.data?.data?.user) {
         const user = response?.data?.data?.user;
-        reactLocalStorage.setObject("user", user);
+        // reactLocalStorage.setObject("user", user);
         updateUser(user);
       }
     }
@@ -72,6 +69,8 @@ export default connect(mapStateToProps, {
   return (
     <>
       <BrowserRouter>
+        <GridTest />
+        <Toast />
         {/* WEBSITE PAGES ROUTE */}
         <Routes>
           <Route path="/">
@@ -111,7 +110,10 @@ export default connect(mapStateToProps, {
               path="/wishlist"
               element={
                 <Temp>
-                  <AuthRoute path="wishlist">
+                  <AuthRoute
+                    path="wishlist"
+                    restrict_to={["owner", "user", "admin"]}
+                  >
                     <Wishlist />
                   </AuthRoute>
                 </Temp>
@@ -121,7 +123,10 @@ export default connect(mapStateToProps, {
               path="/cart"
               element={
                 <Temp>
-                  <AuthRoute path="cart">
+                  <AuthRoute
+                    path="cart"
+                    restrict_to={["owner", "user", "admin"]}
+                  >
                     <Cart />
                   </AuthRoute>
                 </Temp>
@@ -177,55 +182,41 @@ export default connect(mapStateToProps, {
             />
           </Route>
           {/* ADMIN DASHBOARD ROUTE */}
-          <Route path="/admin">
-            <Route index element={<>ADMIN</>}></Route>
-          </Route>
+          <Route
+            path="/admin/*"
+            element={
+              <AuthRoute
+                label={"log into admin dashboard"}
+                path={"admin/dashboard"}
+                restrict_to={["owner", "admin"]}
+              >
+                <Routes>
+                  <Route index element={<Admin />} />
+                  <Route path="dashboard">
+                    <Route index element={<Dashboard />} />
+                    <Route path="books" element={<>BOOKS</>} />
+                    <Route path="users" element={<>USER</>} />
+                    <Route path="categories" element={<>CATEGORIES</>} />
+                    <Route path="reviews" element={<>REVIEWS</>} />
+                    <Route path="orders" element={<>ORDERS</>} />
+                  </Route>
+                  <Route path="*" element={<P_404 />} />
+                  <Route path="logout" element={<Logout />} />
+                </Routes>
+              </AuthRoute>
+            }
+          ></Route>
         </Routes>
       </BrowserRouter>
     </>
-    // <>
-    //   <BrowserRouter>
-    //     <GridTest />
-    //     <Toast />
-    //     <UserInfoBar />
-    //     <AppHeader />
-    //     <Routes>
-    //       <Route path="/" element={<Home />} />
-    //       <Route path="/login" element={<Login redirect_to=" " />} />
-    //       <Route path="/register" element={<Register />} />
-    //       <Route path="/logout" element={<Logout />} />
-    //       <Route
-    //         path="/wishlist"
-    //         element={
-    //           <AuthRoute path="wishlist">
-    //             <Wishlist />
-    //           </AuthRoute>
-    //         }
-    //       />
-    //       <Route
-    //         path="/cart"
-    //         element={
-    //           <AuthRoute path="cart">
-    //             <Cart />
-    //           </AuthRoute>
-    //         }
-    //       />
-    //       <Route
-    //         path="/verify-account/:userId/:token"
-    //         element={<VerifyAccount />}
-    //       />
-    //       <Route path="/forgot-password" element={<ForgotPassword />} />
-    //       <Route
-    //         path="/reset-password/:userId/:token"
-    //         element={<ResetPassword />}
-    //       />
-    //       <Route path="/shop" element={<Shop />} />
-    //       <Route path="*" element={<P_404 />} />
-    //     </Routes>
-    //     <Menu />
-    //     <Footer />
-    //   </BrowserRouter>
-    //   <BrowserRouter></BrowserRouter>
-    // </>
+    // {
+    // <AuthRoute
+    // label={"log into admin dashboard"}
+    // path="admin/dashboard"
+    // restrict_to={["owner", "admin"]}
+    // >
+    // <>ADMIN</>
+    // </AuthRoute>
+    // }
   );
 });

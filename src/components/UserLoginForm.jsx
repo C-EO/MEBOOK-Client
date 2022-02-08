@@ -1,16 +1,22 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { Field, reduxForm } from "redux-form";
-import { loginUser } from "../redux/actions";
+import { loginUser, loginAdmin } from "../redux/actions";
 import { Link } from "react-router-dom";
 import SubmitBtn from "./SubmitBtn";
 
-const onSubmit = (values, dispatch) => {
-  dispatch(loginUser(values));
+const onSubmit = (values, dispatch, { restrict_to }) => {
+  restrict_to && !restrict_to.includes("user")
+    ? dispatch(loginAdmin(values))
+    : dispatch(loginUser(values));
 };
 
 export default reduxForm({ form: "login-form", onSubmit })(
-  connect((state) => state)(function UserLoginForm({ handleSubmit, response }) {
+  connect((state) => state)(function UserLoginForm({
+    handleSubmit,
+    response,
+    restrict_to,
+  }) {
     const [load, setLoad] = useState(false);
 
     useEffect(() => {
@@ -31,9 +37,17 @@ export default reduxForm({ form: "login-form", onSubmit })(
               <Field
                 component="input"
                 name="email"
-                type="email"
+                type={
+                  restrict_to && !restrict_to.includes("user")
+                    ? "text"
+                    : "email"
+                }
                 className="mebook-input"
-                placeholder="Email"
+                placeholder={
+                  restrict_to && !restrict_to.includes("user")
+                    ? "Username"
+                    : "Email"
+                }
                 autoComplete="username"
                 required
               />
@@ -52,20 +66,26 @@ export default reduxForm({ form: "login-form", onSubmit })(
               />
             </div>
           </div>
-          <div className="row g-0">
-            <div className="col d-flex align-items-center">
-              <Field
-                className="me-2"
-                type="checkbox"
-                component="input"
-                name="keepLogged"
-              />
-              <label>Keep me logged in</label>
+          {restrict_to && !restrict_to.includes("user") ? (
+            <div className="row g-0">
+              <div className="col text-center">You know how to login 😉</div>
             </div>
-            <div className="col text-end">
-              <Link to={"/forgot-password"}>Forgot Password?</Link>
+          ) : (
+            <div className="row g-0">
+              <div className="col d-flex align-items-center">
+                <Field
+                  className="me-2"
+                  type="checkbox"
+                  component="input"
+                  name="keepLogged"
+                />
+                <label>Keep me logged in</label>
+              </div>
+              <div className="col text-end">
+                <Link to={"/forgot-password"}>Forgot Password?</Link>
+              </div>
             </div>
-          </div>
+          )}
           <div className="row g-0">
             <div className="col">
               <SubmitBtn value={"login"} load={load} />
