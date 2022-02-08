@@ -12,9 +12,9 @@ export default connect((state) => state)(function HeraderMob({ user }) {
         <div className="container">
           <div className="row align-items-center">
             <div className="col-2">
-              <button>
-                <i className="fal fa-align-left"></i>
-              </button>
+              <Link to="/shop">
+                <i class="fal fa-store"></i>
+              </Link>
             </div>
             <div className="col-8 text-center">
               <div className="app-brand  d-flex justify-content-center align-items-center">
