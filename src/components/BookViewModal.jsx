@@ -4,6 +4,7 @@ import "../assets/style/book_view_modal.sass";
 import _ from "lodash";
 import { clearBookQuickView, addBookToCart } from "../redux/actions";
 import SubmitBtn from "./SubmitBtn";
+import QuantityInput from "./QuantityInput";
 
 export default connect((state) => state, { clearBookQuickView, addBookToCart })(
   function BookViewModal({
@@ -18,6 +19,7 @@ export default connect((state) => state, { clearBookQuickView, addBookToCart })(
 
     useEffect(() => {
       if (!_.isEmpty(book_quick_view)) {
+        setquantity(1);
         setshow(true);
       }
     }, [book_quick_view]);
@@ -65,20 +67,13 @@ export default connect((state) => state, { clearBookQuickView, addBookToCart })(
                       ? `${book_quick_view?.quantity} in stock`
                       : "out of stock"}
                   </p>
-                  <div className="add-to-cart-area d-flex">
-                    <input
-                      type="number"
+                  <div className="add-to-cart-area d-flex align-items-center">
+                    <QuantityInput
+                      className={"me-2"}
                       value={quantity}
-                      name=""
-                      id=""
                       min={1}
                       max={book_quick_view?.quantity}
-                      style={{
-                        textAlign: "center",
-                        marginRight: "1rem",
-                        width: "200px",
-                      }}
-                      onChange={(e) => setquantity(e.target.value)}
+                      onChange={setquantity}
                     />
                     <SubmitBtn
                       value={"ADD TO CART"}

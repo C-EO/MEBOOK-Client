@@ -31,6 +31,7 @@ import ResetPassword from "../pages/ResetPassword";
 import VerifyAccount from "../pages/VerifyAccount";
 import Cart from "../pages/Cart";
 import Wishlist from "../pages/Wishlist";
+import Checkout from "../pages/Checkout";
 import Shop from "../pages/Shop";
 import Admin from "../pages/Admin";
 import Dashboard from "../pages/Dashboard";
@@ -71,6 +72,7 @@ export default connect(mapStateToProps, {
       <BrowserRouter>
         <GridTest />
         <Toast />
+        {/* <Notification /> */}
         {/* WEBSITE PAGES ROUTE */}
         <Routes>
           <Route path="/">
@@ -128,6 +130,19 @@ export default connect(mapStateToProps, {
                     restrict_to={["owner", "user", "admin"]}
                   >
                     <Cart />
+                  </AuthRoute>
+                </Temp>
+              }
+            />
+            <Route
+              path="/checkout"
+              element={
+                <Temp>
+                  <AuthRoute
+                    path="checkout"
+                    restrict_to={["owner", "user", "admin"]}
+                  >
+                    <Checkout />
                   </AuthRoute>
                 </Temp>
               }

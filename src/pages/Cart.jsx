@@ -3,9 +3,12 @@ import { connect } from "react-redux";
 import EmptyCart from "../components/EmptyCart";
 import "../assets/style/cart_page.sass";
 import CartItem from "../components/CartItem";
+import SubmitBtn from "../components/SubmitBtn";
+import { Link, useNavigate } from "react-router-dom";
 
 export default connect((state) => state)(function Cart({ user }) {
   const [cartItems, setcartItems] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     document.title = "MEBOOK | Cart";
@@ -15,7 +18,7 @@ export default connect((state) => state)(function Cart({ user }) {
     setcartItems(user?.cart?.items);
   }, [user?.cart?.items]);
 
-  if (!user.cart.items_count) {
+  if (!user?.cart?.items_count) {
     return <EmptyCart />;
   }
   return (
@@ -24,7 +27,7 @@ export default connect((state) => state)(function Cart({ user }) {
         <div className="container py-5">
           <div className="row mb-4">
             <p className="cart-heading">
-              SHOPPING CART ({user.cart.items_count})
+              SHOPPING CART ({user?.cart?.items_count})
             </p>
           </div>
           <div className="row">
@@ -40,7 +43,7 @@ export default connect((state) => state)(function Cart({ user }) {
                 </div>
                 <div className="container items-container">
                   {cartItems.reverse().map((item) => {
-                    return <CartItem key={item._id} item={item} />;
+                    return <CartItem key={item?._id} item={item} />;
                   })}
                 </div>
                 <div className="container py-3 cart-actions-area">
@@ -57,17 +60,58 @@ export default connect((state) => state)(function Cart({ user }) {
                             name="coupon"
                             placeholder="coupon code"
                           />
-                          <button type="submit">Apply Coupon</button>
+                          <SubmitBtn value={"Apply Coupon"} />
                         </form>
                       </div>
                     </div>
-                    {/* <div className="col-6">SUBTOTAL</div> */}
+                    <div className="col-6">
+                      <Link to={"/shop"}>Continue Shopping</Link>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
             <div className="col-12 col-lg-4">
-              {/* <div className="checkout-area">...</div> */}
+              <div className="checkout-area">
+                <div className="container cart-info py-3">
+                  <span className="cart-total-head">CART TOTALS</span>
+                </div>
+                <div className="container">
+                  <div className="row align-item-center my-4">
+                    <div className="col-6 cart-info-item ">items : </div>
+                    <div className="col-6 cart-info-value">
+                      {user?.cart?.items_count}
+                    </div>
+                  </div>
+                  <div className="row align-item-center my-4">
+                    <div className="col-6 cart-info-item ">subtotal : </div>
+                    <div className="col-6 cart-info-value subtotal_price">
+                      ${user?.cart?.total.toFixed(2)}
+                    </div>
+                  </div>
+                  <div className="row align-item-center my-4">
+                    <div className="col-6 cart-info-item ">discount : </div>
+                    <div className="col-6 cart-info-value discount">
+                      - $0.00
+                    </div>
+                  </div>
+                  <div className="row align-item-center my-4">
+                    <div className="col-6 cart-info-item">total : </div>
+                    <div className="col-6 cart-info-value total_price">
+                      ${user?.cart?.total.toFixed(2)}
+                    </div>
+                  </div>
+                  <div className="row align-item-center my-4">
+                    <div className="col">
+                      <SubmitBtn
+                        value={"Proceed to checkout"}
+                        type
+                        onClick={() => navigate("/checkout")}
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>

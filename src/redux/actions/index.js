@@ -23,6 +23,7 @@ import addBookToCart from "./addBookToCart";
 import removeBookFromCart from "./removeBookFromCart";
 import getUserData from "./getUserData";
 import getCategoryBooks from "./getCategoryBooks";
+import setCustomAlert from "./setCustomAlert";
 export {
   registerUser,
   checkAccountVerificaion,
@@ -49,4 +50,5 @@ export {
   getUserData,
   filterByRate,
   getCategoryBooks,
+  setCustomAlert,
 };

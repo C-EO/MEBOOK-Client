@@ -13,7 +13,7 @@ export default connect((state) => state)(function HeraderMob({ user }) {
           <div className="row align-items-center">
             <div className="col-2">
               <Link to="/shop">
-                <i class="fal fa-store"></i>
+                <i className="fal fa-store"></i>
               </Link>
             </div>
             <div className="col-8 text-center">

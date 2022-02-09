@@ -1,10 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import logo from "../assets/img/brand/logo256.svg";
 import "../assets/style/menu.sass";
 import { connect } from "react-redux";
+import { setCustomAlert } from "../redux/actions";
 
-export default connect((state) => state)(function Menu({ categories }) {
+export default connect((state) => state, { setCustomAlert })(function Menu({
+  categories,
+  setCustomAlert,
+}) {
   return (
     <div id="footer-menu">
       <div className="container py-5">
@@ -37,7 +41,7 @@ export default connect((state) => state)(function Menu({ categories }) {
                       <i className="fal me-2 fa-envelope"></i>
                       email:
                     </span>
-                    mebook@info.fake
+                    <a href="mailto:mmm066550@gmail.com">mmm066550@gmail.com</a>
                   </p>
                 </li>
                 <li className="menu-list-item">
@@ -127,7 +131,10 @@ export default connect((state) => state)(function Menu({ categories }) {
                 <li className="menu-list-item">
                   Sign up for our latest news and offers:
                   <form
-                    onSubmit={(e) => e.preventDefault()}
+                    onSubmit={(e) => {
+                      e.preventDefault();
+                      setCustomAlert("info", "newsletter not implemented yet");
+                    }}
                     className="my-4 newsletter-form"
                   >
                     <input

@@ -41,13 +41,11 @@ export default connect(mapStateToProps, {
   useEffect(() => {
     if (category === "load") {
       setState("load");
-    }
-    if (!category) {
+    } else if (category === undefined) {
       setState("404");
-    }
-    if (category === "shop") {
+    } else if (category === "shop") {
       setState("main-shop");
-    } else {
+    } else if (category && category !== undefined) {
       setState("category-shop");
     }
   }, [category]);
@@ -57,12 +55,10 @@ export default connect(mapStateToProps, {
     setpage(2);
     if (state === "load") {
       document.title = `MEBOOK | Please wait!`;
-    }
-    if (category === "shop" && state === "main-shop") {
+    } else if (category === "shop" && state === "main-shop") {
       document.title = `MEBOOK | Shop`;
       getAllBooks({ page: 1 });
-    }
-    if (state === "category-shop") {
+    } else if (state === "category-shop") {
       if (category?._id) {
         document.title = `MEBOOK | ${category?.title}`;
         getCategoryBooks({ id: category?._id, page: 1 });
@@ -75,35 +71,35 @@ export default connect(mapStateToProps, {
   }, [books]);
 
   if (state === "load") return <LoadWrapper />;
-  if (state === "404") return <_404 />;
-
-  return (
-    <div id="app-shop">
-      <Modal>
-        <BookViewModal></BookViewModal>
-      </Modal>
-      <div className="container py-5">
-        <div className="row">
-          <div className="col-12 col-md-6 col-lg-4 col-xl-3">
-            <ShopSidebar categories={categories} />
-          </div>
-          <div className="col-12 col-md-6 col-lg-8 col-xl-9">
-            <ShopBooksContainer
-              loadMore={
-                state === "main-shop"
-                  ? () => {
-                      setpage(page + 1);
-                      getAllBooks({ page });
-                    }
-                  : () => {
-                      setpage(page + 1);
-                      getCategoryBooks({ id: category?._id, page });
-                    }
-              }
-            />
+  else if (state === "404") return <_404 />;
+  else
+    return (
+      <div id="app-shop">
+        <Modal>
+          <BookViewModal></BookViewModal>
+        </Modal>
+        <div className="container py-5">
+          <div className="row">
+            <div className="col-12 col-md-6 col-lg-4 col-xl-3">
+              <ShopSidebar categories={categories} />
+            </div>
+            <div className="col-12 col-md-6 col-lg-8 col-xl-9">
+              <ShopBooksContainer
+                loadMore={
+                  state === "main-shop"
+                    ? () => {
+                        setpage(page + 1);
+                        getAllBooks({ page });
+                      }
+                    : () => {
+                        setpage(page + 1);
+                        getCategoryBooks({ id: category?._id, page });
+                      }
+                }
+              />
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  );
+    );
 });

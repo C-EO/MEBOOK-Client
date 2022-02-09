@@ -1,4 +1,7 @@
 const notification = (msg = {}, action) => {
+  if (action.type === "SET_CUSTOM_ALERT") {
+    return { ...action.payload };
+  }
   if (action.type === "REGISTER_USER") {
     return { ...action.payload.data };
   }

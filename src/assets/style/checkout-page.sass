@@ -1,0 +1,50 @@
+@import './variables'
+
+// #checkout-page-area
+.cart-summary
+    border: 1px solid $border_color
+    .items-container
+        max-height: 520px
+        overflow-y: scroll
+    p.title
+        font-weight: 600
+        text-transform: uppercase
+        font-size: 1rem
+    .cart-item-row
+        .product
+            display: flex
+            .product-img
+                background: red
+                width: 60px
+                height: 90px
+                margin-right: 1rem
+            .product-info
+                display: flex
+                flex-direction: column
+                .product-title
+                    font-weight: 500
+                    color: $skyblue
+                    line-height: 20px
+                .product-quantity
+                    font-size: 12px
+                    font-weight: 500
+        .product-subtotal
+            font-weight: 500
+            font-size: 1rem
+            color: $orange
+    .info-item
+        display: flex
+        padding: 2rem 0
+        justify-content: space-between
+        border-top: 1px solid $border_color
+        .info-label
+            font-weight: 600
+            text-transform: capitalize
+            font-weight: 1.25rem
+        .total
+            font-weight: 600
+            font-size: 1.5rem
+            color: $skyblue
+        .discount
+            color: var(--bs-red)
+

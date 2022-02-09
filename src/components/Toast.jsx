@@ -26,14 +26,14 @@ export default connect((state) => state)(function Toast({ notification }) {
       TransitionComponent={GrowTransition}
       open={open}
       anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
-      autoHideDuration={3000}
+      autoHideDuration={4000}
       onClose={() => {
         setOpen(false);
       }}
     >
       <Alert
         sx={{
-          width: "320px",
+          width: "360px",
           fontSize: "14px",
           fontWeight: "400",
           fontFamily: "poppins",
