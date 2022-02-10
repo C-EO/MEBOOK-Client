@@ -5,8 +5,12 @@ import "../assets/style/cart_page.sass";
 import CartItem from "../components/CartItem";
 import SubmitBtn from "../components/SubmitBtn";
 import { Link, useNavigate } from "react-router-dom";
+import { setCustomAlert } from "../redux/actions";
 
-export default connect((state) => state)(function Cart({ user }) {
+export default connect((state) => state, { setCustomAlert })(function Cart({
+  user,
+  setCustomAlert,
+}) {
   const [cartItems, setcartItems] = useState([]);
   const navigate = useNavigate();
 
@@ -53,6 +57,10 @@ export default connect((state) => state)(function Cart({ user }) {
                         <form
                           onSubmit={(e) => {
                             e.preventDefault();
+                            setCustomAlert(
+                              "error",
+                              "discount coupons not implemented yet"
+                            );
                           }}
                         >
                           <input

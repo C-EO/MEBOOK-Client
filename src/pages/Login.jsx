@@ -20,7 +20,7 @@ export default connect((state) => state)(function Login({
   useEffect(() => {
     if (
       response.status === 200 &&
-      response.data.msg === "logged in successfully ✅."
+      response.data.msg === "Logged in successfully ✅"
     ) {
       navigate(`/${redirect_to}`);
     }

@@ -5,5 +5,5 @@ export default function Dashboard() {
     document.title = `MEBOOK | Dashboard`;
   }, []);
 
-  return <>asasas</>;
+  return <>ADMIN DASHBOARD</>;
 }

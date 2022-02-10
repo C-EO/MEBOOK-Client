@@ -68,7 +68,9 @@ export default reduxForm({ form: "login-form", onSubmit })(
           </div>
           {restrict_to && !restrict_to.includes("user") ? (
             <div className="row g-0">
-              <div className="col text-center">You know how to login 😉</div>
+              <div className="col text-center">
+                You know how to login as "admin" 😉
+              </div>
             </div>
           ) : (
             <div className="row g-0">

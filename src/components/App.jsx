@@ -44,7 +44,7 @@ export default connect(mapStateToProps, {
   getAllCategories,
   getUserData,
   updateUser,
-})(function App({ getAllCategories, getUserData, response, updateUser }) {
+})(function App({ getAllCategories, getUserData, response, updateUser, user }) {
   useEffect(() => {
     // reactLocalStorage.getObject("user");
     (async () => {
@@ -142,7 +142,7 @@ export default connect(mapStateToProps, {
                     path="checkout"
                     restrict_to={["owner", "user", "admin"]}
                   >
-                    <Checkout />
+                    <Checkout user={user} />
                   </AuthRoute>
                 </Temp>
               }
@@ -224,14 +224,5 @@ export default connect(mapStateToProps, {
         </Routes>
       </BrowserRouter>
     </>
-    // {
-    // <AuthRoute
-    // label={"log into admin dashboard"}
-    // path="admin/dashboard"
-    // restrict_to={["owner", "admin"]}
-    // >
-    // <>ADMIN</>
-    // </AuthRoute>
-    // }
   );
 });

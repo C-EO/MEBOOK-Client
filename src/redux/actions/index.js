@@ -24,6 +24,7 @@ import removeBookFromCart from "./removeBookFromCart";
 import getUserData from "./getUserData";
 import getCategoryBooks from "./getCategoryBooks";
 import setCustomAlert from "./setCustomAlert";
+import placeNewOrder from "./placeNewOrder";
 export {
   registerUser,
   checkAccountVerificaion,
@@ -51,4 +52,5 @@ export {
   filterByRate,
   getCategoryBooks,
   setCustomAlert,
+  placeNewOrder,
 };

@@ -1,20 +1,20 @@
 import api from "../../api/api";
 
-const removeBookFromCart = (data) => {
+const placeNewOrder = (data) => {
   return async (dispatch) => {
     try {
-      const res = await api.post(`/books/remove_from_cart`, data);
+      const res = await api.post(`/orders/new`, data);
       dispatch({
-        type: "REMOVE_ITEM_FROM_CART",
+        type: "PLACE_NEW_ORDER",
         payload: res,
       });
     } catch (error) {
       dispatch({
-        type: "REMOVE_ITEM_FROM_CART",
+        type: "PLACE_NEW_ORDER",
         payload: error.response,
       });
     }
   };
 };
 
-export default removeBookFromCart;
+export default placeNewOrder;

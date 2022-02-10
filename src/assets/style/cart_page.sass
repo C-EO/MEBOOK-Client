@@ -12,11 +12,11 @@
             border-bottom: 1px solid $border_color
             text-transform: uppercase
             font-weight: 600
+            overflow-y: scroll
         .items-container
             border-bottom: 1px solid $border_color
             max-height: calc(153px * 3)
             overflow-y: scroll
-            padding-right: 20px
         .cart-actions-area
             .apply-coupon-form
                 form
@@ -27,6 +27,8 @@
                         border: 1px solid $border_color
                         padding: 0.75rem
                         margin-right: 5px
+                        &:focus
+                            outline: none
                     button
                         width: 250px
             a

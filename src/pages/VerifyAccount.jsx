@@ -46,7 +46,7 @@ export default connect(mapStateToProps, { checkAccountVerificaion, resendOTP })(
 
     useEffect(() => {
       if (notification) {
-        if (notification?.msg === "your account verified successfully ✅.") {
+        if (notification?.msg === "Your account verified successfully ✅") {
           navigate(`/`);
         }
       }

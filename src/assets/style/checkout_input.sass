@@ -1,0 +1,26 @@
+@import './variables'
+
+.checkout-input-field
+    display: flex
+    flex-direction: column
+    margin-bottom: 3rem
+    .required
+        color: red
+    label,input
+        all: unset
+        display: flex
+    label
+        margin-bottom: 0.5em
+    input,textarea
+        transition: border-color .2s
+        padding: .75rem 1rem
+        border-bottom: 2px solid $border_color
+        background: $form_bg
+        &:focus
+            border-bottom: 2px solid $skyblue
+    textarea
+        outline : none
+        border: 0
+        border-bottom: 2px solid $border_color
+
+    

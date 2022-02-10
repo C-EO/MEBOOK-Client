@@ -20,6 +20,8 @@ export default connect((state) => state)(function AuthRoute({
         setLogged(null);
       } else if (!_.isEmpty(user) && restrict_to.includes(user.role)) {
         setLogged(true);
+      } else if (!restrict_to.includes(user.role)) {
+        setLogged(false);
       }
     }
   }, [user]);
