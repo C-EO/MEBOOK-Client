@@ -25,6 +25,7 @@ import getUserData from "./getUserData";
 import getCategoryBooks from "./getCategoryBooks";
 import setCustomAlert from "./setCustomAlert";
 import placeNewOrder from "./placeNewOrder";
+import getSubCategoryBooks from "./getSubCategoryBooks";
 export {
   registerUser,
   checkAccountVerificaion,
@@ -53,4 +54,5 @@ export {
   getCategoryBooks,
   setCustomAlert,
   placeNewOrder,
+  getSubCategoryBooks,
 };

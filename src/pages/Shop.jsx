@@ -2,7 +2,12 @@ import React, { useEffect, useState } from "react";
 import ShopSidebar from "../components/ShopSidebar";
 import ShopBooksContainer from "../components/ShopBooksContainer";
 import { connect } from "react-redux";
-import { getAllBooks, updateList, getCategoryBooks } from "../redux/actions";
+import {
+  getAllBooks,
+  updateList,
+  getCategoryBooks,
+  getSubCategoryBooks,
+} from "../redux/actions";
 import Modal from "../components/Modal";
 import BookViewModal from "../components/BookViewModal";
 import { useParams } from "react-router-dom";
@@ -18,6 +23,7 @@ export default connect(mapStateToProps, {
   updateList,
   clear,
   getCategoryBooks,
+  getSubCategoryBooks,
 })(function Shop({
   getAllBooks,
   categories,
@@ -25,23 +31,34 @@ export default connect(mapStateToProps, {
   updateList,
   clear,
   getCategoryBooks,
+  getSubCategoryBooks,
 }) {
   const [state, setState] = useState("load");
   const [category, setCategory] = useState("load");
   const [page, setpage] = useState(2);
-  const { catId } = useParams();
+  const { catId, subCatId } = useParams();
   useEffect(() => {
-    if (!catId) {
-      setCategory("shop");
-    } else {
+    if (subCatId) {
       if (_.isEmpty(categories)) {
         setCategory("load");
       } else {
-        setCategory(categories?.find((el) => el.slug === catId));
+        const mainCategory = categories
+          ?.find((el) => el.slug === catId)
+          .sub_categories.find((el) => el.slug === subCatId);
+        setCategory(mainCategory);
+      }
+    } else {
+      if (!catId) {
+        setCategory("shop");
+      } else {
+        if (_.isEmpty(categories)) {
+          setCategory("load");
+        } else {
+          setCategory(categories?.find((el) => el.slug === catId));
+        }
       }
     }
-    console.log(category);
-  }, [categories, catId]);
+  }, [categories, catId, subCatId]);
 
   useEffect(() => {
     if (category === "load") {
@@ -49,11 +66,11 @@ export default connect(mapStateToProps, {
     } else if (category === "shop") {
       setState("main-shop");
     } else if (category && category !== undefined) {
-      setState("category-shop");
+      if (!subCatId) setState("category-shop");
+      else if (subCatId) setState("sub_category-shop");
     } else if (category === undefined) {
       setState("404");
     }
-    console.log(category);
   }, [category, categories]);
 
   useEffect(() => {
@@ -68,6 +85,11 @@ export default connect(mapStateToProps, {
       if (category?._id) {
         document.title = `MEBOOK | ${upperFirst(category?.title)}`;
         getCategoryBooks({ id: category?._id, page: 1 });
+      }
+    } else if (state === "sub_category-shop") {
+      if (category?._id) {
+        document.title = `MEBOOK | ${upperFirst(category?.title)}`;
+        getSubCategoryBooks({ id: category?._id, page: 1 });
       }
     }
   }, [state, category]);

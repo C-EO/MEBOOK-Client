@@ -5,6 +5,9 @@ const booksLength = (length = 0, action) => {
   if (action.type === "GET_CATEGORY_BOOKS") {
     return action.payload.data.count;
   }
+  if (action.type === "GET_SUB_CATEGORY_BOOKS") {
+    return action.payload.data.count;
+  }
   if (action.type === "CLEAR") {
     return 0;
   }

@@ -111,6 +111,7 @@ export default connect(mapStateToProps, {
             return (
               <div key={year} className="year-item">
                 <input
+                  className="mebook-select-input"
                   type="checkbox"
                   onChange={(e) => {
                     if (e.target.checked) {
@@ -137,6 +138,7 @@ export default connect(mapStateToProps, {
             return (
               <div key={rate} className="rate-item">
                 <input
+                  className="mebook-select-input"
                   type="checkbox"
                   onChange={(e) => {
                     if (e.target.checked) {

@@ -209,6 +209,14 @@ export default connect(mapStateToProps, {
                 </Temp>
               }
             />
+            <Route
+              path={"/shop/category/:catId/:subCatId"}
+              element={
+                <Temp>
+                  <Shop />
+                </Temp>
+              }
+            />
           </Route>
           {/* ADMIN DASHBOARD ROUTE */}
           <Route

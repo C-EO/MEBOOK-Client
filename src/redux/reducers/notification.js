@@ -14,9 +14,9 @@ const notification = (msg = {}, action) => {
   if (action.type === "LOGIN_ADMIN") {
     return { ...action.payload.data };
   }
-  if (action.type === "LOGOUT_USER") {
-    return { ...action.payload.data };
-  }
+  // if (action.type === "LOGOUT_USER") {
+  // return { ...action.payload.data };
+  // }
   if (action.type === "RESEND_VERIFICATION_OTP") {
     return { ...action.payload.data };
   }

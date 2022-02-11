@@ -76,7 +76,19 @@
                         border-radius: .25rem
                         &:hover
                             background: $skyblue
-
+    .swiper-pagination
+        display: flex
+        align-items: center
+        justify-content: center
+        margin-bottom: 1rem
+        transform: rotate(180deg)
+        .swiper-pagination-bullet
+            transition: .5s
+            border-radius: 0
+            width: 50px
+            height: 2px
+        .swiper-pagination-bullet-active
+            height: 4px
 
 @media screen  and (min-width: 991px )
     .home-hero-swiper

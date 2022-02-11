@@ -30,8 +30,26 @@
         margin: .75rem 0
         &:last-of-type
             margin-bottom: 0
-        input
-            margin-right: 1rem
-            width: 15px
-            height: 15px
+        .mebook-select-input
+            all: unset
+            cursor: pointer
+            margin-right: .75rem
+            width: 14px
+            height: 14px
+            border: 1px solid $skyblue
+            border-radius: 50%
+            position: relative
+            &:checked
+                background: $skyblue
+                &::after
+                    font-family: "Font Awesome 5 Pro"
+                    font-weight: 600
+                    color: $text_white !important
+                    font-size: 10px
+                    content: "\f00c"
+                    position: absolute
+                    color: red
+                    left: 50%
+                    top: 50%
+                    transform: translate(-50%,-50%)
    
