@@ -35,7 +35,7 @@ export default connect((state) => state, { setCustomAlert })(function Cart({
             </p>
           </div>
           <div className="row">
-            <div className="col-12 col-lg-8">
+            <div className="col-12 col-lg-9">
               <div className="cart-items-table">
                 <div className="container py-3 cart-item-labels">
                   <div className="row">
@@ -72,14 +72,14 @@ export default connect((state) => state, { setCustomAlert })(function Cart({
                         </form>
                       </div>
                     </div>
-                    <div className="col-6">
+                    <div className="col-6 mt-3 m-md-0">
                       <Link to={"/shop"}>Continue Shopping</Link>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-            <div className="col-12 col-lg-4">
+            <div className="col-12 col-lg-3 mt-5 m-lg-0">
               <div className="checkout-area">
                 <div className="container cart-info py-3">
                   <span className="cart-total-head">CART TOTALS</span>

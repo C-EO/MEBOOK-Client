@@ -6,7 +6,7 @@ import { getAllBooks, updateList, getCategoryBooks } from "../redux/actions";
 import Modal from "../components/Modal";
 import BookViewModal from "../components/BookViewModal";
 import { useParams } from "react-router-dom";
-import _ from "lodash";
+import _, { upperFirst } from "lodash";
 import { clear } from "../redux/actions";
 import LoadWrapper from "../components/LoadWrapper";
 import _404 from "../components/_404";
@@ -31,24 +31,30 @@ export default connect(mapStateToProps, {
   const [page, setpage] = useState(2);
   const { catId } = useParams();
   useEffect(() => {
-    if (catId) {
-      setCategory(categories?.find((el) => el.slug === catId));
-    } else {
+    if (!catId) {
       setCategory("shop");
+    } else {
+      if (_.isEmpty(categories)) {
+        setCategory("load");
+      } else {
+        setCategory(categories?.find((el) => el.slug === catId));
+      }
     }
-  }, [catId, categories]);
+    console.log(category);
+  }, [categories, catId]);
 
   useEffect(() => {
     if (category === "load") {
       setState("load");
-    } else if (category === undefined) {
-      setState("404");
     } else if (category === "shop") {
       setState("main-shop");
     } else if (category && category !== undefined) {
       setState("category-shop");
+    } else if (category === undefined) {
+      setState("404");
     }
-  }, [category]);
+    console.log(category);
+  }, [category, categories]);
 
   useEffect(() => {
     clear();
@@ -60,7 +66,7 @@ export default connect(mapStateToProps, {
       getAllBooks({ page: 1 });
     } else if (state === "category-shop") {
       if (category?._id) {
-        document.title = `MEBOOK | ${category?.title}`;
+        document.title = `MEBOOK | ${upperFirst(category?.title)}`;
         getCategoryBooks({ id: category?._id, page: 1 });
       }
     }

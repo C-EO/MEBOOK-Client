@@ -38,7 +38,7 @@ export default reduxForm({ form: "checkout-form", onSubmit })(
     }
     return (
       <div id="checkout-page-area">
-        <div className="container py-5">
+        <div className="container py-3 py-lg-5">
           <form
             onSubmit={(e) => {
               setLoad(true);
@@ -47,11 +47,11 @@ export default reduxForm({ form: "checkout-form", onSubmit })(
             }}
           >
             <div className="row">
-              <div className="col-8 py-4">
+              <div className="col-12 col-lg-8 py-3 py-lg-4">
                 <h4 className="mb-5">Billing Details</h4>
                 <div className="container p-0">
                   <div className="row">
-                    <div className="col-6">
+                    <div className="col-12 col-md-6">
                       <Field
                         inputText
                         name="firstName"
@@ -61,7 +61,7 @@ export default reduxForm({ form: "checkout-form", onSubmit })(
                         type="text"
                       />
                     </div>
-                    <div className="col-6">
+                    <div className="col-12 col-md-6">
                       <Field
                         inputText
                         name="lastName"
@@ -72,7 +72,7 @@ export default reduxForm({ form: "checkout-form", onSubmit })(
                         label="Last Name"
                       />
                     </div>
-                    <div className="col-6">
+                    <div className="col-12 col-md-6">
                       <Field
                         inputText
                         name="address"
@@ -83,7 +83,7 @@ export default reduxForm({ form: "checkout-form", onSubmit })(
                         required
                       />
                     </div>
-                    <div className="col-6">
+                    <div className="col-12 col-md-6">
                       <Field
                         inputText
                         name="city"
@@ -93,7 +93,7 @@ export default reduxForm({ form: "checkout-form", onSubmit })(
                         required
                       />
                     </div>
-                    <div className="col-6">
+                    <div className="col-12 col-md-6">
                       <Field
                         inputText
                         name="postCode"
@@ -103,7 +103,7 @@ export default reduxForm({ form: "checkout-form", onSubmit })(
                         type="postal-code"
                       />
                     </div>
-                    <div className="col-6">
+                    <div className="col-12 col-md-6">
                       <Field
                         inputText
                         name="phone"
@@ -144,7 +144,7 @@ export default reduxForm({ form: "checkout-form", onSubmit })(
                   </div>
                 </div>
               </div>
-              <div className="col-4 py-4">
+              <div className="col-12 col-lg-4 pb-5 py-lg-4">
                 <div className="cart-summary">
                   <div className="container pt-4">
                     <p className="title">Product</p>

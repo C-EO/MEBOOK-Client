@@ -35,6 +35,7 @@ import Checkout from "../pages/Checkout";
 import Shop from "../pages/Shop";
 import Admin from "../pages/Admin";
 import Dashboard from "../pages/Dashboard";
+import Account from "../pages/Account";
 
 const mapStateToProps = (state) => {
   return state;
@@ -130,6 +131,19 @@ export default connect(mapStateToProps, {
                     restrict_to={["owner", "user", "admin"]}
                   >
                     <Cart />
+                  </AuthRoute>
+                </Temp>
+              }
+            />
+            <Route
+              path="/account"
+              element={
+                <Temp>
+                  <AuthRoute
+                    path="account"
+                    restrict_to={["owner", "user", "admin"]}
+                  >
+                    <Account />
                   </AuthRoute>
                 </Temp>
               }
