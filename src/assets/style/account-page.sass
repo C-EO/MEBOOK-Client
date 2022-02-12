@@ -27,7 +27,7 @@
                         height: 96px
                         border-radius: 50%
                         overflow: hidden
-                    button
+                    .update-avatar-btn
                         all: unset
                         cursor: pointer
                         position: absolute
@@ -36,7 +36,8 @@
                         border-radius: 50%
                         padding: 3px
                         background: $bg_white
-                        span
+                        label
+                            all: unset
                             color: $text_white
                             display: flex
                             justify-content: center
@@ -45,12 +46,7 @@
                             border-radius: 50%
                             width: 30px
                             height: 30px
-                            &::after
-                                content: '\f304'
-                                font-family: 'Font Awesome 5 Pro'
-                                font-weight: 300
-                        &:hover
-                            span
+                            &:hover
                                 background: $skyblue 
                 .user-fullname
                     padding-top: 1.25rem

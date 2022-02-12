@@ -1,11 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import "../assets/style/account-page.sass";
 import avatar from "../assets/img/avatar.png";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { upperFirst } from "lodash";
-
+import { updateAvatar } from "../redux/actions";
+import LoadSpinner from "../components/LoadSpinner";
 const routes = [
   { name: "account", path: "/account", icon: "user" },
   { name: "orders", path: "/account/orders", icon: "box" },
@@ -14,14 +15,20 @@ const routes = [
 ];
 
 const mapStateToProps = (state) => state;
-const mapDispatchToProps = {};
+const mapDispatchToProps = { updateAvatar };
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(function Account({ user, children }) {
+)(function Account({ user, children, response, updateAvatar }) {
   const [path, setPath] = useState("");
+  const [load, setLoad] = useState(false);
   const location = useLocation();
+  const input = useRef(null);
+
+  useEffect(() => {
+    setLoad(false);
+  }, [response]);
 
   useEffect(() => {
     setPath(location?.pathname?.split("/")[2] || "account");
@@ -46,12 +53,40 @@ export default connect(
                       <div className="user_summary">
                         <div className="user-avatar">
                           <img src={user?.avatar || avatar} alt="user-avatar" />
-                          <button
-                            className="update-avatar-btn"
-                            title="Update your avatar"
+                          <form
+                            formEncType="multipart/form-data"
+                            onChange={(e) => {
+                              setLoad(true);
+                              e.preventDefault();
+                              const form = new FormData();
+                              form.append("avatar", input.current.files[0]);
+                              updateAvatar(form);
+                            }}
                           >
-                            <span></span>
-                          </button>
+                            <div
+                              className="update-avatar-btn"
+                              title="Update your avatar"
+                            >
+                              <label htmlFor="avatar">
+                                {load ? (
+                                  <LoadSpinner size={15} />
+                                ) : (
+                                  <i className="fal fa-pen"></i>
+                                )}
+                              </label>
+                              <input
+                                className="d-none"
+                                id="avatar"
+                                ref={input}
+                                type="file"
+                                accept="image/*"
+                                name="avatar"
+                                onChange={(e) => {
+                                  setLoad(true);
+                                }}
+                              />
+                            </div>
+                          </form>
                         </div>
                         <div className="user-fullname">
                           {user?.firstName} {user?.lastName}

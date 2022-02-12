@@ -26,6 +26,7 @@ import getCategoryBooks from "./getCategoryBooks";
 import setCustomAlert from "./setCustomAlert";
 import placeNewOrder from "./placeNewOrder";
 import getSubCategoryBooks from "./getSubCategoryBooks";
+import updateAvatar from "./updateAvatar";
 export {
   registerUser,
   checkAccountVerificaion,
@@ -55,4 +56,5 @@ export {
   setCustomAlert,
   placeNewOrder,
   getSubCategoryBooks,
+  updateAvatar,
 };

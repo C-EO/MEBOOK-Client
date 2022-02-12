@@ -5,6 +5,9 @@ const response = (res = {}, action) => {
   if (action.type === "ADD_ITEM_TO_CART") {
     return { ...res, ...action.payload };
   }
+  if (action.type === "UPDATE_USER_AVATAR") {
+    return { ...res, ...action.payload };
+  }
   if (action.type === "PLACE_NEW_ORDER") {
     return { ...res, ...action.payload };
   }
