@@ -21,6 +21,7 @@ export default connect(mapStateToProps, {
   filterByPrice,
   filterByYear,
   filterByRate,
+  booksLength,
 }) {
   const [min, setmin] = useState(0);
   const [max, setmax] = useState(0.1);
@@ -90,47 +91,51 @@ export default connect(mapStateToProps, {
         </Accordion>
       </ShopFilterItem>
       {/* ////////////////////////////////////////////////////// */}
-      <ShopFilterItem label={"price"}>
-        <InputRange
-          maxValue={max}
-          minValue={min}
-          value={value}
-          onChange={(value) => {
-            setValue(value);
-            filterByPrice(books, value);
-          }}
-        />
-        <span className="price-range">
-          Range : {`$${value.min} - $${value.max}`}
-        </span>
-      </ShopFilterItem>
+      {booksLength > 1 ? (
+        <ShopFilterItem label={"price"}>
+          <InputRange
+            maxValue={max}
+            minValue={min}
+            value={value}
+            onChange={(value) => {
+              setValue(value);
+              filterByPrice(books, value);
+            }}
+          />
+          <span className="price-range">
+            Range : {`$${value.min} - $${value.max}`}
+          </span>
+        </ShopFilterItem>
+      ) : null}
       {/* ////////////////////////////////////////////////////// */}
-      <ShopFilterItem label={"years"}>
-        <div className="py-2">
-          {publication_years.map((year) => {
-            return (
-              <div key={year} className="year-item">
-                <input
-                  className="mebook-select-input"
-                  type="checkbox"
-                  onChange={(e) => {
-                    if (e.target.checked) {
-                      setyears([...years, year]);
-                    } else {
-                      setyears([
-                        ...years.filter((y) => {
-                          return y !== year;
-                        }),
-                      ]);
-                    }
-                  }}
-                />
-                <span>{year}</span>
-              </div>
-            );
-          })}
-        </div>
-      </ShopFilterItem>
+      {
+        <ShopFilterItem label={"years"}>
+          <div className="py-2">
+            {publication_years.map((year) => {
+              return (
+                <div key={year} className="year-item">
+                  <input
+                    className="mebook-select-input"
+                    type="checkbox"
+                    onChange={(e) => {
+                      if (e.target.checked) {
+                        setyears([...years, year]);
+                      } else {
+                        setyears([
+                          ...years.filter((y) => {
+                            return y !== year;
+                          }),
+                        ]);
+                      }
+                    }}
+                  />
+                  <span>{year}</span>
+                </div>
+              );
+            })}
+          </div>
+        </ShopFilterItem>
+      }
       {/* ////////////////////////////////////////////////////// */}
       <ShopFilterItem label={"ratings"}>
         <div className="py-2">

@@ -4,6 +4,7 @@ import BookGridView from "./BookGridView";
 import { connect } from "react-redux";
 import { clear } from "../redux/actions";
 import LoadSpinner from "./LoadSpinner";
+import NoResults from "./NoResults";
 
 const mapStateToProps = (state) => state;
 
@@ -33,7 +34,7 @@ export default connect(mapStateToProps, { clear })(function ShopBooksContainer({
           {!books?.length ? (
             <LoadWrapper />
           ) : !filter_list.length ? (
-            <LoadWrapper />
+            <NoResults />
           ) : (
             // <>SORRY, NO BOOKS MATCHED YOUR QUERY</>
             filter_list?.map((book) => {

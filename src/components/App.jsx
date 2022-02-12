@@ -36,6 +36,8 @@ import Shop from "../pages/Shop";
 import Admin from "../pages/Admin";
 import Dashboard from "../pages/Dashboard";
 import Account from "../pages/Account";
+import UserOrders from "../pages/UserOrders";
+import UserNotifications from "../pages/UserNotifications";
 
 const mapStateToProps = (state) => {
   return state;
@@ -136,14 +138,33 @@ export default connect(mapStateToProps, {
               }
             />
             <Route
-              path="/account"
+              path="/account/*"
               element={
                 <Temp>
                   <AuthRoute
                     path="account"
                     restrict_to={["owner", "user", "admin"]}
                   >
-                    <Account />
+                    <Routes>
+                      <Route index element={<Account>ACCOUNT</Account>} />
+                      <Route
+                        path="orders"
+                        element={
+                          <Account>
+                            <UserOrders />
+                          </Account>
+                        }
+                      />
+                      <Route
+                        path="notifications"
+                        element={
+                          <Account>
+                            <UserNotifications />
+                          </Account>
+                        }
+                      />
+                      <Route path="*" element={<P_404 />} />
+                    </Routes>
                   </AuthRoute>
                 </Temp>
               }

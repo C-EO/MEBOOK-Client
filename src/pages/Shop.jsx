@@ -107,7 +107,7 @@ export default connect(mapStateToProps, {
           <BookViewModal></BookViewModal>
         </Modal>
         <div className="container py-5">
-          <div className="row">
+          <div className="row py-4">
             <div className="col-12 col-md-6 col-lg-4 col-xl-3">
               <ShopSidebar categories={categories} />
             </div>

@@ -1,0 +1,88 @@
+@import './variables'
+
+#account-page
+    .account-page-area
+        // border: 1px solid $border_color
+        border-radius: 1rem
+        box-shadow: 2px 2px 5px $shadow,-2px -2px 5px $shadow
+        .account-sidebar
+            border-right: 1px solid $border_color
+            display: flex
+            flex-direction: column
+            .user_summary
+                display: flex
+                flex-direction: column
+                justify-content: center
+                align-items: center
+                text-align: center
+                .user-avatar
+                    background: $skyblue
+                    padding: 3px
+                    border-radius: 50%
+                    position: relative
+                    img
+                        background: $bg_white
+                        padding: 3px
+                        width: 96px
+                        height: 96px
+                        border-radius: 50%
+                        overflow: hidden
+                    button
+                        all: unset
+                        cursor: pointer
+                        position: absolute
+                        right: 0
+                        bottom: 0
+                        border-radius: 50%
+                        padding: 3px
+                        background: $bg_white
+                        span
+                            color: $text_white
+                            display: flex
+                            justify-content: center
+                            align-items: center
+                            background: $orange
+                            border-radius: 50%
+                            width: 30px
+                            height: 30px
+                            &::after
+                                content: '\f304'
+                                font-family: 'Font Awesome 5 Pro'
+                                font-weight: 300
+                        &:hover
+                            span
+                                background: $skyblue 
+                .user-fullname
+                    padding-top: 1.25rem
+                    font-weight: 600
+                    font-size: 1.2rem
+                    text-transform: capitalize
+            .user-settings-list
+                list-style-type: none
+                padding: 0
+                margin-top: 2rem 
+                display: flex
+                flex-direction: column
+                .list-item
+                    padding: 1rem 2rem
+                    border-top: 1px solid $border_color
+                    &:last-of-type
+                        padding-bottom: 0
+                    a
+                        display: flex
+                        align-items: center
+                        text-decoration: none
+                        // color: $text_dark
+                        color: $skyblue
+                        span
+                            text-transform: capitalize
+                        i
+                            margin-right: 1rem
+                            font-weight: 600
+                .list-item.active
+                    background: $skyblue
+                    a
+                        color: $text_white
+    .account-actions-area
+        max-height: 490px
+        overflow-y: scroll
