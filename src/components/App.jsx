@@ -49,7 +49,7 @@ export default connect(mapStateToProps, {
   updateUser,
 })(function App({ getAllCategories, getUserData, response, updateUser, user }) {
   useEffect(() => {
-    // reactLocalStorage.getObject("user");
+    reactLocalStorage.getObject("user");
     (async () => {
       if (!(await getUserData())) {
         updateUser(null);
@@ -64,7 +64,7 @@ export default connect(mapStateToProps, {
         getUserData();
       } else if (response?.data?.data?.user) {
         const user = response?.data?.data?.user;
-        // reactLocalStorage.setObject("user", user);
+        reactLocalStorage.setObject("user", user);
         updateUser(user);
       }
     }

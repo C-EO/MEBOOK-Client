@@ -29,9 +29,6 @@ const response = (res = {}, action) => {
   if (action.type === "CHECK_ACCOUNT_VERIFICATION") {
     return { ...res, ...action.payload };
   }
-  if (action.type === "CHECK_RESET_PASSWORD_TOKEN") {
-    return { ...res, ...action.payload };
-  }
   if (action.type === "RESEND_VERIFICATION_OTP") {
     return { ...res, ...action.payload };
   }

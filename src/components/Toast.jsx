@@ -37,6 +37,7 @@ export default connect((state) => state)(function Toast({ notification }) {
           fontSize: "14px",
           fontWeight: "400",
           fontFamily: "poppins",
+          textTransform: "capitalize",
         }}
         variant="filled"
         severity={notification?.status}

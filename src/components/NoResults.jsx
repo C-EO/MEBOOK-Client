@@ -6,8 +6,8 @@ export default function NoResults() {
   return (
     <div id="empty-orders-wrapper">
       <i className="fal fa-question-circle"></i>
-      <h6>No results matched your search query</h6>
-      <p>try query again</p>
+      <h6>No results matches your current filters</h6>
+      <p>Try removing some of them to get better results</p>
     </div>
   );
 }
