@@ -47,13 +47,13 @@ export default connect(
   return (
     <div id="account-page">
       <div className="container py-md-5">
-        <div className="row py-5">
+        <div className="row py-md-5">
           <div className="offset-md-1 col-md-10 p-0">
             <div className="account-page-area">
               <div className="container p-0">
-                <div className="row">
+                <div className="row alig-items-center">
                   <div className="col-3 col-md-4 pe-0">
-                    <div className="account-sidebar py-md-5">
+                    <div className="account-sidebar  py-md-5 pb-md-0">
                       <div className="user_summary pb-5 d-none d-md-flex">
                         <div className="user-avatar">
                           <img src={user?.avatar || avatar} alt="user-avatar" />
@@ -100,7 +100,7 @@ export default connect(
                           Joined {moment(user?.account_created_at).fromNow()}
                         </p>
                       </div>
-                      <ul className="user-settings-list">
+                      <ul className="user-settings-list pb-5">
                         {routes.map((route) => {
                           return (
                             <li
@@ -177,7 +177,7 @@ export default connect(
                         Joined {moment(user?.account_created_at).fromNow()}
                       </p>
                     </div>
-                    <div className="account-actions-area p-4">{children}</div>
+                    <div className="account-actions-area">{children}</div>
                   </div>
                 </div>
               </div>

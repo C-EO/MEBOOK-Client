@@ -1,0 +1,72 @@
+@import './variables'
+
+#book-view-page
+    .book-view
+        .book-cover
+            position: relative
+            display: flex
+            justify-content: center
+            align-items: center
+            img
+                border-radius: 1rem
+                overflow: hidden
+                box-shadow: 2px 2px 5px $shadow,-2px -2px 5px $shadow
+                width: 80%
+            .out-stock-badge
+                position: absolute
+                left: 0
+                top: 0
+                transform: translate(-0%, -50%)
+                font-weight: 600
+                font-size: 1rem
+                padding: 0.5rem
+                display: grid
+                text-align: center
+                place-items: center
+                text-transform: uppercase
+                border-radius: 50%
+                color: $text_white
+                background: $text_dark
+                width: 100px
+                height: 100px
+
+        .book-info
+            display: flex
+            flex-direction: column
+            .book-author
+                span
+                    color: $skyblue
+                    font-weight: 600
+            .book-title
+                color: $skyblue
+                font-weight: 600
+            .book-prices
+                display: inline-flex
+                align-items: center
+                font-size: 1.2rem
+                .book-last-price
+                    text-decoration: line-through
+                    margin-right: 2rem
+                .price
+                    font-size: 1.75rem
+                    color: $orange
+                    font-weight: 700
+            .book-actions
+                display: flex
+                align-items: center
+            .book-add-to-wishlist
+                display: flex
+                align-items: center
+                margin-top: 1.5rem
+                margin-bottom: .5rem
+                .add-to-wishlist-btn
+                    all: unset
+                    font-size: 1.5rem
+                    margin-right: 1rem
+                    cursor: pointer
+                    &:hover
+                        color: $skyblue
+                .wish_listed
+            .book-fact
+                span
+                    margin-left: .5rem

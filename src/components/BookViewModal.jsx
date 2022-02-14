@@ -76,6 +76,7 @@ export default connect((state) => state, { clearBookQuickView, addBookToCart })(
                       onChange={setquantity}
                     />
                     <SubmitBtn
+                      disabled={!book_quick_view?.is_stock}
                       value={"ADD TO CART"}
                       type={true}
                       load={load}

@@ -9,6 +9,7 @@ import { connect } from "react-redux";
 import { filterByPrice, filterByYear, filterByRate } from "../redux/actions";
 import _debounce from "debounce";
 import { Rating } from "@mui/material";
+import scrollToTop from "../helpers/scrollToTop";
 
 const mapStateToProps = (state) => state;
 export default connect(mapStateToProps, {
@@ -52,9 +53,11 @@ export default connect(mapStateToProps, {
 
   useEffect(() => {
     filterByYear(books, years);
+    // scrollToTop();
   }, [years]);
   useEffect(() => {
     filterByRate(books, rates);
+    // scrollToTop();
   }, [rates]);
 
   return (

@@ -1,4 +1,7 @@
 const notification = (msg = {}, action) => {
+  if (action.type === "CANCEL_ORDER") {
+    return { ...action.payload.data };
+  }
   if (action.type === "SET_CUSTOM_ALERT") {
     return { ...action.payload };
   }

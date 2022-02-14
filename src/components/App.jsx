@@ -15,11 +15,11 @@ import "../../node_modules/bootstrap/dist/js/bootstrap.bundle";
 
 /// COMPONENTS
 import GridTest from "./GridTest";
-import Notification from "./Notification";
 import P_404 from "./_404";
 import AuthRoute from "./AuthRoute";
 import Toast from "./Toast";
 import Temp from "./Temp";
+import UserAccount from "./UserAccount";
 
 /// PAGES
 import Home from "../pages/Home";
@@ -38,6 +38,7 @@ import Dashboard from "../pages/Dashboard";
 import Account from "../pages/Account";
 import UserOrders from "../pages/UserOrders";
 import UserNotifications from "../pages/UserNotifications";
+import Book from "../pages/Book";
 
 const mapStateToProps = (state) => {
   return state;
@@ -104,7 +105,7 @@ export default connect(mapStateToProps, {
               }
             />
             <Route
-              path="/logout"
+              path="logout"
               element={
                 <Temp>
                   <Logout />
@@ -112,7 +113,7 @@ export default connect(mapStateToProps, {
               }
             />
             <Route
-              path="/wishlist"
+              path="wishlist"
               element={
                 <Temp>
                   <AuthRoute
@@ -125,7 +126,7 @@ export default connect(mapStateToProps, {
               }
             />
             <Route
-              path="/cart"
+              path="cart"
               element={
                 <Temp>
                   <AuthRoute
@@ -138,7 +139,7 @@ export default connect(mapStateToProps, {
               }
             />
             <Route
-              path="/account/*"
+              path="account/*"
               element={
                 <Temp>
                   <AuthRoute
@@ -146,7 +147,14 @@ export default connect(mapStateToProps, {
                     restrict_to={["owner", "user", "admin"]}
                   >
                     <Routes>
-                      <Route index element={<Account>ACCOUNT</Account>} />
+                      <Route
+                        index
+                        element={
+                          <Account>
+                            <UserAccount />
+                          </Account>
+                        }
+                      />
                       <Route
                         path="orders"
                         element={
@@ -170,7 +178,7 @@ export default connect(mapStateToProps, {
               }
             />
             <Route
-              path="/checkout"
+              path="checkout"
               element={
                 <Temp>
                   <AuthRoute
@@ -183,7 +191,7 @@ export default connect(mapStateToProps, {
               }
             />
             <Route
-              path="/verify-account/:userId/:token"
+              path="verify-account/:userId/:token"
               element={
                 <Temp>
                   <VerifyAccount />
@@ -199,7 +207,7 @@ export default connect(mapStateToProps, {
               }
             />
             <Route
-              path="/reset-password/:userId/:token"
+              path="reset-password/:userId/:token"
               element={
                 <Temp>
                   <ResetPassword />
@@ -215,6 +223,14 @@ export default connect(mapStateToProps, {
               }
             />
             <Route
+              path="/book/:id"
+              element={
+                <Temp>
+                  <Book />
+                </Temp>
+              }
+            />
+            <Route
               path="*"
               element={
                 <Temp>
@@ -223,7 +239,7 @@ export default connect(mapStateToProps, {
               }
             />
             <Route
-              path={"/shop/category/:catId"}
+              path={"shop/category/:catId"}
               element={
                 <Temp>
                   <Shop />
@@ -231,7 +247,7 @@ export default connect(mapStateToProps, {
               }
             />
             <Route
-              path={"/shop/category/:catId/:subCatId"}
+              path={"shop/category/:catId/:subCatId"}
               element={
                 <Temp>
                   <Shop />
@@ -241,7 +257,7 @@ export default connect(mapStateToProps, {
           </Route>
           {/* ADMIN DASHBOARD ROUTE */}
           <Route
-            path="/admin/*"
+            path="admin/*"
             element={
               <AuthRoute
                 label={"log into admin dashboard"}

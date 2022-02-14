@@ -3,7 +3,10 @@
 #account-page
     .account-page-area
         overflow: hidden
+        border-radius: 1rem
         box-shadow: 2px 2px 5px $shadow,-2px -2px 5px $shadow
+        .account-actions-area
+            padding: 1.5rem            
         .account-sidebar
             overflow: hidden
             height: 100%
@@ -60,6 +63,7 @@
         .bordered
                 border-bottom: 1px solid $border_color
         .user-settings-list
+            height: 100%
             list-style-type: none
             padding: 0
             display: flex
@@ -80,7 +84,7 @@
                     span
                         text-transform: capitalize
                     i
-                        font-weight: 600
+                        font-size: 1.2rem
             .list-item.active
                 &::before
                     content: ''
@@ -93,9 +97,9 @@
                 a
                     color: $skyblue
                     font-weight: 500
-@media screen and (min-width: 991px)
-    .account-actions-area
-        max-height: 490px !important 
-        overflow-y: scroll !important
-    .account-page-area
-        border-radius: 1rem
+                    i
+                        font-weight: 600
+
+.orders-container
+    max-height: calc( calc( 61.5px + 1.25rem ) * 5  )
+    overflow-y: scroll

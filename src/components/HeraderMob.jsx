@@ -19,7 +19,7 @@ export default connect((state) => state)(function HeraderMob({ user }) {
             <div className="col-8 text-center">
               <div className="app-brand  d-flex justify-content-center align-items-center">
                 <Link to={"/"}>
-                  <img src={logo} alt="brand-logo" width={150} />
+                  <img src={logo} alt="brand-logo" width={170} />
                 </Link>
               </div>
             </div>

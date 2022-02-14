@@ -26,7 +26,7 @@ export default connect((state) => state)(function Toast({ notification }) {
       TransitionComponent={GrowTransition}
       open={open}
       anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
-      autoHideDuration={4000}
+      autoHideDuration={5000}
       onClose={() => {
         setOpen(false);
       }}

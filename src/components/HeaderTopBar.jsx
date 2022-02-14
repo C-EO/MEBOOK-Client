@@ -17,7 +17,7 @@ export default connect((state) => state)(function HeaderTopBar({ user }) {
             <div className="topbar-left">
               <ul className="list">
                 <li className="list-item">
-                  <HashLink to="/# ">trendings</HashLink>
+                  <HashLink to="/#footer-menu">trendings</HashLink>
                 </li>
                 <li className="list-item">
                   <HashLink to="/# ">top of the month</HashLink>

@@ -1,13 +1,22 @@
 import React from "react";
 import LoadSpinner from "./LoadSpinner";
 
-export default function SubmitBtn({ value, load, type, onClick }) {
+export default function SubmitBtn({
+  value,
+  load,
+  type,
+  onClick,
+  invert,
+  disabled,
+}) {
   return (
     <button
       type={!type ? `submit` : null}
-      className="mebook-form-submit-btn"
+      className={`${disabled ? "disabled" : ""} ${
+        invert ? "invert" : ""
+      } mebook-form-submit-btn`}
       onClick={type ? onClick : null}
-      disabled={load}
+      disabled={load || disabled}
     >
       {(() => {
         if (!load) {

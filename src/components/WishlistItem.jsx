@@ -36,11 +36,11 @@ export default connect(mapStateToProps, { addBookToWishList, addBookToCart })(
               </button>
             </div>
             <div className="col-9 item-info">
-              <Link to={`/book/${item._id}`}>
+              <Link to={`/book/${item.slug}`}>
                 <img src={item.cover} alt="item-img" className="product-img" />
               </Link>
               <div className="product-info">
-                <Link to={`/book/${item._id}`} className="book-title mb-1">
+                <Link to={`/book/${item.slug}`} className="book-title mb-1">
                   {item.title}
                 </Link>
                 <Rating

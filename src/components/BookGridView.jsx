@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "../assets/style/book-grid-view.sass";
 import { Link } from "react-router-dom";
 import LoadSpinner from "./LoadSpinner";
+import slug from "slugify";
 import {
   addBookToWishList,
   setBookView,
@@ -56,8 +57,8 @@ export default connect((state) => state, {
             )}
           </button>
         </div>
-        <Link to={`/book/${book._id}`}>
-          <img src={book.cover} alt="book-cover" />
+        <Link to={`/book/${book?.slug}`}>
+          <img src={book?.cover} alt="book-cover" />
         </Link>
         <button
           className={`add_wishlist_btn ${
@@ -107,7 +108,10 @@ export default connect((state) => state, {
           <span>BY : </span>
           {book.author}
         </div>
-        <Link to={`/book/${book._id}`} className="book-title">
+        <Link
+          to={`/book/${slug(book.title, { lower: true })}`}
+          className="book-title"
+        >
           {book.title}
         </Link>
         <div className="book-price">
