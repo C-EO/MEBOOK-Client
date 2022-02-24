@@ -5,6 +5,15 @@ const response = (res = {}, action) => {
   if (action.type === "CANCEL_ORDER") {
     return { ...res, ...action.payload };
   }
+  if (action.type === "CHANGE_USER_INFORMATION") {
+    return { ...res, ...action.payload };
+  }
+  if (action.type === "CHANGE_USER_PASSWORD") {
+    return { ...res, ...action.payload };
+  }
+  if (action.type === "DELETE_USER") {
+    return { ...res, ...action.payload };
+  }
   if (action.type === "ADD_ITEM_TO_CART") {
     return { ...res, ...action.payload };
   }

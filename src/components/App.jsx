@@ -19,7 +19,6 @@ import P_404 from "./_404";
 import AuthRoute from "./AuthRoute";
 import Toast from "./Toast";
 import Temp from "./Temp";
-import UserAccount from "./UserAccount";
 
 /// PAGES
 import Home from "../pages/Home";
@@ -39,6 +38,7 @@ import Account from "../pages/Account";
 import UserOrders from "../pages/UserOrders";
 import UserNotifications from "../pages/UserNotifications";
 import Book from "../pages/Book";
+import UserAccount from "../pages/UserAccount";
 
 const mapStateToProps = (state) => {
   return state;

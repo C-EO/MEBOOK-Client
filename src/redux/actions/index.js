@@ -29,6 +29,9 @@ import getSubCategoryBooks from "./getSubCategoryBooks";
 import updateAvatar from "./updateAvatar";
 import cancelOrder from "./cancelOrder";
 import getBook from "./getBook";
+import changeUserInformation from "./changeUserInformation";
+import changeUserPassword from "./changeUserPassword";
+import deleteUser from "./deleteUser";
 export {
   registerUser,
   checkAccountVerificaion,
@@ -61,4 +64,7 @@ export {
   updateAvatar,
   cancelOrder,
   getBook,
+  changeUserInformation,
+  changeUserPassword,
+  deleteUser,
 };

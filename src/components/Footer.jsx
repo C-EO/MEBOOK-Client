@@ -10,8 +10,9 @@ export default function Footer() {
             <p className="m-0">
               © 2022 MEBOOK. All Rights Reserved by
               <a
-                className="github-link"
-                href="https://github.com/mmm-066550"
+                rel="noreferrer"
+                className="website-link"
+                href="https://moustapha.me"
                 target={"_blank"}
               >
                 MOUSTAPHA
@@ -22,6 +23,7 @@ export default function Footer() {
             <ul className="social-links">
               <li className="social-item ms-md-4 me-md-0 mt-md-0">
                 <a
+                  rel="noreferrer"
                   className="social-link"
                   href="https://github.com/mmm-066550"
                   target={"_blank"}
@@ -32,6 +34,7 @@ export default function Footer() {
               </li>
               <li className="social-item ms-md-4 me-md-0 mt-md-0">
                 <a
+                  rel="noreferrer"
                   className="social-link"
                   href="https://www.facebook.com/MOUSTAPHAMAHMMOUD/"
                   target={"_blank"}
@@ -43,6 +46,7 @@ export default function Footer() {
 
               <li className="social-item ms-md-4 me-md-0 mt-md-0">
                 <a
+                  rel="noreferrer"
                   className="social-link"
                   href="https://www.linkedin.com/in/mmm066550/"
                   target={"_blank"}
@@ -53,6 +57,7 @@ export default function Footer() {
               </li>
               <li className="social-item ms-md-4 me-md-0 mt-md-0">
                 <a
+                  rel="noreferrer"
                   className="social-link"
                   href="https://wa.me/201099617776"
                   target={"_blank"}

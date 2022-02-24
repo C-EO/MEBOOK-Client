@@ -26,7 +26,7 @@ export default connect((state) => state, { setCustomAlert })(
                     onSubmit={(e) => {
                       e.preventDefault();
                       setCustomAlert(
-                        "info",
+                        "error",
                         "search feature is not implemented yet"
                       );
                     }}

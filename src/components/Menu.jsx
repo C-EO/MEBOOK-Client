@@ -133,7 +133,7 @@ export default connect((state) => state, { setCustomAlert })(function Menu({
                   <form
                     onSubmit={(e) => {
                       e.preventDefault();
-                      setCustomAlert("info", "newsletter not implemented yet");
+                      setCustomAlert("error", "newsletter not implemented yet");
                     }}
                     className="my-4 newsletter-form"
                   >

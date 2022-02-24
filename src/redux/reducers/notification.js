@@ -5,6 +5,15 @@ const notification = (msg = {}, action) => {
   if (action.type === "SET_CUSTOM_ALERT") {
     return { ...action.payload };
   }
+  if (action.type === "CHANGE_USER_INFORMATION") {
+    return { ...action.payload.data };
+  }
+  if (action.type === "CHANGE_USER_PASSWORD") {
+    return { ...action.payload.data };
+  }
+  if (action.type === "DELETE_USER") {
+    return { ...action.payload.data };
+  }
   if (action.type === "UPDATE_USER_AVATAR") {
     return { ...action.payload.data };
   }
