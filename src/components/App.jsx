@@ -74,7 +74,7 @@ export default connect(mapStateToProps, {
   return (
     <>
       <BrowserRouter>
-        <GridTest />
+        {/* <GridTest />*/}
         <Toast />
         {/* <Notification /> */}
         {/* WEBSITE PAGES ROUTE */}
