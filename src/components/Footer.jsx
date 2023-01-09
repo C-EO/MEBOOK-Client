@@ -12,7 +12,7 @@ export default function Footer() {
               <a
                 rel="noreferrer"
                 className="website-link"
-                href="https://moustapha.me"
+                href="https://mmm066550.me"
                 target={"_blank"}
               >
                 MOUSTAPHA
